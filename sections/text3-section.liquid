@@ -1,0 +1,54 @@
+<section class="content{% unless section.settings.top_indent %} nomargin{% endunless %}" data-section-id="{{ section.id }}">
+  <div class="container-fluid">
+    <div class="row">						
+      <div class="text-block-with-bg">
+        <h2 class="text-center text-uppercase title-under">{{ section.settings.title }}</h2>
+        {{ section.settings.content }}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  [data-section-id~="{{ section.id }}"] {
+  background: {{ section.settings.bg_base_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Text Block 3",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "top_indent",
+      "label": "Top Indent",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "About product"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text",
+      "default": "<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariaturLorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<\/p><p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariaturLorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<\/p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_base_color",
+      "label": "Background Color",
+      "default": "#fafafa"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Block 3",
+      "category": "Text Section"
+    }
+  ]
+}
+{% endschema %}

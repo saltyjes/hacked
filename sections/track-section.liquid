@@ -1,0 +1,66 @@
+<!--snackbox-start-->
+	<section class="snackbox">
+	<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		<div class="snack-boxinner bg-white define-float">
+		<div class="col-md-7">
+		<h2>{{ section.settings.tracktitle }}</h2>
+		<p>{{ section.settings.track-bannertext }}</p>
+		
+		<a href="{{ section.settings.trackbuttonurl }}">{{ section.settings.trackbuttontext }}</a>
+		</div>
+		<div class="col-md-5 snack-right">
+		<img src="{{ section.settings.track-image | img_url: "" }}" alt="brownbox">
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+	</section>
+	<!--snackbox-closed-->
+{% schema %}
+{
+  "name": "Track Section",
+  "class": "track-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "track-image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "tracktitle",
+      "label": "Title"
+      
+    }, 
+    {
+      "type": "textarea",
+      "id": "track-bannertext",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "trackbuttontext",
+      "label": "Button Text"
+      
+    },
+    {
+      "type": "text",
+      "id": "trackbuttonurl",
+      "label": "Button Url"
+      
+    }
+  ],
+  "presets": [
+    {
+      "name": "Track Section",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

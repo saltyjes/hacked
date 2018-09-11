@@ -1,0 +1,50 @@
+{% assign count = settings.blog_post_count | plus: 0 %}
+{% capture grid %}{% case settings.blog_grid %}{% when 'blog2' %}col-xl-6 col-lg-6 col-md-6 col-sm-12{% when 'blog3' %}col-xl-4 col-lg-4 col-md-4 col-sm-6{% else %}{% endcase %}{% endcapture %}
+{% paginate blog.articles by count %}
+<div class="container">
+  <div class="row">
+
+    {% if settings.show_blog_sidebar %}<div class="col-xl-8 col-lg-8 col-md-12" id="centerColumn">{% endif %}
+    
+    <div class="blog-layout">
+      <!-- title -->
+      <div class="title-box">
+        {% unless current_tags %}<h1 class="text-center text-uppercase title-under">{{ 'blogs.general.title_main' | t }}</h1>{% else %}<h1 class="text-center text-uppercase title-under">{{ 'blogs.general.title_result' | t }} {{ current_tags.first | replace: '-', ' ' }}</h1>{% endunless %}
+        {% for article in blog.articles %}
+        {% if article.comments.size > 0 %}{% assign comment_url = article.url | append: '#comments' %}{% else %}{% assign comment_url = article.url | append: '#addcomment' %}{% endif %}
+        <div class="{{ grid }}">
+          <div class="post">
+            <div class="post__title_block">
+              {% if article.image != blank %}<figure>
+                <a href="{{ article.url }}"><img src="{{ article.image.src | img_url: '1024x1024' }}" alt="{{ article.image.alt }}"></a>
+              </figure>{% endif %}
+              {% if settings.blog_show_date %}<div class="pull-left">
+                <time><span>{{ article.published_at | date: "%d" }}</span>{{ article.published_at | date: "%b" | downcase }}</time>
+              </div>{% endif %}
+              <div class="pull-left">
+                <h2 class="post__title text-uppercase"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                {% if settings.blog_show_author %}<div class="post__meta">
+                  <span class="post__meta__item">
+                    <span class="autor">by <b>{{ article.author }}</b></span>
+                  </span>
+                </div>{% endif %}
+              </div>							
+            </div>
+            <p>{% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncatewords: settings.truncate, settings.truncate_last_symbols }}{% endif %}</p>
+            {% if article.comments_enabled? and settings.show_comments %}<div class="post__meta"><span class="post__meta__item"><span class="icon icon-message"></span><a href="{{ comment_url }}">{{ article.comments.size }} {{ "blogs.general.comment" | t }}</a></span></div>{% endif %}
+          </div></div>
+        {% case settings.blog_grid %}{% when 'blog2' %}{% cycle '', '<div class="divider--xxs clear hidden-sm hidden-xs"></div>' %}{% when 'blog3' %}{% cycle '', '', '<div class="divider--xxs clear hidden-sm hidden-xs"></div>' %}{% else %}{% endcase %}
+        {% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}{% include 'pagination_buttons' %}{% endif %}
+    </div>
+    
+    {% if settings.show_blog_sidebar %}</div>
+    <div class="divider divider--lg visible-md visible-sm visible-xs"></div>
+    <aside class="col-xl-4 col-lg-4  col-md-12" id="rightColumn">
+      {% include "blog-page-sidebar" %}
+    </aside>
+    {% endif %}
+    
+  </div>
+</div>{% endpaginate %}

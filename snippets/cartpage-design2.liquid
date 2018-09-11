@@ -1,0 +1,240 @@
+<!-- CONTENT section -->
+<div class="container">	
+  <!-- title -->
+  
+  <!-- /title -->
+  <form action="/cart" method="post">
+    <div class="row">
+      <section class="col-md-12 col-lg-12 view-cartcs cart-view-section">
+        <div class="title-box">
+          <h1 class="text-center text-uppercase title-under">{{ 'cart.general.title' | t }}</h1>
+        </div>
+        <!-- Shopping cart table -->
+        <div class="col-md-7">
+             <div class="container-widget">
+          <table class="shopping-cart-table12">
+            <!--thead>
+              <tr>
+                <th>{{ 'cart.label.product' | t }}</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>{{ 'cart.label.price' | t }}</th>
+                <th>{{ 'cart.label.quantity' | t }}</th>
+                <th>{{ 'cart.label.total' | t }}</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead-->
+            <tbody>
+
+              {% for item in cart.items %}
+{%- include 'bold-cart-item' with item -%}
+              {% assign inv_man = item.variant.inventory_management %}{% assign inv_qua = item.variant.inventory_quantity %}{% unless inv_man %}{% assign inv_qua = 100000 %}{% endunless %}{% if item.variant.available and inv_qua == 0 %}{% assign inv_qua = 100000 %}{% endif %}
+              <tr>
+                <td>
+                  <h5 class="shopping-cart-table__product-name text-left text-uppercase">
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+{{ bold_recurring_desc }}
+                  </h5>
+                  <div class="shopping-cart-table__product-price unit-price">
+                    {{bold_item_price | money}}
+                  </div>
+				  <a class="shopping-cart-table__delete icon icon-clear" href="/cart/change?line={{ forloop.index }}&quantity=0">REMOVE</a>
+                </td>
+                <td>
+                  <div class="shopping-cart-table__product-image">
+                    <a href="{{ item.url }}">
+                      <img class="img-responsive" src="{{ item | img_url: 'medium' }}" alt="{{ item.alt | escape }}"/>
+                    </a>
+                  </div>
+                </td>
+                <!--td>
+                  <h5 class="shopping-cart-table__product-name text-left text-uppercase">
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+{{ bold_recurring_desc }}
+                  </h5>
+                  <ul class="shopping-cart-table__list-parameters">
+                    <li class="visible-xs">
+                      <span>{{ 'cart.label.price' | t }}</span>
+                      <span class="price-mobile">{{bold_item_price | money}}</span>
+                    </li>
+                    <li class="visible-xs">
+                      <span>{{ 'cart.label.quantity' | t }}</span>
+                      <span class="shopping-cart-table__input">
+                        <input type="text" name="updates[]" id="updates_{{ item.id }}" class="form-control input-mobile" value="{{ item.quantity }}" min="1" max="{{ inv_qua }}">
+                      </span>
+                    </li>
+                    <li class="visible-xs">
+                      <span>{{ 'cart.general.subtotal' | t }}</span>
+                      <span class="price-mobile">{{bold_item_line_price | money}}</span>
+                    </li>
+                  </ul>																				
+                </td-->
+                <!--td>
+                  <a class="shopping-cart-table__delete icon icon-delete visible-xs" href="/cart/change?line={{ forloop.index }}&quantity=0"></a>
+                </td>
+                <td>
+                  <div class="shopping-cart-table__product-price unit-price">
+                    {{bold_item_price | money}}
+                  </div>
+                </td-->
+                <td>
+                  <div class="shopping-cart-table__input">
+                    <input type="number" name="updates[]" id="updates_{{ item.id }}" class="form-control input-desktop" value="{{ item.quantity }}" min="1" max="{{ inv_qua }}" title="{% if inv_qua < 100000 %}{{inv_qua}} {{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.many_in_stock' | t }}{% endif %}">
+                  </div>								
+                </td>
+                <!--td>
+                  <div class="shopping-cart-table__product-price subtotal">
+                    {{ bold_item_line_price | money }}
+                  </div>
+                </td>
+                <td>
+                  <a class="shopping-cart-table__delete icon icon-clear" href="/cart/change?line={{ forloop.index }}&quantity=0"></a>
+                </td-->
+              </tr>
+           
+              {% endfor %}
+
+            </tbody>
+          </table>
+          <div class="subtol">
+          <div class="cart-subtotal-title">{{ 'cart.general.subtotal' | t }}</div>
+        <div class="cart-subtotal-price" style="font-size:30px;color:#e43d30;font-weight:bold;">{{ bold_cart_total_price | money }}</div>
+          </div>
+          
+         
+        </div></div>
+        <div class="col-md-5 shopping_cart-aside"> 
+          <div class="card card--padding fill-bg">
+            {% include 'advocate-search' %}
+          </div>
+          <div class="card card--padding fill-bg">
+<!--          <div class="cart-attribute__field">
+  <label for="who-reffered-you">Who reffered you?</label>
+  <input id="who-reffered-you" type="text" name="attributes[who reffered you?]" value="{{ cart.attributes["who reffered you?"] }}" placeholder="Start typing your Advocate's name here">
+</div>
+    <div class="cart-attribute__field checkbox-field">
+  <input type="hidden" name="attributes[I found Hacked Snacks on my own]" value="No">
+  <input type="checkbox" name="attributes[I found Hacked Snacks on my own]" value="Yes"{% if cart.attributes["I found Hacked Snacks on my own"] == "Yes" %} checked{% endif %}>
+  <label>I found Hacked Snacks on my own</label>
+</div> -->
+           <div class="collapse-block__content1">
+            <!--p>{{ 'cart.label.note_text' | t }}</p-->
+            <textarea id="note" name="note" class="form-control" rows="8" placeholder="SPECIAL INSTRUCTIONS">{{ cart.note }}</textarea>
+          </div>
+          {{ bold_ro_cart }}
+          <div class="ship"><p>SHIPPING & TAXES CALCULATED AT CHECKOUT</p></div>
+          <div class="col-md-6 left"><button type="submit" class="btn" id="update-cart" name="update">{{ 'cart.general.update' | t }}</button>
+</div>
+            <div class="col-md-6 right"><button type="submit" name="checkout" class="btn btn--ys ">CHECK OUT</button>
+</div>
+	  		
+            
+          </div>   
+		 </div>
+   
+        <!-- /Shopping cart table -->
+
+        <div class="divider divider--xs"></div>
+        <!--div class="clearfix shopping-cart-btns">
+          <button type="submit" class="btn btn--ys btn--light pull-right" id="update-cart" name="update"><span class="icon icon-autorenew"></span>{{ 'cart.general.update' | t }}</button>
+          <div class="divider divider--xs visible-xs"></div>
+          <a class="btn btn--ys btn--light" href="/cart/clear"><span class="icon icon-delete"></span>{{ 'cart.general.clear_cart' | t }}</a>
+          <div class="divider divider--xs visible-xs"></div>
+          <a class="btn btn--ys btn--light pull-left btn-right" href="/"><span class="icon icon-keyboard_arrow_left"></span>{{ 'cart.general.continue_shopping' | t }}</a>
+          <div class="divider divider--xs visible-xs"></div>   	
+        </div-->
+
+
+        <div class="divider visible-sm visible-xs"></div>
+      </section>
+      <!--aside class="col-md-4 col-lg-4 shopping_cart-aside">
+
+        {% if settings.shipping_calculator %}
+        <div class="collapse-block open card card--padding fill-bg">
+          {% include 'shipping-calculator-design2' %}
+        </div>
+        <div class="divider--md"></div>
+        {% endif %}
+
+        <!-- DISCOUNT CODES -->
+        <!--div class="collapse-block card card--padding fill-bg">
+          <h4 class="collapse-block__title">{{ 'cart.label.note' | t }}</h4>
+          <div class="collapse-block__content">
+            <p>{{ 'cart.label.note_text' | t }}</p>
+            <textarea id="note" name="note" class="form-control" rows="4">{{ cart.note }}</textarea>
+          </div>
+        </div-->				
+        <!-- /DISCOUNT CODES -->
+
+        <div class="divider--md"></div>
+        <!--div class="card card--padding fill-bg">
+          <!--table class="table-total">
+            <tbody>
+              <!tr id="subtotal">
+                <th class="text-left">{{ 'cart.general.subtotal' | t }}</th>
+                <td class="text-right">{{ bold_cart_total_price | money }}</td>
+              </tr>
+              <tr id="tax" style="display:none">
+                <th class="text-left">{{ 'cart.general.shipping_total' | t }}</th>
+                <td class="text-right">{{ 0 | money }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr id="grandtotal">
+                <th>{{ 'cart.general.total' | t }}</th>
+                <td>{{ bold_cart_total_price | money }}</td>
+              </tr>
+            </tfoot>
+          </table-->
+           <!--div class="collapse-block__content1">
+            <!--p>{{ 'cart.label.note_text' | t }}</p-->
+            <!--textarea id="note" name="note" class="form-control" rows="8" placeholder="SPECIAL INSTRUCTIONS">{{ cart.note }}</textarea>
+          </div>
+          {{ bold_ro_cart }}
+          <div class="ship"><p>SHIPPING & TAXES CALCULATED AT CHECKOUT</p></div>
+          <div class="col-md-6 left"><button type="submit" class="btn" id="update-cart" name="update">{{ 'cart.general.update' | t }}</button>
+</div>
+            <div class="col-md-6 right"><button type="submit" name="checkout" class="btn btn--ys ">CHECK OUT</button>
+</div-->
+	  		
+            
+          <!--/div-->         
+
+        <!--/div>
+
+      </aside-->
+    </div>
+  </form>
+</div>
+{{ 'jquery.nice-number.js' | asset_url | script_tag }}
+{{ 'jquery.nice-number.css' | asset_url | stylesheet_tag }}
+<script>
+  $(document).ready( function(){
+
+  $('input[type="number"]').niceNumber({
+
+  // auto resize the number input
+  autoSize: true,
+
+  // the number of extra character
+  autoSizeBuffer: 1,
+
+  // custom button text
+  buttonIncrement: "+",
+  buttonDecrement: '-',
+ 
+
+  // 'around', 'left', or 'right'
+  buttonPosition: 'left'
+  
+});
+
+});
+</script>
+<style type="text/css">
+.bkt-fb-customerchat section.breadcrumbs.show {
+    display: none !important;
+    opacity: 0;
+}
+</style>
+      

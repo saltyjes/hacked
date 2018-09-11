@@ -1,0 +1,44 @@
+<!-- filters row -->
+<div class="filters-row filters-panel">
+  <div class="pull-left">
+    <div class="filters-row__mode">
+      {% if settings.listing_page_design != "disable-sidebar" %}{% if settings.listing_page_design != "closed-sidebar" %}
+      <a href="#" class="btn btn--ys slide-column-open visible-xs visible-sm hidden-xl hidden-lg hidden-md">{{ 'collections.toolbar.filter' | t }}</a>{% else %}<a href="#" class="btn btn--ys slide-column-open">{{ 'collections.toolbar.filter' | t }}</a>{% endif %}{% endif %}
+      <a class="filters-row__view active link-grid-view btn-img btn-img-view_module view-grid"><span></span></a> 
+      <a class="filters-row__view link-row-view btn-img btn-img-view_list view-list"><span></span></a> 
+    </div>
+    <div class="filters-row__select{% if settings.listing_page_design != "disable-sidebar" %} hidden-sm hidden-xs{% endif %}">
+      <label>{{ 'collections.toolbar.sort_by_title' | t }}</label>
+      <div class="select-wrapper">
+        <select class="select--ys sort-position sort-select">
+          <option value="manual"{% if collection.default_sort_by == 'manual' %} selected{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+          <option value="title-ascending"{% if collection.default_sort_by == 'title-ascending' %} selected{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+          <option value="title-descending"{% if collection.default_sort_by == 'title-descending' %} selected{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+          <option value="created-ascending"{% if collection.default_sort_by == 'created-ascending' %} selected{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+          <option value="created-descending"{% if collection.default_sort_by == 'created-descending' %} selected{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+          <option value="price-ascending"{% if collection.default_sort_by == 'price-ascending' %} selected{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+          <option value="price-descending"{% if collection.default_sort_by == 'price-descending' %} selected{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+          <option value="best-selling"{% if collection.default_sort_by == 'best-selling' %} selected{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="{% if settings.listing_page_design != "disable-sidebar" %}pull-right{% else %}pull-left{% endif %} pagination-btns">
+    <div class="filters-row__items hidden-sm hidden-xs">{{ paginate.items }} {{ 'collections.toolbar.items' | t }}</div>
+    <div class="filters-row__select{% if settings.listing_page_design != "disable-sidebar" %} hidden-sm hidden-xs{% endif %} grid-select">
+      <label>{{ 'collections.toolbar.grid_amount_title' | t }}</label>
+      <div class="select-wrapper">
+        <select class="select--ys show-qty">
+          <option>{{ pagination_limit_const }}</option>
+          <option {% if current_grid == 16 %}selected{% endif %}>16</option>
+          <option {% if current_grid == 32 %}selected{% endif %}>32</option>
+          <option {% if current_grid == 50 %}selected{% endif %} value="all">{{ 'collections.toolbar.all' | t }}</option>
+        </select>
+      </div>
+    </div>
+    {% unless settings.enable_infinite_scroll %}<div class="filters-row__pagination product-pagintion">
+      {% include "pagination_products" %}
+    </div>{% endunless %}
+  </div>
+</div>
+<!-- /filters row -->

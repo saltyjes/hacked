@@ -1,0 +1,44 @@
+<header id="header" class="header-design9">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-5" itemscope itemtype="http://schema.org/Organization">
+        <a href="/" itemprop="url"><img class="logo img-responsive" src="{{ headerlogo }}" alt="logo"/ itemprop="logo"></a> 
+      </div>
+      <div class="col-sm-8 col-md-8 col-lg-8 col-xl-7 text-right">							
+        <div class="settings">	
+          <div class="slogan">{{ settings.header_slogan }}</div>
+          {% include "header-currency" showTitle:true %}
+          {% include "header-language" align: 'text-right' showTitle: true %}
+          <div class="row-md">
+            {% include "menu-customer" %}
+            {% include "menu-cart" %}
+          </div>								
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stuck-nav">
+    <div class="container">
+      <div class="row">
+        <div class="pull-left col-sm-10 col-md-9 col-lg-9">
+          {% include "main-menu" %}
+        </div>
+        <div class="pull-right col-sm-2 col-md-3 col-lg-3 col-xl-2">
+          <div class="text-right">									
+            <div class="search-outer visible-mobile-menu-off">
+              <form action="/search" method="get">
+                <div class="input-outer">
+                  <input type="hidden" name="type" value="product" />
+                  <input type="text" name="q" class="search_field" value="" maxlength="128" placeholder="{{ 'general.search.place_holder' | t }}">
+                  <button type="submit" title="" class="icon icon-search"></button>
+                </div>
+              </form>
+            </div>
+            {% include "menu-search" search_class: "visible-mobile-menu-on" %}
+            {% include "menu-cart" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

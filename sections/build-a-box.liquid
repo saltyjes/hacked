@@ -1,0 +1,50 @@
+
+<script>
+  var box_products = {{- collections[section.settings.collection].products | json -}};
+
+  {%- capture output -%}
+    [
+      {%- for block in section.blocks -%}
+        {
+          "ref": {{- block.settings.slot_ref | json -}},
+          "title": {{- block.settings.title | json -}},
+          "limit": {{- block.settings.limit | json -}}
+        },
+      {%- endfor -%}
+    ]
+  {%- endcapture -%}
+  var box_settings = {{- output -}};
+</script>
+
+{% schema %}
+  {
+    "name": "Build a Box Section",
+    "settings": [
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Build a Box Products Collection",
+        "info": "Select the collection that contains all the products in your build a box"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Section",
+        "name": "Section",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Name"
+          },
+          {
+            "id": "slot_ref",
+            "type": "text",
+            "label": "Slot reference",
+            "info": "The grouping of the slots from the recuring orders app e.g protein-popcorn"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

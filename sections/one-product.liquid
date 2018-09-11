@@ -1,0 +1,102 @@
+{% assign _product = all_products[section.settings.product] %}
+<section class="banner-one-product container-fluid content offset-top-0 l9-one-product-js" data-section-id="{{ section.id }}" data-section-type="sliderwithbanners-section">
+  <div class="row">
+    {% if _product != blank %}
+    <div class="col-sm-12 col-md-7">
+      <!-- bannerOneProduct -->
+      <div class="bannerOneProduct slick-arrow-bottom-wrapper banner-slider-js-{{ section.id }}" data-autoplay="false" data-speed="0" data-step="1" data-headerchangecolor="{{ section.settings.change_bg_color }}" data-headercolor="{{ section.settings.background_color }}">
+        {% for image in _product.images %}
+        <div>
+          <img class="img-responsive" src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt }}">
+        </div>
+        {% endfor %}
+      </div>
+      <!-- /bannerOneProduct -->
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="product-content product-info__title">
+        <h2 class="title text-uppercase"><a href="{{ _product.url | within: collection }}">{{ _product.title }}</a></h2>
+        <div class="price product-{{product.id}}">{{ _product.selected_or_first_available_variant.price | money }}</div>
+        <!-- product button -->
+        <div class="clearfix ">
+          <form id="add-item-form" action="/cart/add" data-productid="{{product.id}}" method="post"> 
+{% if product.available %}{% endif %} 
+            {% if _product.available %}
+            {% assign inv_man = _product.variants[0].inventory_management %}{% assign inv_qua = _product.variants[0].inventory_quantity %}{% unless inv_man %}{% assign inv_qua = 100000 %}{% endunless %}{% if _product.variants[0].available and inv_qua == 0 %}{% assign inv_qua = 100000 %}{% endif %}
+            <input type="hidden" name="id" data-productid="{{product.id }}" value="{{ _product.variants[0].id }}" />
+            <div class="pull-left">
+              <div class="number input-counter">
+                <span class="minus-btn">-</span>
+                <input type="text" name="quantity" value="1" max="{{ inv_qua }}"/>
+                <span class="plus-btn">+</span>
+              </div>
+            </div>
+            <div class="pull-left">
+              <!-- product button -->
+              <a href="#" class="btn btn-left btn--ys btn--l addtocart">{{ 'products.product.add_to_cart_html' | t }}</a>
+              <!-- /product button -->
+            </div>
+            <script>
+                jQuery('.addtocart').click(function(e) {
+                  e.preventDefault();
+                  Shopify.addItemFromFormStart('add-item-form', {{ _product.id }});
+                });
+                jQuery(".product-content #add-item-form input").change(function(){
+                  var current = Number(jQuery(this).val());
+                  var max = jQuery(this).attr("max");      
+                  if(current > max) {
+                    jQuery(this).val(max);
+                  }
+                })
+            </script>
+            {% else %}
+            <div class="pull-left">
+              <button disabled class="btn btn--ys btn--xxl">{{ 'products.product.unavailable' | t }}</button>
+            </div>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">Add Product to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</section>
+<style>
+  [data-section-id~="{{ section.id }}"] {
+  background: {{ section.settings.background_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "One Product",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "checkbox",
+      "id": "change_bg_color",
+      "label": "Change Header Color?",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "One Product",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

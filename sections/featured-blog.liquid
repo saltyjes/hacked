@@ -1,0 +1,243 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+{%- if section.settings.image != blank -%}{%- assign img_url = section.settings.image | img_url: '2048x2048' -%}
+{%- else -%}{%- assign img_url = 'layout9_image1.jpg' | asset_url -%}
+{%- endif -%}
+{% assign products_in_row = section.settings.products_in_row | plus: 0 %}
+
+<!-- recent-posts-carousel -->
+<section class="content{% if section.settings.showbgimage %} carusel--parallax layout10{% endif %}"{% if section.settings.showbgimage %} style="background-image: url({{ img_url }})"{% endif %} data-section-id="{{ section.id }}" data-section-type="blogslider-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- title -->
+        <div class="title-with-button">
+          <div class="carousel-products__button pull-right">
+            <span class="btn-prev"></span>
+            <span class="btn-next"></span>        
+          </div>
+          <h2 class="text-center text-uppercase title-under">{{ section.settings.title }}</h2>
+        </div>
+        <!-- /title -->
+        {% unless blog.empty? %}
+        <!-- carousel-new -->
+        <div class="carousel-products row postscarousel-js-{{ section.id }}" id="postsCarousel" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}" data-showproducts="{{ section.settings.products_in_row }}">
+          {% for article in blog.articles limit: section.settings.post_limit %}
+			  {% if article.comments.size > 0 %}{% assign comment_url = article.url | append: '#comments' %}{% else %}{% assign comment_url = article.url | append: '#addcomment' %}{% endif %}
+              <!-- slide-->
+              <div class="col-sm-3 {% if products_in_row < 3 %}col-xl-6{% else %}col-xl-12{% endif %}">
+                <!--  -->
+                <div class="recent-post-box">
+                  {% if article.image != blank %}<div class="col-lg-12 {% if products_in_row < 3 %}col-xl-6{% else %}col-xl-12{% endif %}">
+                    <a href="{{ article.url }}"><span class="figure">
+                      <img src="{{ article.image.src | img_url: '1024x1024' }}" alt="{{ article.image.alt }}">
+                      {% if section.settings.blog_show_date %}<span class="figcaption label-top-left"><span><b>{{ article.published_at | date: "%d" }}</b><em>{{ article.published_at | date: "%b" | downcase }}</em></span></span></span>{% endif %}
+                    </a>
+                  </div>{% endif %}
+                  <div class="col-lg-12 {% if products_in_row < 3 %}col-xl-6{% else %}col-xl-12{% endif %}">
+                    <div class="recent-post-box__text">
+                      <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+                      {% if section.settings.blog_show_author %}<div class="author">{{ "blogs.general.author_by_html" | t: author: article.author }}</div>{% endif %}
+                      <p>{% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols }}{% endif %}</p>
+                      {% if section.settings.show_comments %}{% if blog.comments_enabled? %}<a class="link-commet" href="{{ comment_url }}"><span class="icon icon-message "></span><span class="number">{{ article.comments.size }}</span> {{ "blogs.general.comment" | t }}</a>{% endif %}{% endif %}
+                    </div>
+                  </div>
+                </div>
+                <!-- / -->
+              </div>
+              <!-- /slide -->
+          {% endfor %}
+        </div>
+        <!-- /carousel-new -->
+        {% else %}
+        <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /recent-posts-carousel -->
+{% if products_in_row > 2 %}
+<style>
+  @media (min-width: 1770px) {
+    [data-section-id~="{{ section.id }}"] .recent-post-box p {
+    padding-right: 15px;
+    }
+    [data-section-id~="{{ section.id }}"] .recent-post-box > div:last-child {
+    padding-left: 0 !important;
+    }
+  }
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog posts"
+    },
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "select",
+      "id": "products_in_row",
+      "label": "Products In Row",
+      "options": [
+		{ "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3",
+	  "info": "For screen size > 1770"
+    },
+    {
+      "type": "select",
+      "id": "post_limit",
+      "label": "Posts Limit",
+      "default": "3",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "9",
+          "label": "9"
+        },
+        {
+          "value": "12",
+          "label": "12"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comments",
+      "label": "Show comments",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "_____"
+    },
+    {
+      "type": "paragraph",
+      "content": "Work only for the field \"Content\". Field \"Excerpt\" will show full."
+    },
+    {
+      "type": "text",
+      "id": "truncate",
+      "label": "Show Words",
+      "default": "15",
+	  "info": "Integer"
+    },
+    {
+      "type": "text",
+      "id": "truncate_last_symbols",
+      "label": "Last Symbols",
+      "default": "..."
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "showbgimage",
+      "label": "Show Background Image?",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+  	  "info": "After change image click SAVE. The page will be updated to fully."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog posts",
+      "category": "Blog",
+      "settings": {
+        "blog": "News",
+        "post_limit": "3"
+      }
+    }
+  ]
+}
+{% endschema %}

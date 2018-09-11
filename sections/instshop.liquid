@@ -1,0 +1,90 @@
+{% if section.blocks.size > 0 %}
+{% for block in section.blocks %}
+<section class="content--parallax content--parallax-sm content--parallax-sm1 offset-top-0" style="background-image: url({{ block.settings.image | img_url: '2048x2048' }});" data-section-id="{{ section.id }}" data-section-type="instagramshop-section">
+  <div class="content  offset-top-0">
+    <div class="container">
+      <div class="parallax-text">
+        <div class="block-table">
+          <div class="block-table-cell text-center">
+            <h6 class="font88" style="color: {{ block.settings.text1color }}">{{ block.settings.text1 }}</h6>
+            <div class="divider divider--xs"></div>
+            <p class="font22" style="color: {{ block.settings.text2color }}">{{ block.settings.text2 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endif %}
+
+<section class="content">
+  <div class="container">
+    {{ section.settings.instjs }}
+  </div>
+</section>
+
+{{ 'instagram_shop.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+  {
+    "name": "Instagram Shop",
+    "settings": [
+        {
+          "type": "textarea",
+          "id": "instjs",
+          "label": "Instagram js",
+		  "info": "[Snapppt](http:\/\/www.getsnapppt.com\/)"
+        }
+	],
+    "blocks": [
+      {
+        "type": "item",
+		"limit": 1,
+        "name": "Top Image Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Custom Image"
+          },
+          {
+            "type": "textarea",
+            "id": "text1",
+            "label": "Big Text",
+			"default": "INSTAGRAM SHOP"
+          },
+          {
+            "type": "textarea",
+            "id": "text2",
+            "label": "Small Text",
+			"default": "SNAPPPT IS A FREE INSTAGRAM SHOP PLUGIN THAT TURNS YOUR INSTAGRAM IMAGES INTO PICTURE PERFECT SHOPPABLE LINKS"
+          },
+          {
+            "type": "color",
+            "id": "text1color",
+            "label": "Text 1 Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "text2color",
+            "label": "Text 2 Color",
+            "default": "#ffffff"
+          }
+		]
+	  }
+	],
+    "presets": [
+      {
+        "name": "Instagram Shop",
+      	"category": "Instagram",
+        "blocks": [
+          {
+            "type": "item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

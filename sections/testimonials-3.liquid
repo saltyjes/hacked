@@ -1,0 +1,85 @@
+{% if section.blocks.size == 1 %}{% assign grid = 12 %}
+{% elsif section.blocks.size == 2 %}{% assign grid = 6 %}
+{% elsif section.blocks.size == 3 %}{% assign grid = 4 %}
+{% else %}{% assign grid = 3 %}
+{% endif %}
+
+<section class="content-big-indent">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <span class="color font115 main-font">“</span>
+      </div>
+    </div>
+    {% if section.blocks.size > 0 %}
+    <div class="row">
+      {% for block in section.blocks %}
+      <div class="col-md-{{ grid }}">
+        <p>{{ block.settings.text }}</p>
+        <p>
+          <span class="font18 color-dark main-font"><span class="color custom-font text-uppercase font-medium font22">{{ block.settings.item_title }}</span>{% if block.settings.item_hobby != '' %} <em>{{ block.settings.item_hobby }}</em>{% endif %}</span>
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials Texts",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "comment_item",
+      "name": "Comment",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Author",
+          "default": "Author"
+        },
+		{
+          "type": "text",
+          "id": "item_hobby",
+          "label": "Hobby",
+          "default": "- Hobby"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Texts",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "comment_item"
+        },
+        {
+          "type": "comment_item"
+        },
+        {
+          "type": "comment_item"
+        },
+        {
+          "type": "comment_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

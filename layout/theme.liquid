@@ -1,0 +1,258 @@
+{%- comment %}<locksmith:4643>{% endcomment -%}
+  {%- include 'locksmith', locksmith_context: 'layout/start' %}{% capture locksmith_source -%}
+{%- comment %}</locksmith:4643>{% endcomment -%}
+
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <!-- v2.1.8 -->
+  <meta charset="utf-8">
+  <!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="{{ "general.meta.keywords" | t }}" />
+  <meta name="author" content="{{ "general.meta.author" | t }}">
+  <!-- Social meta ================================================== -->
+  {% include 'social-meta-tags' %}
+
+  <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}{%- comment %}<locksmith:c6ce>{% endcomment -%}{%- include 'locksmith-variables', locksmith_hiding_scope: 'resource' %}{% if locksmith_transparent %}<meta name="description" content="{{ page_description | escape }}" />{% endif -%}{%- comment %}original: <meta name="description" content="{{ page_description | escape }}" />{%- endcomment %}{%- comment %}</locksmith:c6ce>{% endcomment -%}{% endif %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+  
+  {% if settings.use_favicon %}<link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />{% endif %}
+  
+  {% if settings.enable_custom_fonts %}
+  	{{ 'fonts.js' | asset_url | script_tag }}
+  {% else %}
+  	{% include "header-fonts" %}
+  {% endif %}
+
+  {% include 'header-css' %}
+
+  {{ 'vendor.js' | asset_url | script_tag }}
+
+  {{ 'jquery.cookie.js' | asset_url | script_tag }}
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+  
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {{ 'rps.css' | asset_url | stylesheet_tag }}
+
+  <!-- drawer.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+<!-- jquery & iScroll -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<!-- Sticky-kit -->
+{{ 'sticky-kit.min.js' | asset_url | script_tag }}
+
+  <!-- drawer.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  {{ content_for_header }}{% include 'bold-checkout-loader' %}
+
+<script>
+    var BOLD = BOLD || {};
+    BOLD.recurring_orders = BOLD.recurring_orders || {};
+    BOLD.recurring_orders.settings = BOLD.recurring_orders.settings || {}
+    
+    // here is where you assign a new value to the setting you'd like to change
+    BOLD.recurring_orders.settings.loadCustomButtonClasses = 'btn btn--ys btn--xxl addtocart';
+</script>
+
+{%- include 'bold-common' -%}
+{%- include 'bold-product' with product, hide_action: 'header' -%}
+{%- include 'bold-ro-init' -%}
+  {{ 'bold-helper-functions.js' | asset_url | script_tag }}
+   {{ 'bold-ro.css' | asset_url | stylesheet_tag }}
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+  {{ 'cart.api.js' | asset_url | script_tag }}
+
+  {% capture l9 %}{% if template == "index" and settings.home_page_layout == 'home-page_layout-9' %} id="layout-9"{% elsif template == "page.home-page_layout-9" %} id="layout-9"{% endif %}{% endcapture %}
+  
+  <style>
+    /*Footer*/
+    {% if settings.color_body != settings.color_footer and settings.color_footer != 'rgba(0,0,0,0)' %}
+    footer {
+      padding-top: 60px;
+    }
+    @media (max-width: 767px) {
+      footer {
+        padding-top: 0;
+      }
+    }
+    body:not(.index) #pageContent > .container {
+      border: none;
+      padding-bottom: 0;
+    }
+    footer .subscribe-box input {
+      border: none !important;
+    }
+    {% else %}
+    {% if settings.color_carticon == settings.color_stucknavigation %}
+    @media (min-width: 1024px) {
+      .fixedbar .cart .dropdown > a .icon {
+        color: {{ settings.color_stucknavigationtext }} !important;
+      }
+      .fixedbar .cart .dropdown > a:hover .icon {
+        color: {{ settings.color_stucknavigationtextactive }} !important;
+      }
+    }
+    {% endif %}
+    {% unless settings.show_top_line == false and settings.footer_design == 'footer_design4' %}
+    body.index .layout-4 .container:first-child,{% endunless %}
+    body.index .layout-0 .container:first-child {
+      border-top: 1px solid {{ settings.color_footerlines }};
+      padding-top: 60px;
+    }
+    footer .subscribe-box input {
+      border: 1px solid {{ settings.color_footerlines }};
+    }
+    {% endif %}
+    
+    #fitImageInTheme .product__inside__image {
+      overflow: hidden;
+    }
+    #fitImageInTheme .product__inside__image > a:first-child {
+      display: flex;
+      height: {{ settings.product_scale_height }}px;
+      align-items: center;
+    }
+    #fitImageInTheme .product__inside__image > a:first-child img {
+      width: 100%;
+    }
+    {% unless settings.showfixedbar %}.fixedbar {
+      display:none !important;
+    }{% endunless %}
+    {% unless settings.show_preloader %}
+    .breadcrumbs,
+    #pageContent {
+      visibility:hidden;
+      -webkit-transition: opacity .4s ease-out;
+      -moz-transition: opacity .4s ease-out;
+      -o-transition: opacity .4s ease-out;
+      transition: opacity .4s ease-out;
+      opacity: 0; 
+    }
+    .breadcrumbs.show,
+    #pageContent.show {
+      opacity: 1;
+      visibility: visible;
+    }{% endunless %}
+    {% if settings.transparent_header and template == "index" %}
+    body {
+      background: {{ settings.headertransparentbgcolor }};
+    }
+    {% endif %}
+    {% if settings.hide_title_underline %}
+    .another-title .title-under{
+      font-size: 24px;
+      letter-spacing: 0;
+      margin-bottom: 1.667em !important;
+    }
+    .another-title .title-under:after{
+      display: none !important;       
+    }
+    .another-title .title-with-button {
+      overflow: inherit;
+    }
+    .carousel-products__button {
+      top: -14px;
+    }
+    {% endif %}
+  </style>
+  <script>
+    var global_quantity = false;
+  </script>
+  
+  <!-- DirectScale Integration -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.default.css"></link>
+  <script src="https://hacked-snacks.ny001.rndpxl.net/js/direct-scale-integration.js"></script>
+  <!-- End DirectScale Integration -->
+
+  {% include 'shogun-head' %}
+</head>
+
+<body{% if template == "index" or template contains "page.home-page_layout" or settings.hide_title_underline %} class="drawer drawer--left another-title index{% if template == "index" and settings.home_page_layout == 'home-page_layout-2' %} indexlayout2{% endif %}"{% endif %}{{ l9 }}{% if settings.use_scale_product_image %} id="fitImageInTheme"{% endif %} class="drawer drawer--left">
+  {% if settings.show_helper and template == "index" %}{% section "show-helper" %}{% endif %}
+  
+  {% capture headerlogo %}{% if settings.transparent_header and template == "index" %}{{ "logotransparent.png" | asset_url }}{% else %}{{ "logo.png" | asset_url }}{% endif %}{% endcapture %}
+  
+  {% include 'preloader-main' %}
+
+  <!-- Back to top -->
+  <div class="back-to-top"><span class="icon-keyboard_arrow_up"></span></div>
+  <!-- /Back to top -->
+  {% include "main-menu-mobile" %}
+
+  {% if template == "index" and settings.home_page_layout == 'home-page_layout-2' %}
+  	{% include "home-page_layout-2" %}
+  {% else %}
+  	<div class="header-wrapper{% if settings.transparent_header and template == "index" %} transparent transform-mobile{% endif %}">{% include settings.header_design %}</div>
+
+    {% if template != "index" %}{% unless template contains "page.home-page_layout" %}{% include "breadcrumb" %}{% endunless %}{% endif %}
+
+    <div id="pageContent" class="starthide{% if template == "index" and settings.transparent_footer %} nopadding{% endif %}">
+      {% if request.path contains 'manage_subscription_box' %}
+        {% include 'manage-subscription-box' %}
+      {% else %}
+        {{ content_for_layout }}
+      {% endif %}
+    </div>
+
+  	{% if template == "index" and settings.transparent_footer %}{% include "footer-fixed" %}
+  	{% else %}{% include settings.footer_design %}
+  	{% endif %}
+
+    {% include 'popup_cart' %}
+    {% include 'popup-newsletter' %}
+    {% include 'popup-quickview' %}
+
+    {% include 'preloader-ajax' %}
+  {% endif %}
+
+  <div class="cart_messages" style="display:none">
+    <div class="edit">{{ 'cart.header.button_edit' | t }}</div>
+    <div class="delete">{{ 'cart.header.button_delete' | t }}</div>
+    <div class="price">{{ 'cart.header.price' | t }}</div>
+    <div class="qty">{{ 'cart.header.quantity' | t }}</div>
+  </div>
+  <div class="button_massage" style="display:none">{{ 'products.product.add_to_cart_html' | t }}</div>
+
+  {% include 'header-js' %}
+  {% include 'currencies' %}
+  {% include 'search-autocomplete' %}
+  
+  {% if settings.show_helper and template == "index" %}
+    <script>
+      var adminlinks = '{{ settings.helper_info }}';
+    </script>
+    {{ 'admin-panel.js' | asset_url | script_tag }}
+  {% endif %}
+  
+
+
+
+  <script>
+    $(document).on('change', '.single-option-selector', function(){
+      if (BOLD && BOLD.recurring_orders && BOLD.recurring_orders.app && BOLD.recurring_orders.app.ee &&
+         typeof BOLD.recurring_orders.app.ee.emit === 'function'){
+        BOLD.recurring_orders.app.ee.emit('variant_changed');
+      }
+    });
+  </script>
+<!-- BEEKETINGSCRIPT CODE START -->{% include 'bk-tracking' %}<!-- BEEKETINGSCRIPT CODE END --></body>
+</html>
+
+{%- comment %}<locksmith:bb22>{% endcomment -%}
+  {%- endcapture %}{% include 'locksmith', locksmith_context: 'layout/end' -%}
+{%- comment %}</locksmith:bb22>{% endcomment -%}

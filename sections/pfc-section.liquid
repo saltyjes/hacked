@@ -1,0 +1,63 @@
+<div id="shopify-pfcsection" class="shopify-section pfc-section index-section">
+  <section class="content nomargin nopadding" data-section-id="1525381276151">
+  <div class="pfc-main-section">
+    <div class="container">
+      <div class="bg-white-section clearfix">
+        <div class="text-block-with-bg clearfix">
+           <h2 class="text-center text-uppercase title-under">HACKED TO PERFECTION</h2>
+          </div>
+        <div class="inner-pfc-section clearfix">
+            <div class="col-md-4">
+            <img src="{{ section.settings.pfc-image | img_url: "" }}" alt="PFC-img" class="img-responsive">
+            </div>
+            <div class="col-md-8 pfc-content-sction">
+             <h3 class="font20 custom-font font-lighter width-center text-center">
+               {{ section.settings.pfctitle }}
+              </h3>
+                <p>{{ section.settings.pfc-bannertext }}</p>
+            </div>
+        	</div>
+          </div>
+      </div>
+    </div>
+</section>
+<style>
+  #pfcsection {
+  background: #3d3a3a;
+  }
+</style>
+
+</div>
+{% schema %}
+{
+  "name": "PFC Section",
+  "class": "pfc-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "pfc-image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "pfctitle",
+      "label": "Banner Title"
+      
+    }, 
+    {
+      "type": "textarea",
+      "id": "pfc-bannertext",
+      "label": "Banner Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PFC Section",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

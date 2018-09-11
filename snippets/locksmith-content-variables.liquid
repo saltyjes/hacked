@@ -1,0 +1,169 @@
+{%- comment %}
+  Hey there! This snippet is managed by Locksmith (uselocksmith.com). You can
+  fiddle with what's below, but your changes will be reset the next time that
+  Locksmith interacts with your shop.
+
+  Last updated: Wed, 25 Jul 2018 07:13:18 +0000
+  Integration version: v5.32
+{% endcomment -%}
+
+{%assign _l=customer%}{%assign _9=shop%}{%capture _%}{%assign _h=required%}{%capture locksmith_client -%}<script data-locksmith>!function(){var require=void 0,reqwest=function(){function succeed(e){var t=protocolRe.exec(e.url);return t=t&&t[1]||context.location.protocol,httpsRe.test(t)?twoHundo.test(e.request.status):!!e.request.response}function handleReadyState(e,t,s){return function(){return e._aborted?s(e.request):e._timedOut?s(e.request,"Request is aborted: timeout"):void(e.request&&4==e.request[readyState]&&(e.request.onreadystatechange=noop,succeed(e)?t(e.request):s(e.request)))}}function setHeaders(e,t){var s,o=t.headers||{};o.Accept=o.Accept||defaultHeaders.accept[t.type]||defaultHeaders.accept["*"];var n="undefined"!=typeof FormData&&t.data instanceof FormData;!t.crossOrigin&&!o[requestedWith]&&(o[requestedWith]=defaultHeaders.requestedWith),!o[contentType]&&!n&&(o[contentType]=t.contentType||defaultHeaders.contentType);for(s in o)o.hasOwnProperty(s)&&"setRequestHeader"in e&&e.setRequestHeader(s,o[s])}function setCredentials(e,t){"undefined"!=typeof t.withCredentials&&"undefined"!=typeof e.withCredentials&&(e.withCredentials=!!t.withCredentials)}function generalCallback(e){lastValue=e}function urlappend(e,t){return e+(/[?]/.test(e)?"&":"?")+t}function handleJsonp(e,t,s,o){var n=uniqid++,r=e.jsonpCallback||"callback",i=e.jsonpCallbackName||reqwest.getcallbackPrefix(n),a=new RegExp("((^|[?]|&)"+r+")=([^&]+)"),l=o.match(a),c=doc.createElement("script"),u=0,m=-1!==navigator.userAgent.indexOf("MSIE 10.0");return l?"?"===l[3]?o=o.replace(a,"$1="+i):i=l[3]:o=urlappend(o,r+"="+i),context[i]=generalCallback,c.type="text/javascript",c.src=o,c.async=!0,"undefined"!=typeof c.onreadystatechange&&!m&&(c.htmlFor=c.id="_reqwest_"+n),c.onload=c.onreadystatechange=function(){return c[readyState]&&"complete"!==c[readyState]&&"loaded"!==c[readyState]||u?!1:(c.onload=c.onreadystatechange=null,c.onclick&&c.onclick(),t(lastValue),lastValue=void 0,head.removeChild(c),u=1,void 0)},head.appendChild(c),{abort:function(){c.onload=c.onreadystatechange=null,s({},"Request is aborted: timeout",{}),lastValue=void 0,head.removeChild(c),u=1}}}function getRequest(e,t){var s,o=this.o,n=(o.method||"GET").toUpperCase(),r="string"==typeof o?o:o.url,i=o.processData!==!1&&o.data&&"string"!=typeof o.data?reqwest.toQueryString(o.data):o.data||null,a=!1;return("jsonp"==o.type||"GET"==n)&&i&&(r=urlappend(r,i),i=null),"jsonp"==o.type?handleJsonp(o,e,t,r):(s=o.xhr&&o.xhr(o)||xhr(o),s.open(n,r,o.async===!1?!1:!0),setHeaders(s,o),setCredentials(s,o),context[xDomainRequest]&&s instanceof context[xDomainRequest]?(s.onload=e,s.onerror=t,s.onprogress=function(){},a=!0):s.onreadystatechange=handleReadyState(this,e,t),o.before&&o.before(s),a?setTimeout(function(){s.send(i)},200):s.send(i),s)}function Reqwest(e,t){this.o=e,this.fn=t,init.apply(this,arguments)}function setType(e){return null===e?void 0:e.match("json")?"json":e.match("javascript")?"js":e.match("text")?"html":e.match("xml")?"xml":void 0}function init(o,fn){function complete(e){for(o.timeout&&clearTimeout(self.timeout),self.timeout=null;self._completeHandlers.length>0;)self._completeHandlers.shift()(e)}function success(resp){var type=o.type||resp&&setType(resp.getResponseHeader("Content-Type"));resp="jsonp"!==type?self.request:resp;var filteredResponse=globalSetupOptions.dataFilter(resp.responseText,type),r=filteredResponse;try{resp.responseText=r}catch(e){}if(r)switch(type){case"json":try{resp=context.JSON?context.JSON.parse(r):eval("("+r+")")}catch(err){return error(resp,"Could not parse JSON in response",err)}break;case"js":resp=eval(r);break;case"html":resp=r;break;case"xml":resp=resp.responseXML&&resp.responseXML.parseError&&resp.responseXML.parseError.errorCode&&resp.responseXML.parseError.reason?null:resp.responseXML}for(self._responseArgs.resp=resp,self._fulfilled=!0,fn(resp),self._successHandler(resp);self._fulfillmentHandlers.length>0;)resp=self._fulfillmentHandlers.shift()(resp);complete(resp)}function timedOut(){self._timedOut=!0,self.request.abort()}function error(e,t,s){for(e=self.request,self._responseArgs.resp=e,self._responseArgs.msg=t,self._responseArgs.t=s,self._erred=!0;self._errorHandlers.length>0;)self._errorHandlers.shift()(e,t,s);complete(e)}this.url="string"==typeof o?o:o.url,this.timeout=null,this._fulfilled=!1,this._successHandler=function(){},this._fulfillmentHandlers=[],this._errorHandlers=[],this._completeHandlers=[],this._erred=!1,this._responseArgs={};var self=this;fn=fn||function(){},o.timeout&&(this.timeout=setTimeout(function(){timedOut()},o.timeout)),o.success&&(this._successHandler=function(){o.success.apply(o,arguments)}),o.error&&this._errorHandlers.push(function(){o.error.apply(o,arguments)}),o.complete&&this._completeHandlers.push(function(){o.complete.apply(o,arguments)}),this.request=getRequest.call(this,success,error)}function reqwest(e,t){return new Reqwest(e,t)}function normalize(e){return e?e.replace(/\r?\n/g,"\r\n"):""}function serial(e,t){var s,o,n,r,i=e.name,a=e.tagName.toLowerCase(),l=function(e){e&&!e.disabled&&t(i,normalize(e.attributes.value&&e.attributes.value.specified?e.value:e.text))};if(!e.disabled&&i)switch(a){case"input":/reset|button|image|file/i.test(e.type)||(s=/checkbox/i.test(e.type),o=/radio/i.test(e.type),n=e.value,(!s&&!o||e.checked)&&t(i,normalize(s&&""===n?"on":n)));break;case"textarea":t(i,normalize(e.value));break;case"select":if("select-one"===e.type.toLowerCase())l(e.selectedIndex>=0?e.options[e.selectedIndex]:null);else for(r=0;e.length&&r<e.length;r++)e.options[r].selected&&l(e.options[r])}}function eachFormElement(){var e,t,s=this,o=function(e,t){var o,n,r;for(o=0;o<t.length;o++)for(r=e[byTag](t[o]),n=0;n<r.length;n++)serial(r[n],s)};for(t=0;t<arguments.length;t++)e=arguments[t],/input|select|textarea/i.test(e.tagName)&&serial(e,s),o(e,["input","select","textarea"])}function serializeQueryString(){return reqwest.toQueryString(reqwest.serializeArray.apply(null,arguments))}function serializeHash(){var e={};return eachFormElement.apply(function(t,s){t in e?(e[t]&&!isArray(e[t])&&(e[t]=[e[t]]),e[t].push(s)):e[t]=s},arguments),e}function buildParams(e,t,s,o){var n,r,i,a=/\[\]$/;if(isArray(t))for(r=0;t&&r<t.length;r++)i=t[r],s||a.test(e)?o(e,i):buildParams(e+"["+("object"==typeof i?r:"")+"]",i,s,o);else if(t&&"[object Object]"===t.toString())for(n in t)buildParams(e+"["+n+"]",t[n],s,o);else o(e,t)}var context=this;if("window"in context)var doc=document,byTag="getElementsByTagName",head=doc[byTag]("head")[0];else{var XHR2;try{XHR2=require("xhr2")}catch(ex){throw new Error("Peer dependency `xhr2` required! Please npm install xhr2")}}var httpsRe=/^http/,protocolRe=/(^\w+):\/\//,twoHundo=/^(20\d|1223)$/,readyState="readyState",contentType="Content-Type",requestedWith="X-Requested-With",uniqid=0,callbackPrefix="reqwest_"+ +new Date,lastValue,xmlHttpRequest="XMLHttpRequest",xDomainRequest="XDomainRequest",noop=function(){},isArray="function"==typeof Array.isArray?Array.isArray:function(e){return e instanceof Array},defaultHeaders={contentType:"application/x-www-form-urlencoded",requestedWith:xmlHttpRequest,accept:{"*":"text/javascript, text/html, application/xml, text/xml, */*",xml:"application/xml, text/xml",html:"text/html",text:"text/plain",json:"application/json, text/javascript",js:"application/javascript, text/javascript"}},xhr=function(e){if(e.crossOrigin===!0){var t=context[xmlHttpRequest]?new XMLHttpRequest:null;if(t&&"withCredentials"in t)return t;if(context[xDomainRequest])return new XDomainRequest;throw new Error("Browser does not support cross-origin requests")}return context[xmlHttpRequest]?new XMLHttpRequest:XHR2?new XHR2:new ActiveXObject("Microsoft.XMLHTTP")},globalSetupOptions={dataFilter:function(e){return e}};return Reqwest.prototype={abort:function(){this._aborted=!0,this.request.abort()},retry:function(){init.call(this,this.o,this.fn)},then:function(e,t){return e=e||function(){},t=t||function(){},this._fulfilled?this._responseArgs.resp=e(this._responseArgs.resp):this._erred?t(this._responseArgs.resp,this._responseArgs.msg,this._responseArgs.t):(this._fulfillmentHandlers.push(e),this._errorHandlers.push(t)),this},always:function(e){return this._fulfilled||this._erred?e(this._responseArgs.resp):this._completeHandlers.push(e),this},fail:function(e){return this._erred?e(this._responseArgs.resp,this._responseArgs.msg,this._responseArgs.t):this._errorHandlers.push(e),this},"catch":function(e){return this.fail(e)}},reqwest.serializeArray=function(){var e=[];return eachFormElement.apply(function(t,s){e.push({name:t,value:s})},arguments),e},reqwest.serialize=function(){if(0===arguments.length)return"";var e,t,s=Array.prototype.slice.call(arguments,0);return e=s.pop(),e&&e.nodeType&&s.push(e)&&(e=null),e&&(e=e.type),t="map"==e?serializeHash:"array"==e?reqwest.serializeArray:serializeQueryString,t.apply(null,s)},reqwest.toQueryString=function(e,t){var s,o,n=t||!1,r=[],i=encodeURIComponent,a=function(e,t){t="function"==typeof t?t():null==t?"":t,r[r.length]=i(e)+"="+i(t)};if(isArray(e))for(o=0;e&&o<e.length;o++)a(e[o].name,e[o].value);else for(s in e)e.hasOwnProperty(s)&&buildParams(s,e[s],n,a);return r.join("&").replace(/%20/g,"+")},reqwest.getcallbackPrefix=function(){return callbackPrefix},reqwest.compat=function(e,t){return e&&(e.type&&(e.method=e.type)&&delete e.type,e.dataType&&(e.type=e.dataType),e.jsonpCallback&&(e.jsonpCallbackName=e.jsonpCallback)&&delete e.jsonpCallback,e.jsonp&&(e.jsonpCallback=e.jsonp)),new Reqwest(e,t)},reqwest.ajaxSetup=function(e){e=e||{};for(var t in e)globalSetupOptions[t]=e[t]},reqwest}(),Locksmith=window.Locksmith={},jsonScript=document.querySelector('script[type="application/vnd.locksmith+json"]'),json=jsonScript&&jsonScript.innerHTML;if(Locksmith.state={},Locksmith.util={},Locksmith.loading=!1,json)try{Locksmith.state=JSON.parse(json)}catch(error){}if(document.addEventListener&&document.querySelector){var box,keysLeft,timeout,keysTarget=[76,79,67,75,83,77,73,84,72,49,49],reset=function(){keysLeft=keysTarget.slice(0)},style="style",remover=function(e){e&&27!==e.keyCode&&"click"!==e.type||(document.removeEventListener("keydown",remover),document.removeEventListener("click",remover),box&&document.body.removeChild(box),box=null)};reset(),document.addEventListener("keyup",function(e){if(e.keyCode===keysLeft[0]){if(clearTimeout(timeout),keysLeft.shift(),keysLeft.length>0)return void(timeout=setTimeout(reset,1e3));reset(),remover(),box=document.createElement("div"),box[style].width="50%",box[style].maxWidth="500px",box[style].height="35%",box[style].border="1px rgba(0, 0, 0, 0.2) solid",box[style].background="rgba(255, 255, 255, 0.99)",box[style].borderRadius="2px",box[style].position="fixed",box[style].top="50%",box[style].left="50%",box[style].transform="translateY(-50%) translateX(-50%)",box[style].boxShadow="0 2px 5px rgba(0, 0, 0, 0.3), 0 0 100px 500px rgba(255, 255, 255, 0.87)",box[style].zIndex="2147483645";var t=document.createElement("textarea");t.value=json,t[style].border="none",t[style].display="block",t[style].boxSizing="border-box",t[style].width="100%",t[style].height="100%",t[style].background="transparent",t[style].padding="10px",t[style].fontFamily="monospace",t[style].fontSize="13px",t[style].color="#333",t[style].resize="none",t[style].outline="none",t.readOnly=!0,box.appendChild(t),t.addEventListener("click",function(e){e.stopImmediatePropagation(),t.select()}),document.body.appendChild(box),t.select(),document.addEventListener("keydown",remover),document.addEventListener("click",remover)}})}Locksmith.path=Locksmith.state.path||window.location.pathname,Locksmith.token=null,Locksmith.basePath="/apps/locksmith",Locksmith.util.withToken=function(e){Locksmith.token?e(Locksmith.token):reqwest({url:"https://uselocksmith.com/proxy/token?shop=hackedsnacksstaging.myshopify.com",type:"html",crossOrigin:!0,withCredentials:!0,success:function(t){Locksmith.token=t,e(t)}})},Locksmith.util.makeUrl=function(e,t,s){var o,n=Locksmith.basePath+e,r=[],i=Locksmith.util.cache();for(o in i)r.push(o+"="+encodeURIComponent(i[o]));for(o in t)r.push(o+"="+encodeURIComponent(t[o]));Locksmith.state.customer_id&&(r.push("customer_id="+encodeURIComponent(Locksmith.state.customer_id)),r.push("customer_id_signature="+encodeURIComponent(Locksmith.state.customer_id_signature))),Locksmith.util.withToken(function(e){r.push("token="+e),n=n+(-1===n.indexOf("?")?"?":"&")+r.join("&"),s(n)})},Locksmith.util.cache=function(e){var t={};try{var s=function(e){return(document.cookie.match("(^|; )"+e+"=([^;]*)")||0)[2]};t=JSON.parse(decodeURIComponent(s("locksmith-params")||"{}"))}catch(o){}if(e){for(var n in e)t[n]=e[n];document.cookie="locksmith-params=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/",document.cookie="locksmith-params="+encodeURIComponent(JSON.stringify(t))+"; path=/"}return t},Locksmith.util.spinnerHTML='<style>body{background:#FFF}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}#loading{display:flex;width:100%;height:50vh;color:#777;align-items:center;justify-content:center}#loading .spinner{display:block;animation:spin 600ms linear infinite;position:relative;width:50px;height:50px}#loading .spinner-ring{stroke:currentColor;stroke-dasharray:100%;stroke-width:2px;stroke-linecap:round;fill:none}</style><div id="loading"><div class="spinner"><svg width="100%" height="100%"><svg preserveAspectRatio="xMinYMin"><circle class="spinner-ring" cx="50%" cy="50%" r="45%"></circle></svg></svg></div></div>',Locksmith.util.clobberBody=function(e){document.body.innerHTML=e},Locksmith.util.clobberDocument=function(e){e.responseText&&(e=e.responseText),document.documentElement&&document.removeChild(document.documentElement);var t=document.open("text/html","replace");t.writeln(e),t.close(),setTimeout(function(){var e=t.querySelector("[autofocus]");e&&e.focus()},100)},Locksmith.util.serializeForm=function(e){if(e&&"FORM"===e.nodeName){var t,s,o={};for(t=e.elements.length-1;t>=0;t-=1)if(""!==e.elements[t].name)switch(e.elements[t].nodeName){case"INPUT":switch(e.elements[t].type){default:case"text":case"hidden":case"password":case"button":case"reset":case"submit":o[e.elements[t].name]=e.elements[t].value;break;case"checkbox":case"radio":e.elements[t].checked&&(o[e.elements[t].name]=e.elements[t].value);break;case"file":}break;case"TEXTAREA":o[e.elements[t].name]=e.elements[t].value;break;case"SELECT":switch(e.elements[t].type){case"select-one":o[e.elements[t].name]=e.elements[t].value;break;case"select-multiple":for(s=e.elements[t].options.length-1;s>=0;s-=1)e.elements[t].options[s].selected&&(o[e.elements[t].name]=e.elements[t].options[s].value)}break;case"BUTTON":switch(e.elements[t].type){case"reset":case"submit":case"button":o[e.elements[t].name]=e.elements[t].value}}return o}},Locksmith.util.on=function(e,t,s,o){o=o||document;var n="locksmith-"+e+t,r=function(e){-1===e.target.className.split(/\s+/).indexOf(t)&&-1===e.target.parentElement.className.split(/\s+/).indexOf(t)||e[n]||(e[n]=!0,s(e))};o.attachEvent?o.attachEvent(e,r):o.addEventListener(e,r,!1)},Locksmith.util.enableActions=function(e){Locksmith.util.on("click","locksmith-action",function(e){e.preventDefault();var t=e.target;(!t.dataset.confirmWith||confirm(t.dataset.confirmWith))&&(t.disabled=!0,t.innerText=t.dataset.disableWith,Locksmith.post("/action",t.dataset.locksmithParams,{spinner:!1,type:"text",success:function(e){e=JSON.parse(e.responseText),e.message&&alert(e.message),window.location.reload()}}))},e)};var _getCache={};Locksmith.getState=function(e,t,s){var o=e+JSON.stringify(t);Locksmith.loading=!0,Locksmith.util.makeUrl(e,t,function(e){reqwest({url:e,method:"get",type:"html",complete:function(){Locksmith.loading=!1},error:function(e){throw console.error(e),alert("Something went wrong! Please refresh and try again."),e},success:function(e){_getCache[o]=e;var t=e.match(new RegExp('<script type="application/vnd[.]locksmith[+]json">s*([^]+?)s*<[/]script>'));s(t?JSON.parse(t[1]):{})}})})},Locksmith.get=function(e,t,s){s=s||{},s.spinner!==!1&&Locksmith.util.clobberBody(Locksmith.util.spinnerHTML);var o=e+JSON.stringify(t);return _getCache[o]?void Locksmith.util.clobberDocument(_getCache[o]):(Locksmith.loading=!0,void Locksmith.util.makeUrl(e,t,function(e){reqwest({url:e,method:"get",type:"html",complete:function(){Locksmith.loading=!1},error:function(e){throw console.error(e),alert("Something went wrong! Please refresh and try again."),e},success:function(e){_getCache[o]=e,Locksmith.util.clobberDocument(e)}})}))},Locksmith.post=function(e,t,s){s=s||{},s.spinner!==!1&&Locksmith.util.clobberBody(Locksmith.util.spinnerHTML);var o={};s.reload&&(o.reload=1),Locksmith.loading=!0,Locksmith.util.makeUrl(e,o,function(e){reqwest({url:e,method:"post",type:s.type||"html",data:t,complete:function(){Locksmith.loading=!1},error:function(e){if(s.silent!==!0)throw console.error(e),alert("Something went wrong! Please refresh and try again."),e},success:s.success||Locksmith.util.clobberDocument})})},Locksmith.getResourceState=function(e){Locksmith.getState("/resource",{path:Locksmith.path,search:window.location.search},e)},Locksmith.getResource=function(e){Locksmith.get("/resource",{path:Locksmith.path,search:window.location.search,state:Locksmith.state},e)};var useLocalStorage=!0;try{localStorage.setItem("_localStorage_test",0)}catch(error){useLocalStorage=!1}Locksmith.postResource=function(e,t){e.locksmith_source?useLocalStorage?(localStorage.setItem("_locksmith_source",e.locksmith_source),localStorage.setItem("_locksmith_signature",e.locksmith_signature)):(window._locksmith_source=e.locksmith_source,window._locksmith_signature=e.locksmith_signature):useLocalStorage?(e.locksmith_source=localStorage.getItem("_locksmith_source"),e.locksmith_signature=localStorage.getItem("_locksmith_signature")):(e.locksmith_source=window._locksmith_source,e.locksmith_signature=window._locksmith_signature),e.path=Locksmith.path,e.search=window.location.search,Locksmith.post("/resource",e,t)},Locksmith.ping=function(e){(e||Locksmith.state.keys.length>0||0!==Object.keys(Locksmith.util.cache()).length)&&Locksmith.post("/ping",{path:Locksmith.path,state:Locksmith.state},{spinner:!1,silent:!0,type:"text",success:function(e){e=JSON.parse(e.responseText),e.messages&&e.messages.length>0&&Locksmith.showMessages(e.messages)}})},Locksmith.showMessages=function(e){var t=document.createElement("div");t.style.position="fixed",t.style.left=0,t.style.right=0,t.style.bottom="-50px",t.style.opacity=0,t.style.background="#191919",t.style.color="#ddd",t.style.transition="bottom 0.2s, opacity 0.2s",t.style.zIndex=999999,t.innerHTML="      <style>        .locksmith-ab .locksmith-b { display: none; }        .locksmith-ab.toggled .locksmith-b { display: flex; }        .locksmith-ab.toggled .locksmith-a { display: none; }        .locksmith-flex { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; }        .locksmith-message + .locksmith-message { border-top: 1px #555 solid; }        .locksmith-message a { color: inherit; font-weight: bold; }        .locksmith-message a:hover { color: inherit; opacity: 0.8; }        a.locksmith-ab-toggle { font-weight: inherit; text-decoration: underline; }        .locksmith-text { flex-grow: 1; }        .locksmith-cta { flex-grow: 0; text-align: right; }        .locksmith-cta button { transform: scale(0.8); transform-origin: left; }        .locksmith-cta > * { display: block; }        .locksmith-cta > * + * { margin-top: 10px; }        .locksmith-message a.locksmith-close { flex-grow: 0; text-decoration: none; margin-left: 15px; font-size: 30px; font-family: monospace; display: block; padding: 2px 10px; }                @media screen and (max-width: 600px) {          .locksmith-wide-only { display: none !important; }          .locksmith-flex { padding: 0 15px; }          .locksmith-flex > * { margin-top: 5px; margin-bottom: 5px; }          .locksmith-cta { text-align: left; }        }                @media screen and (min-width: 601px) {          .locksmith-narrow-only { display: none !important; }        }      </style>    "+e.map(function(e){return'<div class="locksmith-message">'+e+"</div>"}).join(""),document.body.appendChild(t),document.body.style.position="relative",document.body.parentElement.style.paddingBottom=""+t.offsetHeight+"px",setTimeout(function(){t.style.bottom=0,t.style.opacity=1},50),Locksmith.util.on("click","locksmith-ab-toggle",function(e){e.preventDefault();for(var t=e.target.parentElement;-1===t.className.split(" ").indexOf("locksmith-ab");)t=t.parentElement;-1!==t.className.split(" ").indexOf("toggled")?t.className=t.className.replace("toggled",""):t.className=t.className+" toggled"}),Locksmith.util.enableActions(t)}}();</script>{%- endcapture%}{%capture locksmith_customer_register_form%}{%if _9.customer_accounts_enabled%}<script src="//cdn.shopify.com/s/assets/themes_support/shopify_common-040322ee69221c50a47032355f2f7e6cbae505567e2157d53dfb0a2e7701839c.js" type="text/javascript" data-via-locksmith="true"></script><script src="//cdn.shopify.com/s/assets/themes_support/customer_area-4beccea87758d91106a581ba89341d9b51842f6da79209258c8297239e950343.js" type="text/javascript" data-via-locksmith="true"></script>{%capture required%}{{'customer.general.required_fields'|t}}{%endcapture%}<div class="register-page top-pd">
+<div class="container">				
+  <!-- title -->
+  <div class="title-box">
+    <h1 class="text-center text-uppercase title-under">{{'customer.register.title_main'|t}}</h1>
+  </div>
+  <!-- /title -->		
+  <div class="row">
+    <section class="col-sm-12 col-md-6 col-lg-6col-sm-12 col-sm-offset-0  col-md-offset-3  col-lg-offset-3 col-xl-4 col-xl-offset-4">
+      <div class="login-form-box">
+        <div id="login">
+          <h3 class="color small">{{'customer.register.title_form'|t}}</h3>{%form 'create_customer'%}{{form.errors|default_errors}}
+          <div class="form-group">
+            <label for="fname">{{'customer.register.first_name'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="text" name="customer[first_name]" class="form-control" id="fname">
+          </div>
+          <div class="form-group">
+            <label for="lname">{{'customer.register.last_name'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="text" name="customer[last_name]" class="form-control" id="lname">
+          </div>
+          <div class="form-group">
+            <label for="email">{{'customer.register.email'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="email" name="customer[email]" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="pass">{{'customer.register.password'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="password" name="customer[password]" class="form-control" id="pass">
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <button type="submit" class="btn btn--ys btn-top btn--xl">{{'customer.register.submit'|t}}</button>
+              <div class="cancel-bottom">
+                &nbsp;{{'customer.general.or'|t}}
+                <a href="{{_9.url}}">{{'customer.register.cancel'|t}}</a>
+              </div>
+            </div>
+            <div class="divider divider--md visible-xs"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="pull-right note btn-top">{{'customer.general.required_fields'|t}}</div>
+            </div>
+          </div><input type="hidden" id="register_return_to" name="return_to" value="" />{%endform%}</div>
+      </div>
+    </section>
+  </div>
+</div>
+</div>
+        <script data-locksmith>
+          document.body.className = "drawer drawer--left";
+          
+          window.document.title = "Create Account – Hacked Snacks";
+
+          var returnTo = window.location.protocol + '//' + window.location.host + ('{{locksmith_path}}' || window.location.pathname) + window.location.search;
+
+          if (document.getElementsByName) {
+            var nodes = document.getElementsByName('return_to');
+            for (var i = 0; i < nodes.length; i++) {
+              nodes[i].value = '{{locksmith_path}}' || window.location.pathname;
+            }
+          } else {
+            document.getElementById('register_return_to').value = returnTo;
+          }
+        </script>{%endif%}{%endcapture%}{%capture locksmith_customer_login_form%}{%if _9.customer_accounts_enabled%}<script src="//cdn.shopify.com/s/assets/themes_support/shopify_common-040322ee69221c50a47032355f2f7e6cbae505567e2157d53dfb0a2e7701839c.js" type="text/javascript" data-via-locksmith="true"></script><script src="//cdn.shopify.com/s/assets/themes_support/customer_area-4beccea87758d91106a581ba89341d9b51842f6da79209258c8297239e950343.js" type="text/javascript" data-via-locksmith="true"></script>{%capture required%}{{'customer.general.required_fields'|t}}{%endcapture%}<div class="login-page top-pd">
+<div class="container">				
+  <!-- title -->
+  <div class="title-box">
+    <h1 class="text-center text-uppercase title-under">{{'customer.login.title'|t}}</h1>
+  </div>
+  <!-- /title -->		
+  <div class="row">{%if _9.customer_accounts_optional%}<section class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xl-offset-2">
+      <div class="login-form-box">
+        <h3 class="color small">{{'customer.login.new_customer'|t}}</h3>
+        <p>{{'customer.login.new_customer_description'|t}}</p>
+        <br>
+        <a class="btn btn--ys btn--xl" href="/account/register"><span class="icon icon-person_add"></span>{{'customer.login.new_customer_continue'|t}}</a>
+      </div>
+    </section>
+    <div class="divider divider--md visible-sm visible-xs"></div>{%endif%}<section class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="login-form-box">
+        <div id="login">
+          <h3 class="color small">{{'customer.login.title_login'|t}}</h3>
+          <p>{{'customer.login.description'|t}}</p>{%form 'customer_login'%}{{form.errors|default_errors}}
+
+          <div class="form-group">
+            <label for="email">{{'customer.login.email'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="email" name="customer[email]" class="form-control" id="email">
+          </div>{%if form.password_needed%}<div class="form-group">
+            <label for="password">{{'customer.login.password'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="password" name="customer[password]" class="form-control" id="password">
+          </div>{%endif%}<div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <button type="submit" class="btn btn--ys btn-top btn--xl"><span class="icon icon-vpn_key"></span> {{'customer.login.sign_in'|t}}</button>
+            </div>
+            <div class="divider divider--md visible-xs"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="pull-right note btn-top">{{'customer.general.required_fields'|t}}</div>
+            </div>
+          </div>{%if form.password_needed%}<p class="btn-top"><a href="#" onclick="showRecoverPasswordForm();return false;" class="link-color">{{'customer.login.forgot_password'|t}}</a></p>{%endif%}<input type="hidden" id="login_checkout_url" name="checkout_url" value="" />{%endform%}</div>
+
+        <div id="recover-password" style="display:none;" class="wrap">
+          <h3>{{'customer.login.reset_password'|t}}</h3>
+          <p class="note">{{'customer.login.reset_password_subtext'|t}}</p>{%form 'recover_customer_password'%}{{form.errors|default_errors}}
+
+          <div class="form-group">
+            <label for="email">{{'customer.login.email'|t}}{%if required != ""%}<sup>*</sup>{%endif%}</label>
+            <input type="email" name="email" class="form-control" id="email" autocorrect="off" autocapitalize="off">
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <button type="submit" class="btn btn--ys btn-top btn--xl">{{'customer.login.submit_recover'|t}}</button>
+              <div class="cancel-bottom">
+                &nbsp;{{'customer.general.or'|t}}
+                <a href="#" onclick="hideRecoverPasswordForm();return false;">{{'customer.login.cancel'|t}}</a>
+              </div>
+            </div>
+            <div class="divider divider--md visible-xs"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="pull-right note btn-top">{{'customer.general.required_fields'|t}}</div>
+            </div>
+          </div>
+
+          <input type="hidden" id="login_checkout_url" name="checkout_url" value="" />{%endform%}</div>
+      </div>
+    </section>
+  </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('login').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('login').style.display = 'block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>
+        <script data-locksmith>
+          document.body.className = "drawer drawer--left";
+          
+          window.document.title = "Account – Hacked Snacks";
+
+          var checkoutUrl = window.location.protocol + '//' + window.location.host + ('{{locksmith_path}}' || window.location.pathname) + window.location.search;
+
+          checkoutUrl = checkoutUrl.replace('/account/login', '/');
+
+          if (document.getElementsByName) {
+            var nodes = document.getElementsByName('checkout_url');
+            for (var i = 0; i < nodes.length; i++) {
+              nodes[i].value = checkoutUrl;
+            }
+          } else {
+            document.getElementById('login_checkout_url').value = checkoutUrl;
+          }
+        </script>{%endif%}{%endcapture%}{%assign customer_login_form=locksmith_customer_login_form%}{%assign customer_register_form=locksmith_customer_register_form%}{%unless _lock_guest_content%}{%for _d in locksmith_lock_ids%}{%endfor%}{%capture locksmith_guest_content%}{%if _lock_guest_content != blank%}{{_lock_guest_content}}{%else%}<p><strong>This content is protected</strong> - please log in with your customer account to continue.</p>
+{{customer_login_form}}{%endif%}{%endcapture%}{%endunless%}{%unless locksmith_access_denied_content%}{%for _d in locksmith_lock_ids%}{%endfor%}{%capture locksmith_access_denied_content%}{%if _l%}{%if _lock_access_denied_content != blank%}{{_lock_access_denied_content}}{%else%}<p><strong>This content is protected, but it doesn't look like you have access.</strong> If you feel this is a mistake, please contact the store owner.</p>{%endif%}{%if locksmith_manual_lock%}<p><a href="#" onclick="window.parent.__locksmith_hide_frame(); return false;">&lsaquo; Back</a></p>{%endif%}{%else%}{{locksmith_guest_content}}{%endif%}{%endcapture%}{%endunless%}{%assign required=_h%}{%endcapture%}

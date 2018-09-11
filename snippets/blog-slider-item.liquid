@@ -1,0 +1,18 @@
+<!--  -->
+<div class="recent-post-box">
+  {% if f_article.image != blank %}<div class="col-lg-12 col-xl-6">
+    <a href="{{ f_article.url }}"><span class="figure">
+      <img src="{{ f_article.image.src | img_url: '1024x1024' }}" alt="{{ f_article.image.alt }}">
+      {% if settings.blog_show_date_recent %}<span class="figcaption label-top-left"><span><b>{{ f_article.published_at | date: "%d" }}</b><em>{{ f_article.published_at | date: "%b" | downcase }}</em></span></span></span>{% endif %}
+    </a>
+  </div>{% endif %}
+  <div class="col-lg-12 col-xl-6">
+    <div class="recent-post-box__text">
+      <h4><a href="{{ f_article.url }}">{{ f_article.title }}</a></h4>
+      {% if settings.blog_show_author_recent %}<div class="author">{{ "blogs.general.author_by_html" | t: author: f_article.author }}</div>{% endif %}
+      <p>{% if f_article.excerpt.size > 0 %}{{ f_article.excerpt }}{% else %}{{ f_article.content | strip_html | truncatewords: settings.truncate_recent, settings.truncate_last_symbols_recent }}{% endif %}</p>
+      {% if selected_blog.comments_enabled? and settings.show_comments_recent %}<a class="link-commet" href="{{ comment_url }}"><span class="icon icon-message "></span><span class="number">{{ f_article.comments.size }}</span> {{ "blogs.general.comment" | t }}</a>{% endif %}
+    </div>
+  </div>
+</div>
+<!-- / -->

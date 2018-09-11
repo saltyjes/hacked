@@ -1,0 +1,1 @@
+{% for str in blogs_name %}{% assign word = str | strip | downcase %}{% unless blog.handle == word %}{% if blogs[word] != blank %}<li><a href="{{ blogs[word].url }}">{{ blogs[word].title }} ({{ blogs[word].articles_count }})</a></li>{% endif %}{% endunless %}{% endfor %}

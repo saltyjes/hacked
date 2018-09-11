@@ -1,0 +1,50 @@
+<header id="header" class="header-design8">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-5" itemscope itemtype="http://schema.org/Organization">
+        <a href="/" itemprop="url"><img class="logo img-responsive" src="{{ headerlogo }}" alt="logo"/ itemprop="logo"></a> 
+      </div>
+      <div class="col-sm-8 col-md-8 col-lg-8 col-xl-7 text-right">
+        <div class="settings">
+          <div class="account-row-list mobile-menu-off" style="display: inline-block;">
+            <ul>
+              {% if shop.customer_accounts_enabled %}<li><a href="/account"><span class="icon icon-person"></span>{{ "layout.customer.account" | t }}</a></li>{% endif %}
+              <li><a href="/checkout"><span class="icon icon-done_all"></span>{{ "layout.customer.checkout" | t }}</a></li>
+              {% if shop.customer_accounts_enabled %}
+              {% if customer %}<li><a href="/account/logout"><span class="icon icon-lock"></span>{{ "layout.customer.log_out" | t }}</a></li>
+              {% else %}<li><a href="/account/login"><span class="icon icon-lock"></span>{{ "layout.customer.sign_in" | t }}</a></li>
+              {% if shop.customer_accounts_optional %}<li><a href="/account/register"><span class="icon icon-person_add"></span>{{ "layout.customer.register" | t }}</a></li>{% endif %}
+              {% endif %}
+              {% endif %}
+            </ul>
+          </div>
+          {% include "header-currency" showTitle:true %}
+          {% include "header-language" align: 'text-right' showTitle: true %}
+          {% include "menu-cart" hiddensmall: true %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container showscreen1024">
+    <div class="row text-center">
+      <div class="text-right extra-right">
+        {% include "menu-customer" %}
+      </div>
+    </div>
+  </div>
+  <div class="stuck-nav">
+    <div class="container offset-top-5">
+      <div class="row">
+        <div class="pull-left col-sm-10 col-md-10 col-lg-10">
+          {% include "main-menu" %}
+        </div>
+        <div class="pull-right col-sm-2 col-md-2 col-lg-2">
+          <div class="text-right">
+            {% include "menu-search" %}
+            {% include "menu-cart" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,252 @@
+{% if section.settings.show_block %}
+<div class="divider divider--sm visible-sm visible-xs"></div>
+<div class="content-md" data-section-id="{{ section.id }}" data-section-type="collectionslider-section">
+  <div class="row">
+    {% if section.blocks.size > 0 %}
+    <div class="category-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+      {% for block in section.blocks limit: section.blocks.size %}
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        {%- assign collection = collections[block.settings.collection] -%}
+        {% if section.settings.banner_design == 'design1' %}
+        <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="banner zoom-in bannerl2">
+          <span class="figure">
+            {% if block.settings.image == blank %}
+            <span class="editor-image" data-width="470" data-height="270"></span>
+            {% else %}
+            <img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}">
+            {% endif %}
+            <span class="figcaption">
+              <span class="block-table">
+                <span class="block-table-cell">
+                  {% if collection.empty? %}<span class="banner__title smallsize edit-image-text admin_image_textcolor">{{ 'homepage.onboarding.collection_title' | t }}</span>{% else %}<span class="banner__title size6"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{{ collection.title }}</span>{% endif %}
+                </span>
+              </span>
+            </span>
+          </span>
+        </a>
+        {% elsif section.settings.banner_design == 'design2' %}
+        <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="banner-layout-1 zoom-in">
+          <span class="figure">
+            {% if block.settings.image == blank %}
+            <span class="editor-image" data-width="470" data-height="270" data-position="top"></span>
+            {% else %}
+            <img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}">
+            {% endif %}
+            <span class="figcaption">
+              {% if collection.empty? %}<span class="banner__title size6"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{{ 'homepage.onboarding.collection_title' | t }}{% if section.settings.show_arrows %}<span class="icon icon-navigate_next pull-right"></span>{% endif %}</span>{% else %}<span class="banner__title text-uppercase size6"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{{ collection.title }}{% if section.settings.show_arrows %}<span class="icon icon-navigate_next pull-right"></span>{% endif %}</span>{% endif %}
+            </span>
+          </span>
+        </a>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</div>
+{% if section.settings.banner_design == 'design2' or section.settings.position != 'center' or section.settings.show_border %}
+<style>
+  {% if section.settings.banner_design == 'design2' %}
+  [data-section-id~="{{ section.id }}"] .banner-layout-1 .figcaption {
+  	background: rgba({{ section.settings.bg_base_color }});
+  }
+  [data-section-id~="{{ section.id }}"] .banner-layout-1:hover .figcaption {
+  	background: rgba({{ section.settings.bg_active_color }});
+  }
+  {% endif %}
+  {% if section.settings.position != 'center' and section.settings.banner_design == "design1" %}
+    [data-section-id~="{{ section.id }}"] .banner .figcaption .size6 {
+    text-align: {{ section.settings.position }};
+    padding: 0 42px;
+    }
+  {% endif %}
+  {% if section.settings.show_border %}
+  [data-section-id~="{{ section.id }}"] .banner {
+  border: 1px solid {{ section.settings.border_color }};
+  }
+  {% endif %}
+</style>
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection list",
+  "class": "index-section",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_block",
+      "label": "Show Widget",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "banner_design",
+      "label": "Select Banner Design",
+      "default": "design1",
+      "options": [
+        {
+          "value": "design1",
+          "label": "Design 1"
+        },
+        {
+          "value": "design2",
+          "label": "Design 2"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+	{
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+	{
+      "type": "header",
+      "content": "Item Border"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show Border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#ffffff"
+    },
+	{
+      "type": "header",
+      "content": "Design 1"
+    },
+    {
+      "type": "radio",
+      "id": "position",
+      "label": "Info Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+	{
+      "type": "header",
+      "content": "Design 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "Colors"
+    },
+    {
+      "type": "text",
+      "id": "bg_base_color",
+      "label": "Background Base Color",
+      "info": "rgba. Example: 121, 121, 121, 0.85",
+	  "default": "121, 121, 121, 0.85"
+    },
+    {
+      "type": "text",
+      "id": "bg_active_color",
+      "label": "Background Active Color",
+      "info": "rgba. Example: 31, 192, 160, 0.8",
+	  "default": "31, 192, 160, 0.85"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "select",
+          "id": "use_custom_color",
+          "label": "Select Color Type",
+          "default": "no",
+          "options": [
+            {
+              "value": "no",
+              "label": "Default Color"
+            },
+            {
+              "value": "custom_color",
+              "label": "Custom Color"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

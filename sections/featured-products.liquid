@@ -1,0 +1,137 @@
+<!-- featured products -->
+<section class="content featured-main-section" data-section-id="{{ section.id }}" data-section-type="featuredproducts-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 {% if section.settings.show_lookbook %}col-xl-8{% else %}col-xl-12{% endif %}">
+        {%- assign name_collection = section.settings.collection -%}
+        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+        {%- assign collection = collections[name_collection] -%}
+        {% if collection.products.size == 0 %}
+        <span style="display: flex; justify-content: center;">{{ section.settings.title }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+        {% else %}
+        {% assign length = section.settings.limit | plus: 0 %}
+        <div class="title-box">
+          <h2 class="{% if section.settings.center_title %}text-center{% else %}text-left{% endif %} text-uppercase title-under">{{ section.settings.title }}</h2>
+        </div>
+        <!-- /title -->
+        <div class="product-listing carousel-products-mobile featprod-js-{{ section.id }}">
+          {% if section.settings.products_in_row == "2" %}{% assign smallproduct = true %}{% endif %}
+          {% for product in collection.products limit: length %}
+          {%- comment %}<locksmith:6a6b>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:6a6b>{% endcomment -%}
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-{{ section.settings.products_in_row }} col-xl-{{ section.settings.products_in_row }}">
+            {% include "product-grid-item" hoverzoom: "true" %}
+          </div>
+          {% endfor %}
+          {% assign smallproduct = false %}
+        </div>
+        {% endif %}
+      </div>
+      {% if section.settings.show_lookbook %}
+        <!-- lookbook -->
+        <div class="col-xl-4 visible-xl">
+          <!-- title -->
+<!--           <div class="title-box">
+            <h2 class="text-left text-uppercase title-under pull-left">{{ section.settings.title2 }}</h2>
+          </div> -->
+          <!-- /title -->
+          <a href="{{ section.settings.link }}" class="link-img-hover"{% if section.settings.image == blank %} style="display: block;"{% endif %}>
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: 'x1024' }}" class="img-responsive" alt="{{ section.settings.image.alt }}">
+            {% else %}
+            <span class="editor-image" data-width="560" data-height="824"></span>
+            {% endif %}
+          </a>
+        </div>
+        <!-- /lookbook -->
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- end featured products -->
+
+{% schema %}
+{
+  "name": "Products Grid",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "BY DEFAULT. SHOW ALL PRODUCTS. SELECT YOUR COLLECTION."
+    },
+    {
+      "type": "checkbox",
+      "id": "center_title",
+      "label": "Center Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "FEATURED PRODUCTS"
+    },
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    },
+    {
+      "type": "select",
+      "id": "products_in_row",
+      "label": "Products In Row",
+      "options": [
+		{ "value": "6", "label": "2" },
+        { "value": "4", "label": "3" },
+        { "value": "3", "label": "4" },
+        { "value": "2", "label": "6" }
+      ],
+      "default": "3",
+	  "info": "For screen size > 1024"
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "header",
+      "content": "Image Block"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_lookbook",
+      "label": "Show Image Block",
+      "default": true,
+	  "info": "Work only in screen size > 1770"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Heading",
+      "default": "Lookbook"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Optional"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Grid",
+      "category": "Products",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,34 @@
+{% include "header-design_layout-2" %}
+
+<div id="pageContent">
+  <div class="container">
+    <!-- two columns -->
+    <div class="row">
+      <aside class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-2 ">
+        {% section "layout-2-asidtitle" %}
+        {% include "main-menu-vertical" %}
+        <div class="divider divider--lg hidden-xs hidden-sm"></div>
+        {% section "layout-2-banners" %}
+        {% section "layout-2-customhtml" %}
+        {% section "layout-2-testimonials" %}
+        {% section "layout-2-blog" %}
+        <div class="divider divider--lg visible-xs visible-sm"></div>
+      </aside>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-10" id="centerColumn">
+        {% section "layout-2-revolution-slider" %}
+        {% section "layout-2-collections-list" %}
+        {% section "layout-2-slider-products" %}
+        {% section "layout-2-sliders-group" %}
+        {% section "layout-2-brands" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include settings.footer_design %}
+
+{% include 'popup_cart' %}
+{% include 'popup-newsletter' %}
+{% include 'popup-quickview' %}
+
+{% include 'preloader-ajax' %}

@@ -1,0 +1,376 @@
+{% assign products_show = section.settings.products_in_row %}
+{% if section.settings.products_in_row >= "3" and section.settings.show_slider2 %}{% assign smallproduct = true %}{% assign products_show = 3 %}{% endif %}
+{% if section.settings.products_in_row >= "4" and section.settings.show_slider2 == false and section.blocks.size == 1 %}{% assign products_show = 4 %}{% endif %}
+{% if section.settings.center_title %}{% assign center_title = true %}{% else %}{% assign center_title = false %}{% endif %}
+{% if section.settings.products_in_row < section.settings.step_1 %}{% assign step = section.settings.products_in_row %}{% else %}{% assign step = section.settings.step_1 %}{% endif %}
+
+{% if section.settings.show_top_line %}
+<section class="content separator-section"><div class="container"><hr></div></section>
+{% endif %}
+<!-- news & sale products -->
+<section class="content" data-section-id="{{ section.id }}" data-section-type="slidersgroup-section">
+  <div class="container">
+    <div class="row sliderblock-{{ section.id }}" data-showproducts="{{ products_show }}">
+      <div class="col-sm-12 {% if section.settings.show_slider2 %}col-md-6 col-xl-{% if section.blocks.size == 1 %}4{% else %}6{% endif %}{% else %}col-md-12 col-xl-{% if section.blocks.size == 1 %}8{% else %}12{% endif %}{%endif%}">
+        <div class="title-with-button">
+          <div class="carousel-products__button pull-right"> <span class="btn-prev"></span> <span class="btn-next"></span> </div>
+          <h2 class="{% if center_title %}text-center{% else %}text-left{% endif %} text-uppercase title-under {% unless center_title %}pull-left{% endunless %}">{{ section.settings.title1 }}</h2>
+        </div>
+        {%- assign name_collection = section.settings.collection1 -%}
+        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+        {%- assign collection = collections[name_collection] -%}
+        {% if collection.products.size == 0 %}
+        <span style="display: flex; justify-content: center;">{{ section.settings.title1 }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+        {% else %}
+        {% assign _lenght = section.settings.limit_1 | plus: 0 %}
+        <div class="carousel-products row carousel-small" data-autoplay="{{ section.settings.module_autoplay_1 }}" data-speed="{{ section.settings.delay_time_1 }}" data-step="{{ step }}">
+          {% for product in collection.products limit: _lenght %}
+          {%- comment %}<locksmith:c2c7>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:c2c7>{% endcomment -%}
+          <div class="col-lg-3">
+            {% include "product-grid-item" %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% for block in section.blocks limit: section.blocks.size %}
+      {% if block.type == 'image' %}
+      <div class="col-xl-4 visible-xl">
+        <!-- title -->
+        <div class="title-box">
+          <h2 class="{% if center_title %}text-center{% else %}text-left{% endif %} text-uppercase title-under {% unless center_title %}pull-left{% endunless %}">{{ block.settings.title3 }}</h2>
+        </div>
+        <!-- /title -->
+        <div class="text-center promos">
+          <div class="promos__image">
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="link-img-hover"{% if section.settings.image == blank %} style="display: block;"{% endif %}>
+            {% else %}<div class="link-img-hover"{% if section.settings.image == blank %} style="display: block;"{% endif %}>{% endif %}
+            {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}" class="img-responsive">
+            {% else %}
+            <span class="editor-image" data-width="570" data-height="335"></span>
+            {% endif %}
+            {% if block.settings.sale_badge == 'yes' %}<span class="promos__label">{{ block.settings.text_badge }}</span>{% endif %}
+            {% if block.settings.link == blank %}</div>
+            {% else %}</a>{% endif %}
+          </div>
+          <h2>
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">
+            {% else %}<div>{% endif %}{{ block.settings.text1 }}
+            {% if block.settings.link == blank %}</div>
+            {% else %}</a>{% endif %}
+          </h2>
+          {{ block.settings.text2 }}
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      
+      {% if section.settings.show_slider2 %}
+      <div class="col-sm-12 col-md-6 col-xl-{% if section.blocks.size == 1 %}4{% else %}6{% endif %}">
+        <div class="title-with-button">
+          <div class="carousel-products__button pull-right"> <span class="btn-prev"></span> <span class="btn-next"></span> </div>
+          <h2 class="{% if center_title %}text-center{% else %}text-left{% endif %} text-uppercase title-under {% unless center_title %}pull-left{% endunless %}">{{ section.settings.title2 }}</h2>
+        </div>
+        {%- assign name_collection = section.settings.collection2 -%}
+        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+        {%- assign collection = collections[name_collection] -%}
+        {% if collection.products.size == 0 %}
+        <span style="display: flex; justify-content: center;">{{ section.settings.title2 }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+        {% else %}
+        {% assign _lenght = section.settings.limit_2 | plus: 0 %}
+        <div class="carousel-products row carousel-small hide-block" data-autoplay="{{ section.settings.module_autoplay_2 }}" data-speed="{{ section.settings.delay_time_2 }}" data-step="{{ section.settings.step_2 }}">
+          {% for product in collection.products limit: _lenght %}
+          {%- comment %}<locksmith:64e8>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:64e8>{% endcomment -%}
+          <div class="col-lg-3">
+            {% include "product-grid-item" %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% assign smallproduct = false %}
+
+{% schema %}
+{
+  "name": "Sliders Groups",
+  "class": "index-section",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "BY DEFAULT. SHOW ALL PRODUCTS. SELECT YOUR COLLECTION."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_line",
+      "label": "Show Top Line",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "center_title",
+      "label": "Center Title",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "products_in_row",
+      "label": "Products In Row",
+      "options": [
+		{ "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" },
+		{ "value": "6", "label": "6" }
+      ],
+      "default": "2",
+	  "info": "For screen size > 1024"
+    },
+    {
+      "type": "header",
+      "content": "Slider 1"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "label": "Collection",
+      "id": "collection1",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit_1",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step_1",
+      "label": "Slides To Scroll",
+      "default": "1",
+	  "info": "Max = Products In Row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay_1",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time_1",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Slider 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_slider2",
+      "label": "Show Slider 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "label": "Collection",
+      "id": "collection2",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit_2",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step_2",
+      "label": "Slides To Scroll",
+      "default": "1",
+	  "info": "Max = Products In Row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay_2",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time_2",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Promo Block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "WORK ONLY IN SCREEN SIZE > 1770"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "header",
+          "content": "Info"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text2",
+          "label": "Text",
+          "default": "Dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis."
+        },
+        {
+          "type": "select",
+          "id": "sale_badge",
+          "label": "Show Badge?",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes" }
+          ],
+          "default": "yes"
+        },
+        {
+          "type": "text",
+          "id": "text_badge",
+          "label": "Badge Text",
+          "default": "-20%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sliders Groups",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

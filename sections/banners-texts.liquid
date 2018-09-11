@@ -1,0 +1,447 @@
+<section class="content{% unless section.settings.top_indent %} nomargin{% endunless %}" data-section-id="{{ section.id }}" data-section-type="collectionslider-section">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="category-carousel category-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+        {% for block in section.blocks limit: section.blocks.size %}
+        <div class="col-sm-4 col-md-4 col-lg-4 block-child{% if section.settings.design == "type2" %} designtype2{% endif %}">
+          <a href="{{ block.settings.link }}" class="promo-design3">
+            <div>
+              {% if block.type == "item_design2" %}
+              {% if block.settings.text1 != '' %}<div class="block-title color-base text1color">{{ block.settings.text1 }}</div>{% endif %}
+              {% if block.settings.text2 != '' %}<div class="block text-uppercase font-lighter color-dark font-size24 block-top-11 text2color">{{ block.settings.text2 }}</div>{% endif %}
+              {% if block.settings.text3 != '' %}<div class="block main-font font-style-italic  font-size16 block-top-23 text3color">{{ block.settings.text3 }}</div>{% endif %}
+              {% elsif block.type == "item_design3" %}
+              {% if block.settings.text1 != '' %}<div class="block text-uppercase main-font font-size26 color-base font-style-italic text1color">{{ block.settings.text1 }}</div>{% endif %}
+              {% if block.settings.text2 != '' %}<div class="block-title  block-top-15 text2color">{{ block.settings.text2 }}</div>{% endif %}
+              {% else %}
+              {% if block.settings.text1 != '' %}<div class="block-title text1color">{{ block.settings.text1 }}</div>{% endif %}
+              {% if block.settings.text2 != '' %}<div class="block text-uppercase font-lighter block-top-11 text2color">{{ block.settings.text2 }}</div>{% endif %}
+              {% if block.settings.text3 != '' %}<div class="block color-base main-font font-size46 font-style-italic text3color">{{ block.settings.text3 }}</div>{% endif %}
+              {% endif %}
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<style>
+  .category-carousel-js-{{ section.id }} .promo-design3 .block-title {
+    font-weight: {{ section.settings.fontweight }};
+  }
+  .category-carousel-js-{{ section.id }} .promo-design3{
+  	border: 1px solid {{ section.settings.color_border }};
+  	background: {{ section.settings.color_bg }};
+  }
+  .category-carousel-js-{{ section.id }} .promo-design3:hover{
+	text-decoration: none;
+	border: 1px solid {{ settings.color_base }};
+  }	
+  {% for block in section.blocks limit: section.blocks.size %}{% if block.settings.use_custom_colors == 'yes' %}
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3 .text1color {
+    color: {{ block.settings.color_text1 }};
+  }
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3 .text2color {
+    color: {{ block.settings.color_text2 }};
+  }
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3 .text3color {
+    color: {{ block.settings.color_text3 }};
+  }
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3 {
+    background: {{ block.settings.color_bg }};
+    border-color: {{ block.settings.color_border }};
+  }
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3:hover {
+    text-decoration: none;
+    border-color: {% if block.settings.color_border == 'rgba(0,0,0,0)' %}{{ block.settings.color_border }}{% else %}{{ block.settings.color_hover }}{% endif %};
+  }
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3:hover .text1color,
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3:hover .text2color,
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3:hover .text3color {
+    color: {{ block.settings.color_hover }};
+  }
+  {% endif %}{% endfor %}
+  {% for block in section.blocks %}{% if block.settings.image != blank %}
+  .category-carousel-js-{{ section.id }} .block-child:nth-child({{ forloop.index }}) .promo-design3 > div {
+    background: url({{ block.settings.image | img_url: '600x600' }}) center/100% no-repeat;
+  }
+  {% endif %}{% endfor %}
+</style>
+
+{% schema %}
+{
+  "name": "Banners Texts",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "top_indent",
+      "label": "Top Indent",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "design",
+      "label": "Design Type",
+      "default": "type1",
+      "options": [
+        {
+          "value": "type1",
+          "label": "Type 1"
+        },
+        {
+          "value": "type2",
+          "label": "Type 2"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fontweight",
+      "label": "Titles Weight",
+      "default": "500",
+      "options": [
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+	{
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Border Color",
+      "default": "#e5e5e5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item_design1",
+      "name": "Banner 1",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image",
+		  "info": "*.png"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "Order Return"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "Returns within"
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Text 3",
+          "default": "7 days"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "radio",
+          "id": "use_custom_colors",
+          "label": "Use Custom Colors?",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes" }
+          ],
+          "default": "no"
+        },
+        {
+          "type": "color",
+          "id": "color_text1",
+          "label": "Text 1 Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Text 2 Color",
+          "default": "#777777"
+        },
+        {
+          "type": "color",
+          "id": "color_text3",
+          "label": "Text 3 Color",
+          "default": "#ef5f96"
+        },
+        {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_border",
+          "label": "Border Color",
+          "default": "#e5e5e5"
+        },
+        {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Hover Color",
+          "default": "#ef5f96"
+        }
+      ]
+    },
+    {
+      "type": "item_design2",
+      "name": "Banner 2",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image",
+		  "info": "*.png"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "Free<br>shipping"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "on orders over $99."
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Text 3",
+          "default": "This offer is valid on all our store items."
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "radio",
+          "id": "use_custom_colors",
+          "label": "Use Custom Colors?",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes" }
+          ],
+          "default": "no"
+        },
+        {
+          "type": "color",
+          "id": "color_text1",
+          "label": "Text 1 Color",
+          "default": "#ef5f96"
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Text 2 Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "color_text3",
+          "label": "Text 3 Color",
+          "default": "#777777"
+        },
+        {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_border",
+          "label": "Border Color",
+          "default": "#e5e5e5"
+        },
+        {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Hover Color",
+          "default": "#ef5f96"
+        }
+      ]
+    },
+    {
+      "type": "item_design3",
+      "name": "Banner 3",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image",
+		  "info": "*.png"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "COD"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "Cash<br> on delivery"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "radio",
+          "id": "use_custom_colors",
+          "label": "Use Custom Colors?",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes" }
+          ],
+          "default": "no"
+        },
+        {
+          "type": "color",
+          "id": "color_text1",
+          "label": "Text 1 Color",
+          "default": "#ef5f96"
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Text 2 Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_border",
+          "label": "Border Color",
+          "default": "#e5e5e5"
+        },
+        {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Hover Color",
+          "default": "#ef5f96"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banners Texts",
+      "category": "Banner",
+      "blocks": [
+        {
+          "type": "item_design1"
+        },
+        {
+          "type": "item_design2"
+        },
+        {
+          "type": "item_design3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+<!--subscribe-snacks start-->
+<section class="subscribe-snacks define-float">
+  <div class="container" style="max-width:1050px;">
+    <div class="col-md-12 sub-inner pull-right">
+      <div class="col-md-4 sub-left">
+        <img src="{{ section.settings.mainimg-front-image | img_url: "" }}" alt="Banner">
+<!--       <img src="//cdn.shopify.com/s/files/1/0048/6699/8323/files/snaks.jpg?6007908496274550207" alt=""> -->
+      </div>
+      <div class="col-md-6 save-sub">
+        <h1>{{ section.settings.ss-bannertitle }}</h1>
+        {{ section.settings.ss-bannertext }}
+        <a href="{{ section.settings.ss-buttonurl }}">{{ section.settings.ss-buttontitle }}</a> </div>
+    </div>
+  </div>
+</section>
+<style>
+  .subscribe-snacks {
+    background: url({{ section.settings.ssbg-image | img_url: "" }})!important;
+  }
+</style>
+<!--subscribe-snacks closed-->
+{% schema %}
+{
+  "name": "Subscribe Save Section",
+  "class": "subsave-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "ssbg-image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mainimg-front-image",
+      "label": "Front Image"
+    },
+    {
+      "type": "text",
+      "id": "ss-bannertitle",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "ss-bannertext",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "ss-buttontitle",
+      "label": "Button Title"
+    },
+    {
+      "type": "text",
+      "id": "ss-buttonurl",
+      "label": "Button Url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe Save Section",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

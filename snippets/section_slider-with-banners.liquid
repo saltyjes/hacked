@@ -1,0 +1,52 @@
+{%- assign text1 = block.settings.text1 -%}
+{%- assign text2 = block.settings.text2 -%}
+{%- assign text3 = block.settings.text3 -%}
+{%- assign text4 = block.settings.text4 -%}
+{%- assign showbtn = block.settings.show_item_button -%}
+{%- assign namebtn = section.settings.button_title -%}
+
+{% case block.type %}
+{% when 'slide_design_2' %}
+<span class="figcaption text-left">
+  <span class="block-table">
+    <span class="block-table-cell">
+      {% if text1 != '' %}<em class="block main-font font-size30">{{ text1 }}</em>{% endif %}
+      {% if text2 != '' %}<span class="block font-size160 font-bold text-uppercase">{{ text2 }}</span>{% endif %}
+      {% if text3 != '' %}<span class="block font-size70 text-uppercase font-light">{{ text3 }}</span>{% endif %}
+      {% if text4 != '' %}<span class="text_sm font-light">{{ text4 }}</span>{% endif %}
+      {% if showbtn == 'yes' %}<span class="btn btn--ys btn--l">{{ namebtn }}</span>{% endif %}
+    </span>
+  </span>
+</span>
+{% when 'slide_design_3' %}
+<span class="figcaption text-left">
+  <span class="block-table">
+    <span class="block-table-cell">
+      {% if text1 != '' %}<em class="block top-indent  font-size20 main-font font-light">{{ text1 }}</em>{% endif %}
+      {% if text2 != '' %}<span class="block top-indent-sm font-size80 text-uppercase line-height-small">{{ text2 }}</span>{% endif %}
+      {% if text3 != '' %}<span class="block font-size90 text-uppercase font-bold line-height-small">{{ text3 }}</span>{% endif %}
+      {% if showbtn == 'yes' %}<span class="btn btn--ys btn--l">{{ namebtn }}</span>{% endif %}
+    </span>
+  </span>
+</span>
+{% when 'slide_design_4' %}
+<span class="figcaption">
+  {% if showbtn == 'yes' %}<span class="btn-right-bottom">
+    <span class="btn btn--ys btn--l btn--bg-yellow">{{ namebtn }}</span>
+  </span>{% endif %}
+  {% if text1 != '' or text2 != '' %}<span class="block-left-bottom">
+    {% if text1 != '' %}<span class="block font-size70 custom-font font-bold title-1">{{ text1 }}</span>{% endif %}
+    {% if text2 != '' %}<span class="block font-size30 text-uppercase font-light">{{ text2 }}</span>{% endif %}
+  </span>{% endif %}
+</span>
+{% else %}
+<span class="figcaption text-center">
+  <span class="block-table">
+    <span class="block-table-cell">
+      {% if text1 != '' %}<span class="font-size50 text-uppercase title-1">{{ text1 }}</span>{% endif %}
+      {% if text2 != '' %}<span class="block text-uppercase font-size100 font-bold">{{ text2 }}</span>{% endif %}
+      {% if showbtn == 'yes' %}<span class="btn btn--ys btn--l">{{ namebtn }}</span>{% endif %}
+    </span>
+  </span>
+</span>
+{% endcase %}

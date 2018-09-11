@@ -1,0 +1,10 @@
+ development:
+  store: hackedsnacksstaging.myshopify.com
+  password:  b44bbea2b64f22c80647c0f6fdcdf599
+  theme_id: "32395395123"
+  bucket_size: 40
+  refill_rate: 2
+  ignore_files:
+    -"*.swp"
+    –"*~"
+    –"config/settings_data.json"

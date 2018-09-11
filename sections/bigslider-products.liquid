@@ -1,0 +1,140 @@
+{%- assign name_collection = section.settings.collection -%}
+{%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+{%- assign collection = collections[name_collection] -%}
+
+<section class="content" data-section-id="{{ section.id }}" data-section-type="bigsliderproducts-section">
+  <div class="container-fluid">
+    {% if collection.products.size == 0 %}
+    <span style="display: flex; justify-content: center;">Add products. Select collection in this section using the sidebar.</span>
+    {% else %}
+    <!-- carousel -->
+    <div class="row carouselheader-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+      {% for product in collection.products limit: section.settings.limit %}
+      {%- comment %}<locksmith:1d22>{% endcomment -%}
+        {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:1d22>{% endcomment -%}
+      {% comment %} Price to show. {% endcomment %}
+      {% assign sale_on = false %}{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}{% assign sale_on = true %}{% endif %}
+      {% assign variant = product.selected_or_first_available_variant %}
+      {% if product.available %}{% if product.variants.size > 1 %}{% assign func = "" %}{% else %}{% assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" %}{% endif %}{% endif %}
+      <!-- item -->
+      <div>
+        <div class="carousel-product-popup {{ variant.id }}">
+          <!-- product image -->
+          <div class="product__inside__image{% unless product.available %} sold-out{% endunless %}">
+            <a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.image.alt }}"></a>
+
+            {% unless product.available %}
+            <div class="product__label--sold-out"><span>{{ "products.product.sold_out" | t }}</span></div>
+            {% endunless %}
+          </div>
+          <!-- /product image --> 
+          <!-- product hover-popup -->
+          <div class="product-hover-popup">
+            <!-- product name -->
+            <div class="product__inside__name product_title">
+              <h2><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h2>
+            </div>
+            <!-- /product name --> 
+            <!-- product price -->
+            {% if sale_on %}<div class="product__inside__price price-box">{{ product.selected_or_first_available_variant.price | money }}<span class="price-box__old">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span></div>
+            {% else %}<div class="product__inside__price price-box">{{ product.selected_or_first_available_variant.price | money }}</div>
+            {% endif %}
+            <!-- /product price -->
+            <!-- product button -->
+            {% if product.available %}
+            {% if settings.product_item_show_cart %}<a {% if func == "" %}href="{{ product.url | within: collection }}"{% else %}href="javascript:void(0);" onclick="{{ func }}; return false;"{% endif %} class="btn btn--ys btn--xl addtocart-js">{% if func == "" %}{{ 'products.product.select_options_html' | t }}{% else %}{{ 'products.product.add_to_cart_html' | t }}{% endif %}</a>{% endif %}
+            {% endif %}
+            <!-- /product button -->
+          </div>
+          <!-- /product hover-popup -->			
+        </div>							
+      </div>
+      <!-- /item -->
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Big Slider",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "BY DEFAULT. SHOW ALL PRODUCTS. SELECT YOUR COLLECTION."
+    },
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+	  "info": "Max = Products In Row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Big Slider",
+      "category": "Products",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

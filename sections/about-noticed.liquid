@@ -1,0 +1,152 @@
+<section class="content content-bg-1 main-testimonials fixed-bg about-notice" data-section-id="1529345948257" data-section-type="testimonials-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-6">
+        <div><h3>{{ section.settings.left_first_title }}</h3></div>
+        <div><h3>{{ section.settings.left_sub_title }}</h3></div>
+        <div class="notice-txt">{{ section.settings.left_bottom_text }}</div>
+      </div>
+      <div class="col-md-7 col-sm-6">
+     <img src="{{ section.settings.right_top_image | img_url: '' }}">
+         <div class="notice-image-txt">{{ section.settings.right_bottom_text }}</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<style>
+  [data-section-id~="1529345948257"]  {
+  background: url({{ section.settings.aboutnotice_top_image | img_url: '' }}) center center no-repeat;
+  
+  }
+  
+</style>
+{% schema %}
+  {
+    "name": "About Notice Section",
+      "settings": [
+    {
+      "type": "image_picker",
+      "id": "aboutnotice_top_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "left_first_title",
+      "label": "Left Title",
+      "default": "test title"
+    },
+    {
+      "type": "text",
+      "id": "left_sub_title",
+      "label": "Left Sub Title",
+      "default": "test title"
+    },
+    {
+      "type": "text",
+      "id": "left_bottom_text",
+      "label": "Left Bottom Text",
+      "default": "test title"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_top_image",
+      "label": "Right Image"
+    },
+    {
+      "type": "text",
+      "id": "right_bottom_text",
+      "label": "Right Bottom Text",
+      "default": "test title"
+    }
+  ]
+  }
+{% endschema %}
+
+
+<style>
+    .about-notice .container {
+      padding: 0 24px;
+    }
+	.about-notice h3 {
+      background-color: #333;
+      color: #fff;
+      display: inline-block;
+      padding: 6px 28px;
+      font-size: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  }
+  .about-notice img {
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      max-width: 572px;
+      width: 100%;
+  }
+  .about-notice .col-md-7 {
+  	padding-left: 0;
+  }
+  .notice-txt {
+      color: #fff;
+      font-size: 63px;
+      font-family: 'Twin-Pines' !important;
+      line-height: 0.8;
+      text-align: center;
+      max-width: 390px;
+      margin: 0 auto;
+      -webkit-transform: rotate(-9deg);
+      -moz-transform: rotate(-9deg);
+      -ms-transform: rotate(-9deg);
+      -o-transform: rotate(-9deg);
+      transform: rotate(-9deg);
+      margin: 80px 0 50px;
+  }
+  .notice-image-txt {
+      text-align: right;
+      color: #333;
+      font-family: 'Twin-Pines' !important;
+      font-size: 37px;
+      max-width: 320px;
+      line-height: 0.8;
+      text-align: center;
+      float: right;
+      margin-top: 11px;
+      position: relative;
+  }
+  .notice-image-txt::after {
+  	content: "";
+    position: absolute;
+    bottom: 102%;
+    right: 0;
+    width: 96px;
+    height: 146px;
+    background-image: url({{ 'notice-arrow.png' | asset_url }});
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  @media(max-width: 1100px) {
+  	.notice-image-txt::after {
+    	display: none;
+    }
+  }
+  @media(max-width: 991px) {
+    .about-notice img {
+    	max-width: 100%;
+    }
+    .notice-txt {
+    	margin-top: 30px;
+    }
+    .about-notice h3 {
+      font-size: 28px;
+  	}    
+  }
+  @media(max-width: 767px) {
+    .about-notice .col-md-7 {
+    	padding-left: 15px;
+    }
+  }
+  @media(max-width: 640px) {
+  	.about-notice h3 {
+      font-size: 20px;
+  }
+  }
+</style>

@@ -1,0 +1,26 @@
+<a href="{{ block.settings.link }}" class="banner banner-md bg-pink zoom-in">
+  <span class="figure bg-none">
+    <span class="figcaption text-center">
+      <span class="block-table">
+        <span class="block-table-cell">
+          {% case block.type %}
+          {% when 'item-block-2' %}
+          {% if block.settings.title != "" %}<span class="block font-size40 text-uppercase font-medium">{{ block.settings.title }}</span>{% endif %}
+          {% if block.settings.title2 != "" %}<span class="block block-top-md font-size20 text-uppercase font-light">{{ block.settings.title2 }}</span>{% endif %}
+          {% if block.settings.title3 != "" %}<em class="block  block-top-sm font-size46 main-font">{{ block.settings.title3 }}</em>{% endif %}
+          {% when 'item-block-3' %}
+          {% if block.settings.title != "" %}<span class="block font-size40 text-uppercase font-medium">{{ block.settings.title }}</span>{% endif %}
+          {% if block.settings.title2 != "" %}<span class="block font-size24 text-uppercase font-light block-top-md ">{{ block.settings.title2 }}</span>{% endif %}
+          {% if block.settings.title3 != "" %}<em class="block block-top-md font-size16 main-font">{{ block.settings.title3 }}</em>{% endif %}
+          {% when 'item-block-4' %}
+          {% if block.settings.title != "" %}<em class="block font-size26 text-uppercase main-font">{{ block.settings.title }}</em>{% endif %}
+          {% if block.settings.title2 != "" %}<span class="block block-top-md font-size40 text-uppercase font-medium">{{ block.settings.title2 }}</span>{% endif %}
+          {% else %}
+          {% if block.settings.title != "" %}<span class="block font-size90 text-uppercase font-light">{{ block.settings.title }}</span>{% endif %}
+          {% if block.settings.showbutton == "yes" %}<span class="btn btn--border btn--xl">{{ block.settings.button_title }}</span>{% endif %}
+          {% endcase %}
+        </span>
+      </span>
+    </span>
+  </span>
+</a>

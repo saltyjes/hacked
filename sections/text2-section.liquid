@@ -1,0 +1,39 @@
+<section class="{% if section.settings.big_indent %}content-big-indent{% else %}content{% endif %}">
+  <div class="container text-center">
+    <h3 class="text-uppercase font22 title-bottom-sm">{{ section.settings.title }}</h3>
+    <p class="font20 custom-font font-lighter width-center75 text-center">{{ section.settings.content }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text Block 2",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "big_indent",
+      "label": "Big Indent",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "About product"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text",
+      "default": "Еellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, sociis natoque penatibus. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Еellus, scelerisque nec."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Block 2",
+      "category": "Text Section"
+    }
+  ]
+}
+{% endschema %}

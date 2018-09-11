@@ -1,0 +1,178 @@
+{% if section.settings.show_top_line %}
+<section class="content separator-section"><div class="container"><hr></div></section>
+{% endif %}
+<section class="container content carousel-products-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="collectiontabs-section" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+  <div class="row">
+    {% if section.blocks.size > 0 %}
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-tabs--ys-center text-center" role="tablist">
+      {% for block in section.blocks %}
+      <li{% if forloop.first %} class="active"{% endif %}><a href="#{{ section.id }}{{ forloop.index }}"  role="tab" data-toggle="tab" class="text-uppercase">{{ block.settings.tab_name }}</a></li>
+      {% endfor %}
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content tab-content--ys-center">
+      {% for block in section.blocks %}
+      {%- assign name_collection = block.settings.collection -%}
+      {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+      {%- assign collection = collections[name_collection] -%}
+      <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{ section.id }}{{ forloop.index }}">
+      </div>
+      <div id="{{ section.id }}{{ forloop.index }}-clone" style="display:none">
+        {% if section.settings.product_type == 'grid' %}
+        <div class="product-listing">
+          {% for product in collection.products limit: section.settings.limit %}
+          {%- comment %}<locksmith:d038>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:d038>{% endcomment -%}
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+            {% include "product-grid-item" %}
+          </div>
+          {% endfor %}
+        </div>
+		{% else %}
+        <div class="carousel-products carouselTab slick-arrow-top row">
+          {% for product in collection.products limit: section.settings.limit %}
+          {%- comment %}<locksmith:e780>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:e780>{% endcomment -%}
+          <div class="col-lg-3">
+            {% include "product-grid-item" %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tabs With Products",
+  "class": "index-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_top_line",
+      "label": "Show Top Line",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+	  "info": "Max = Products In Row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "product_type",
+      "label": "Tabs Content",
+      "options": [
+        { "value": "slider", "label": "Slider" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Tab"
+        },
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs With Products",
+      "category": "Products",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

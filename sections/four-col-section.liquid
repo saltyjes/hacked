@@ -1,0 +1,95 @@
+<!--snackswork start-->
+<section class="snackswork define-float">
+  <div class="container">
+    <div class="main-four-section">
+      <div class="col-md-6 col-custom for-first">
+        <div class="snack-black">
+          <img src="{{ section.settings.fstcol-image | img_url: "" }}" class="snack-img">
+          <div class="snack-post"> <span>{{ section.settings.fstcol-text }}</span>
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-custom for-second">
+        <div class="snack-black">
+           <img src="{{ section.settings.sstcol-image | img_url: "" }}" class="snack-img">
+          <div class="snack-post"> <span>{{ section.settings.sstcol-text }}</span>  </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-custom for-three">
+        <div class="snack-black">
+           <img src="{{ section.settings.tstcol-image | img_url: "" }}" class="snack-img">
+          <div class="snack-post"> <span>{{ section.settings.tstcol-text }}</span>  </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-custom for-four">
+        <div class="snack-black">
+           <img src="{{ section.settings.fostcol-image | img_url: "" }}" class="snack-img">
+          <div class="snack-post"> <span>{{ section.settings.fostcol-text }}</span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--snackswork closed-->
+{% schema %}
+{
+  "name": "Four Col Section",
+  "class": "fourcol-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "fstcol-image",
+      "label": "First Col Image"
+    },
+    {
+      "type": "text",
+      "id": "fstcol-text",
+      "label": "First Col Title"
+      
+    },
+    {
+      "type": "image_picker",
+      "id": "sstcol-image",
+      "label": "Second Col Image"
+    },
+    {
+      "type": "text",
+      "id": "sstcol-text",
+      "label": "Second Col Title"
+      
+    },
+    {
+      "type": "image_picker",
+      "id": "tstcol-image",
+      "label": "Third Col Image"
+    },
+    {
+      "type": "text",
+      "id": "tstcol-text",
+      "label": "Third Col Title"
+      
+    },
+    {
+      "type": "image_picker",
+      "id": "fostcol-image",
+      "label": "Fourth Col Image"
+    },
+    {
+      "type": "text",
+      "id": "fostcol-text",
+      "label": "Fourth Col Title"
+      
+    }
+  ],
+  "presets": [
+    {
+      "name": "Four Col Section",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

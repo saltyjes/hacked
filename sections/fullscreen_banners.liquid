@@ -1,0 +1,308 @@
+<section class="{% unless section.settings.hide_top_indent %}content {% endunless %}fullwidth indent-col-none" data-section-id="{{ section.id }}" data-section-type="banners-section">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="banner-carousel banner-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.settings.image == blank %}
+          {% else %}
+            {% capture collection_image_url %}{{ block.settings.image | img_url: '700x700' }}{% endcapture %}
+            {% assign collection_image_tag = block.settings.image.alt %}
+          {% endif %}
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            {% if block.settings.banner_link != blank %}<a href="{{ block.settings.banner_link }}" class="banner zoom-in">
+            {% else %}<div class="banner zoom-in">{% endif %}
+              <span class="figure{% if block.settings.image == blank %} nobg{% endif %}">
+                {% if block.settings.image != blank %}
+                <img src="{{ collection_image_url }}" alt="{{ collection_image_tag }}">
+                {% else %}
+                <span class="editor-image" data-width="682" data-height="570"></span>
+                {% endif %}
+                <span class="figcaption">
+                  <span class="block-table">
+                    <span class="block-table-cell">
+                      {% if block.settings.title1 != '' %}<span class="banner__title {{ block.settings.size_title1 }}"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title1 }}"{% endif %}>{{ block.settings.title1 }}</span>{% endif %}
+                      {% if block.settings.title2 != '' %}<span class="{{ block.settings.size_title2 }}"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title2 }}"{% endif %}>{{ block.settings.title2 }}</span>{% endif %}
+                      {% if block.settings.title3 != '' %}<span class="{{ block.settings.size_title3 }}"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title3 }}"{% endif %}>{{ block.settings.title3 }}</span>{% endif %}
+                      {% if block.settings.show_item_button == 'yes' %}{% if section.settings.show_button %}<span class="btn btn--ys btn--xl">{{ section.settings.button_title }}</span>{% endif %}{% endif %}
+                    </span>
+                  </span>
+                </span>
+              </span>
+            {% if block.settings.banner_link == blank %}</div>
+            {% else %}</a>{% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fullwidth Banners",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_top_indent",
+      "label": "Hide Top Indent",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Buttons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "label": "Button Name",
+      "default": "Shop now!"
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_item",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Texts"
+        },
+        {
+          "type": "text",
+          "id": "title1",
+          "label": "Title",
+          "default": "Title",
+		  "info": "Empty field delete text"
+        },
+
+        {
+          "type": "select",
+          "id": "size_title1",
+          "label": "Title Size",
+          "default": "size3",
+          "options": [
+            {
+              "value": "size3",
+              "label": "Big"
+            },
+            {
+              "value": "size4",
+              "label": "Medium"
+            }
+		  ]
+        },
+        {
+          "type": "paragraph",
+          "content": "_____"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Text 1",
+          "default": "Text 1",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "size_title2",
+          "label": "Text 2 Size",
+          "default": "text",
+          "options": [
+            {
+              "value": "text size3",
+              "label": "Medium"
+            },
+            {
+              "value": "text size2",
+              "label": "Medium Light"
+            },
+            {
+              "value": "text size1",
+              "label": "Medium Light Cursor"
+            },
+            {
+              "value": "text",
+              "label": "Small"
+            }
+		  ]
+        },
+        {
+          "type": "paragraph",
+          "content": "_____"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Text 2",
+          "default": "Text 2",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "size_title3",
+          "label": "Text 3 Size",
+          "default": "text size3 margin-1_4em",
+          "options": [
+            {
+              "value": "text size3 margin-1_4em",
+              "label": "Medium"
+            },
+            {
+              "value": "text size2 margin-1_4em",
+              "label": "Medium Light"
+            },
+            {
+              "value": "text size1",
+              "label": "Medium Light Cursor"
+            },
+            {
+              "value": "text margin-1_4em",
+              "label": "Small"
+            }
+		  ]
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "select",
+          "id": "use_custom_color",
+          "label": "Select Color Type",
+          "default": "no",
+          "options": [
+            {
+              "value": "no",
+              "label": "Default Color"
+            },
+            {
+              "value": "custom_color",
+              "label": "Custom Colors"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_title1",
+          "label": "Text 1 Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_title2",
+          "label": "Text 2 Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_title3",
+          "label": "Text 3 Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fullwidth Banners",
+      "category": "Banner",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "banner_item"
+        },
+        {
+          "type": "banner_item"
+        },
+        {
+          "type": "banner_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

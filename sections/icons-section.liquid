@@ -1,0 +1,145 @@
+<section class="content" data-section-id="{{ section.id }}">
+  <div class="container">
+    {% if section.blocks.size > 0 %}
+    <!-- nav-select-item -->
+    <ul class="nav-select-item">
+      {% for block in section.blocks %}
+      <li>
+        <a href="{{ block.settings.link }}">
+          <img src="{{ block.settings.image | img_url: '130x' }}" alt="{{ block.settings.image.alt }}">
+          <span>{{- block.settings.item_title -}}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <!-- /nav-select-item -->
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</section>
+{% if section.settings.show_background %}
+<style>
+  [data-section-id~="{{ section.id }}"] {
+  background: {{ section.settings.color_bg }};
+  padding: 60px 0 68px 0;
+  {% unless section.settings.top_indent %}margin: 0;{% endunless %}
+  }
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Icons list",
+  "class": "index-section",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "Set Background Color",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "top_indent",
+      "label": "Top Indent",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icons_block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+	      "info": "129x115px"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icons list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        },
+        {
+          "type": "icons_block",
+          "settings": {
+		  }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

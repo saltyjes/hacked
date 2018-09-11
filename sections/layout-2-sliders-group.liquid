@@ -1,0 +1,234 @@
+{% if section.settings.show_block %}
+{% assign products_show = "layout_2" %}
+{% assign smallproduct = false %}
+{% if section.settings.show_line %}<hr class="hr-md">{% endif %}
+<div class="content-sm" data-section-id="{{ section.id }}" data-section-type="slidersgroup-section">
+  <div class="row sliderblock-{{ section.id }}" data-showproducts="{{ products_show }}">
+    <div class="{% if section.settings.show_slider2 %}col-sm-12 col-md-8 col-xl-7{% else %}col-sm-12 col-md-12 col-xl-12{% endif %}">
+      <div class="title-with-button">
+        <div class="carousel-products__button pull-right"> <span class="btn-prev"></span> <span class="btn-next"></span> </div>
+        <h2 class="text-left text-uppercase title-default pull-left">{{ section.settings.title1 }}</h2>
+      </div>
+      {%- assign name_collection = section.settings.collection1 -%}
+      {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+      {%- assign collection = collections[name_collection] -%}
+      {% if collection.products.size == 0 %}
+      <span style="display: flex; justify-content: center;">{{ section.settings.title1 }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+      {% else %}
+      {% assign _lenght = section.settings.limit_1 | plus: 0 %}
+      <div class="carousel-products row carousel-small" data-autoplay="{{ section.settings.module_autoplay_1 }}" data-speed="{{ section.settings.delay_time_1 }}" data-step="{{ section.settings.step_1 }}">
+        {% for product in collection.products limit: _lenght %}
+        {%- comment %}<locksmith:7092>{% endcomment -%}
+          {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:7092>{% endcomment -%}
+        <div class="col-lg-3">
+          {% include "product-grid-item" %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_slider2 %}
+    <div class="col-sm-12 col-md-4 col-xl-5">
+      <div class="title-with-button">
+        <div class="carousel-products__button pull-right"> <span class="btn-prev"></span> <span class="btn-next"></span> </div>
+        <h2 class="text-left text-uppercase title-default pull-left">{{ section.settings.title2 }}</h2>
+      </div>
+      {%- assign name_collection = section.settings.collection2 -%}
+      {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+      {%- assign collection = collections[name_collection] -%}
+      {% if collection.products.size == 0 %}
+      <span style="display: flex; justify-content: center;">{{ section.settings.title2 }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+      {% else %}
+      {% assign _lenght = section.settings.limit_2 | plus: 0 %}
+      <div class="carousel-products row carousel-small" data-autoplay="{{ section.settings.module_autoplay_2 }}" data-speed="{{ section.settings.delay_time_2 }}" data-step="{{ section.settings.step_2 }}">
+        {% for product in collection.products limit: _lenght %}
+        {%- comment %}<locksmith:c385>{% endcomment -%}
+          {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:c385>{% endcomment -%}
+        <div class="col-lg-3">
+          {% include "product-grid-item" %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Sliders",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_block",
+      "label": "Show Widget",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Top Line",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "BY DEFAULT. SHOW ALL PRODUCTS. SELECT YOUR COLLECTION."
+    },
+    {
+      "type": "header",
+      "content": "Slider 1"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "label": "Collection",
+      "id": "collection1",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit_1",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step_1",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay_1",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time_1",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Slider 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_slider2",
+      "label": "Show Slider 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "label": "Collection",
+      "id": "collection2",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit_2",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step_2",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay_2",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time_2",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

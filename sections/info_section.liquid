@@ -1,0 +1,411 @@
+{% if section.blocks.size == 1 %}{% assign grid = '<div class="col-xs-12 col-sm-12 col-lg-12 col-xl-12">' %}
+{% elsif section.blocks.size == 2 %}{% assign grid = '<div class="col-xs-12 col-sm-6 col-lg-6 col-xl-6">' %}
+{% elsif section.blocks.size == 3 %}{% assign grid = '<div class="col-xs-12 col-sm-6 col-lg-4 col-xl-4">' %}
+{% endif %}
+
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}{% for block in section.blocks limit: limit %}
+      {% cycle '','<div class="divider divider--lg visible-xs"></div>','<div class="divider divider--lg visible-xs visible-sm visible-md"></div>' %}
+      {% cycle grid, grid, '<div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4">' %}
+      <h2 class="text-left text-uppercase title-under">{{ block.settings.title }}</h2>
+      {% case block.type %}
+      {% when 'item-blog' %}
+      {%- assign blog = blogs[block.settings.blog] -%}{% unless blog.empty? %}
+      {% for article in blog.articles limit: 2 %}
+      <div class="recent-post-box recent-post-col row">
+        <div class="col-xs-6 col-sm-12 col-md-6">
+          <a href="{{ article.url }}">
+            <span class="figure">
+              <img src="{{ article.image.src | img_url: '1024x1024' }}" alt="{{ article.image.alt }}">
+              {% if block.settings.blog_show_date %}<span class="figcaption label-top-left">
+                <span>
+                  <b>{{ article.published_at | date: "%d" }}</b><em>{{ article.published_at | date: "%b" }}</em>
+                </span>
+              </span>{% endif %}
+            </span>									
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-12 col-md-6">
+          <div class="recent-post-box__text">
+            <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+            {% if block.settings.blog_show_author %}<div class="author">{{ "blogs.general.author_by_html" | t: author: article.author }}</div>{% endif %}
+            <p>{% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncatewords: block.settings.truncate, block.settings.truncate_last_symbols }}{% endif %}</p>
+          </div>
+        </div>
+      </div>
+      {% unless forloop.last %}<div class="divider divider--sm"></div>{% endunless %}{% endfor %}
+      {% if block.settings.show_button %}<a href="{{ blog.url }}" class="btn btn-top btn--ys btn--xl">{{ section.settings.button_name }}</a>{% endif %}
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Select Blog.</span>
+      {% endunless %}
+      {% when 'item-text' %}
+      
+      
+      <div class="banner-icon" onclick="window.location.href = '{{ block.settings.link1 }}'">
+        <div class="banner-icon__icon"><span class="icon icon-{{ block.settings.item_icon1 }}"></span></div>
+        <div class="banner-icon__text">
+          <h3>{{ block.settings.item_title1 }}</h3>
+          <p>{{ block.settings.text1 }}</p>
+        </div>
+      </div>
+      <!-- / -->
+      <!--  -->
+      <div class="banner-icon" onclick="window.location.href = '{{ block.settings.link2 }}'">
+        <div class="banner-icon__icon"><span class="icon icon-{{ block.settings.item_icon2 }}"></span></div>
+        <div class="banner-icon__text">
+          <h3>{{ block.settings.item_title2 }}</h3>
+          <p>{{ block.settings.text2 }}</p>
+        </div>
+      </div>
+      <!-- / -->
+      <!--  -->
+      <div class="banner-icon" onclick="window.location.href = '{{ block.settings.link3 }}'">
+        <div class="banner-icon__icon"><span class="icon icon-{{ block.settings.item_icon3 }}"></span></div>
+        <div class="banner-icon__text">
+          <h3>{{ block.settings.item_title3 }}</h3>
+          <p>{{ block.settings.text3 }}</p>
+        </div>
+      </div>
+      <!-- / -->							
+
+      {% if block.settings.show_button %}<a href="{{ block.settings.link }}" class="btn btn-top btn--ys btn--xl">{{ section.settings.button_name }}</a>{% endif %}
+      {% else %}
+      
+      <div class="slider-blog-layout1 no-slick">
+        <a href="{{ block.settings.link1 }}" class="link-hover-block">
+          <div class="slider-blog__item">
+            <div class="box-foto">
+              {% if block.settings.image1 != blank %}{% assign img_url = block.settings.image1 | img_url: 'large' %}
+              {% else %}{% assign img_url = 'template_testim.png' | asset_url %}
+              {% endif %}
+              <img src="{{ img_url }}" alt="{{ block.settings.image1.alt }}">
+            </div>
+            <div class="box-data{% if block.settings.show_quotes %} testimonials-quotes{% endif %}">
+              <p>{{ block.settings.text1 }}</p>
+              <h6>{{ block.settings.item_title1 }} - <em>{{ block.settings.item_hobby1 }}</em></h6>
+            </div>									
+          </div>
+        </a>
+        <div class="divider divider--sm"></div>
+        <a href="{{ block.settings.link2 }}" class="link-hover-block">
+          <div class="slider-blog__item">
+            <div class="box-foto">
+              {% if block.settings.image2 != blank %}{% assign img_url = block.settings.image2 | img_url: 'large' %}
+              {% else %}{% assign img_url = 'template_testim.png' | asset_url %}
+              {% endif %}
+              <img src="{{ img_url }}" alt="{{ block.settings.image2.alt }}">
+            </div>
+            <div class="box-data{% if block.settings.show_quotes %} testimonials-quotes{% endif %}">
+              <p>{{ block.settings.text2 }}</p>
+              <h6>{{ block.settings.item_title2 }} - <em>{{ block.settings.item_hobby2 }}</em></h6>
+            </div>									
+          </div>
+        </a>
+      </div>
+      <div class="divider divider--sm"></div>
+      {% if block.settings.show_button %}<a href="{{ block.settings.link }}" class="btn btn-top btn--ys btn--xl">{{ section.settings.button_name }}</a>{% endif %}
+      {% endcase %}{% cycle '</div>' %}{% endfor %}
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Info Block",
+  "class": "index-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_name",
+      "label": "Button Name",
+      "default": "SEE ALL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item-blog",
+      "name": "Blog",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "RECENT POSTS"
+        },
+        {
+          "id": "blog",
+          "type": "blog",
+          "label": "Blog"
+        },
+        {
+          "type": "text",
+          "id": "truncate",
+          "label": "Show Words",
+          "default": "15",
+          "info": "Integer"
+        },
+        {
+          "type": "text",
+          "id": "truncate_last_symbols",
+          "label": "Last Symbols",
+          "default": "..."
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "label": "Show author",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "label": "Show date",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button?",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "item-text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "SERVICES"
+        },
+
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Link 1",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title1",
+          "label": "Title 1",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, sociis natoque penatibus."
+        },
+        {
+          "type": "text",
+          "id": "item_icon1",
+          "label": "Material Icon",
+          "default": "send",
+		  "info": "[Material Icons](https:\/\/material.io\/icons\/#ic_desktop_mac)"
+        },
+
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Link 2",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title2",
+          "label": "Title 2",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, sociis natoque penatibus."
+        },
+        {
+          "type": "text",
+          "id": "item_icon2",
+          "label": "Material Icon",
+          "default": "loop",
+		  "info": "[Material Icons](https:\/\/material.io\/icons\/#ic_desktop_mac)"
+        },
+
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Link 3",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title3",
+          "label": "Title 3",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text3",
+          "label": "Text 3",
+          "default": "Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, sociis natoque penatibus."
+        },
+        {
+          "type": "text",
+          "id": "item_icon3",
+          "label": "Material Icon",
+          "default": "headset_mic",
+		  "info": "[Material Icons](https:\/\/material.io\/icons\/#ic_desktop_mac)"
+        },
+
+
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button?",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "item-testimonials",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_quotes",
+          "label": "Show Quotes",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button?",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "TESTIMONIALS"
+        },
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Link 1",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title1",
+          "label": "Author 1",
+          "default": "Author"
+        },
+		{
+          "type": "text",
+          "id": "item_hobby1",
+          "label": "Hobby 1",
+          "default": "Hobby"
+        },
+        {
+          "type": "textarea",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "Content"
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Link 2",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title2",
+          "label": "Author 2",
+          "default": "Author"
+        },
+		{
+          "type": "text",
+          "id": "item_hobby2",
+          "label": "Hobby 2",
+          "default": "Hobby"
+        },
+        {
+          "type": "textarea",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info Block",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "item-blog"
+        },
+        {
+          "type": "item-text"
+        },
+        {
+          "type": "item-testimonials"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

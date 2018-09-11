@@ -1,0 +1,42 @@
+{% if section.settings.parallax_image != blank %}{% assign img_url = section.settings.parallax_image | img_url: '2048x2048' %}
+{% else %}{% assign img_url = 'layout9_image1.jpg' | asset_url %}
+{% endif %}
+
+<section class="{% if section.settings.indents == 'topindent' %}content {% endif %}{% if section.settings.indents == 'bothindents' %}content-big-indent {% endif %}content--parallax" data-image="{{ img_url }}" data-section-id="{{ section.id }}" data-section-type="parallaximage-section"></section>
+
+{% schema %}
+{
+  "name": "Parallax Image",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "indents",
+      "label": "Section Indents",
+      "options": [
+        { "value": "bothindents", "label": "Both Indents" },
+        { "value": "topindent", "label": "Top Indent" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "bothindents"
+    },
+    {
+      "type": "image_picker",
+      "id": "parallax_image",
+      "label": "Parallax Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parallax Image",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

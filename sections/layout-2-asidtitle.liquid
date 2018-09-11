@@ -1,0 +1,23 @@
+{% if section.settings.show_block %}
+<h4 class="title-aside-wrapper text-uppercase  mobile-menu-off">{{ section.settings.title }}</h4>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Aside Title",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_block",
+      "label": "Show Widget",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "CATEGORIES"
+    }
+  ]
+}
+{% endschema %}

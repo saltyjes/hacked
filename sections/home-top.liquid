@@ -1,0 +1,123 @@
+<div class="relative_banner top-banner-section">
+  <div class="container">
+<div class="banner-img">
+<img src="{{ section.settings.htopbg-image | img_url: "" }}" alt="Banner">
+</div>
+
+
+<div class="banner-txt">
+<h1>{{ section.settings.top-bannertext }}</h1>
+<button><a href="{{ section.settings.banner-button-url }}">{{ section.settings.banner-button-text }}</a></button>
+</div>
+
+
+<div class="video-icon">
+<!-- <img src="{{ section.settings.htopvideo-image | img_url: "" }}" alt="path not found"> -->
+  <i class="fa fa-play" aria-hidden="true"></i>
+</div>
+
+<div class="order-list">
+<ul>
+{% for block in section.blocks %}
+  <li>{{block.settings.item_list}}</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+</div>
+
+<div class="overlay_part" style="display:none;"></div>
+<div class="popup_opened" style="display:none;">
+<div class="popup_container">
+<div class="close_btn">X</div>
+  <div style="display:none;" class="vidlink">{{ section.settings.topvideo-url }}</div>
+ <iframe class="frmaelink" src="#" style="width:100%; height:500px;">
+</iframe>
+</div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $(".video-icon").click(function(){ 
+      var vidlink = $(".vidlink").html();
+      $(".frmaelink").attr('src',vidlink);
+      $(".popup_opened").show();
+      $(".overlay_part").show();
+    });
+
+    $(".close_btn").click(function(){
+       $(".popup_opened").hide();
+       $(".overlay_part").hide();
+       $(".frmaelink").attr('src',"#");
+    });
+});
+</script>
+{% schema %}
+{
+  "name": "Home Top",
+  "class": "index-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "htopbg-image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "htopvideo-image",
+      "label": "Video Image"
+    }, 
+    {
+      "type": "textarea",
+      "id": "top-bannertext",
+      "label": "Top Banner Text"
+    },
+    {
+      "type": "text",
+      "id": "banner-button-text",
+      "label": "Button Text"
+      
+    },
+    {
+       "type": "text",
+      "id": "banner-button-url",
+      "label": "Button Url"
+    },
+    {
+       "type": "text",
+      "id": "topvideo-url",
+      "label": "Video Url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "homelist",
+      "name": "Add List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_list",
+          "label": "List"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Top",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

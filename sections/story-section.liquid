@@ -1,0 +1,144 @@
+<!--aboutsnack start-->
+<section class="aboutsnack define-float">
+  <div class="container ">
+    <div class="col-md-12 aboutsnack-inner ">
+      <div class="col-md-6 abthacked white">
+        <h3 class="b-6">{{ section.settings.storytitle }}</h3>
+        <p>{{ section.settings.story-bannertext }}</p>
+        <a href="{{ section.settings.storyshopbuttonurl }}">{{ section.settings.storyshopbuttontext }}</a> </div>
+      <div class="col-md-6 click-video text-center"> <a class="video-click" href="#"><i class="fa fa-play" aria-hidden="true"></i></a> </div>
+    </div>
+    <div class="col-md-12 bg-white">
+      <div class="protain-popcorn pop">
+          <img src="{{ section.settings.pack-image | img_url: "" }}">
+        </div>
+      <div class="row">
+        <div class="multiple-items story-section-slider">
+          {% for block in section.blocks %}
+            <div class="col-md-6 hacked-bot">
+          <p>{{block.settings.testimonialdescription}}</p>
+          <h5>{{block.settings.testimonialtext}}</h5>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</div>
+</div>
+<script>
+$(document).ready(function(){
+    $(".video-click").click(function(event){ 
+      event.preventDefault();
+      var vidlink = $(".vidlinkstory").html();
+      $(".frmaelinkstory").attr('src',vidlink);
+      $(".popup_opened").show();
+      $(".overlay_part").show();
+    });
+
+    $(".close_btn").click(function(){
+       $(".popup_opened").hide();
+       $(".overlay_part").hide();
+       $(".frmaelinkstory").attr('src',"#");
+    });
+    $('.multiple-items').slick({
+      infinite: true,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+      		slidesToScroll: 1
+          }
+        }
+      ]
+    });
+});
+</script>
+<style>
+.aboutsnack-inner {
+    background: url({{section.settings.storybg-image | img_url: "" }}) !important;
+}
+</style>
+<!--aboutsnack closed-->
+{% schema %}
+{
+  "name": "Story Section",
+  "class": "story-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "storybg-image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "storytitle",
+      "label": "Title"
+      
+    }, 
+    {
+      "type": "textarea",
+      "id": "story-bannertext",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "storyshopbuttontext",
+      "label": "Button Text"
+      
+    },
+    {
+      "type": "text",
+      "id": "storyshopbuttonurl",
+      "label": "Button Url"
+      
+    },
+    {
+      "type": "text",
+      "id": "storyvideolink",
+      "label": "Video Link"
+      
+    },
+    {
+      "type": "image_picker",
+      "id": "pack-image",
+      "label": "Pack Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonialcustom",
+      "name": "Testimonial Custom",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimonialdescription",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "testimonialtext",
+          "label": "Person Info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Section",
+      "category": "Text Section",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

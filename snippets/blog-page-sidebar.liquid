@@ -1,0 +1,65 @@
+{% assign blogs_name = settings.sidebar_blogs | split: ',' %}
+{% capture blogslinks %}{% include "blog-page-sidebar-tabblogs" %}{% endcapture %}
+{% if blogs_name.size > 0 and settings.sidebar_show_blogs and blogslinks != '' %}
+<h4 class="text-uppercase title-aside">{{ settings.sidebar_blogs_title }}</h4>
+<div class="block-underline">
+  <ul class="categories-list">
+	{{ blogslinks }}
+  </ul>
+</div>
+{% endif %}
+
+{% if blog.all_tags.size > 0 and settings.sidebar_show_tags %}
+<h4 class="text-uppercase title-aside">{{ settings.sidebar_tags_title }}</h4>
+<div class="block-underline">
+  <ul class="categories-list">
+  {% for tag in blog.all_tags %}
+    {% assign blog_tags = settings.blog_tags %}
+    {% assign string = tag %}
+    {% if blog_tags != '' %}
+      {% assign _tag = '||' | append: tag | strip | downcase | append: '__' %}
+      {% assign blog_tags = blog_tags | split: ',' %}
+      {% for bt in blog_tags %}
+    	  {% assign _bt = bt | strip | downcase %}
+          {% assign _bt = '||' | append: _bt %}
+          {% if _bt contains _tag %}
+              {% assign string = bt | split: '__' | last %}
+              {% break %}
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+    <li>{{ string | capitalize | replace: '-', ' ' | link_to_tag: tag }}</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if settings.sidebar_show_recent_blog %}{% assign name_collection = settings.sidebar_recent_blog_name %}{% assign length = settings.sidebar_recent_blog_count | plus: 0 %}
+{% if name_collection == blank %}{% assign name_collection = "all" %}{% endif %}{% assign selected_blog = blogs[name_collection] %}
+{% if template == "article" %}{% assign count = 0 %}{% assign _length = length %}{% assign length = length | plus: 1 %}{% endif %}
+<h4 class="text-uppercase  title-aside">{{ settings.sidebar_recent_blog_title }}</h4>				
+<div class="block-underline">
+  {% for f_article in selected_blog.articles limit: length %}
+  {% if template == "article" %}
+    {% if count > _length %}{% break %}{% endif %}
+    {% if article.id != f_article.id %}
+      {% assign count = count | plus: 1 %}
+      {% if f_article.comments.size > 0 %}{% assign comment_url = f_article.url | append: '#comments' %}{% else %}{% assign comment_url = f_article.url | append: '#addcomment' %}{% endif %}{% include "blog-slider-item" %}
+    {% endif %}
+  {% else %}
+    {% if f_article.comments.size > 0 %}{% assign comment_url = f_article.url | append: '#comments' %}{% else %}{% assign comment_url = f_article.url | append: '#addcomment' %}{% endif %}{% include "blog-slider-item" %}
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if settings.blog_sidebar_customhtml1_show %}
+<h4 class="text-uppercase title-aside">{{ settings.blog_sidebar_customhtml1_title }}</h4>
+<div class="block-underline">{{ settings.blog_sidebar_customhtml1_content }}</div>
+{% endif %}
+
+{% if settings.blog_sidebar_customhtml2_show %}
+<h4 class="text-uppercase title-aside">{{ settings.blog_sidebar_customhtml2_title }}</h4>
+<div class="block-underline">{{ settings.blog_sidebar_customhtml2_content }}</div>				
+{% endif %}

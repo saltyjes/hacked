@@ -1,0 +1,246 @@
+<section class="content" data-section-id="{{ section.id }}" data-section-type="collectionslider-section">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="category-carousel category-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}" data-items="{{ section.settings.items }}">
+        {% for block in section.blocks limit: section.blocks.size %}
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          {%- assign collection = collections[block.settings.collection] -%}
+          <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="banner zoom-in">
+            <span class="figure{% if section.settings.hide_button and block.settings.show_item_button == 'yes' and section.settings.show_button %} buttononhover{% endif %}">
+              {% unless block.settings.usecollectionimage %}
+                {% if block.settings.image == blank %}<span class="editor-image" data-width="820" data-height="820"></span>
+                {% else %}<img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}">
+                {% endif %}
+              {% else %}
+                {% if collection.image == blank %}<span class="editor-image" data-width="820" data-height="820"></span>
+                {% else %}<img src="{{ collection.image | img_url: 'grande' }}" alt="{{ collection.image.alt }}">
+                {% endif %}
+              {% endunless %}
+              <span class="figcaption">
+                <span class="block-table">
+                  <span class="block-table-cell">
+                    {% if collection.empty? %}<span class="banner__title smallsize"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{{ 'homepage.onboarding.collection_title' | t }}</span>{% else %}<span class="banner__title size5"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{% if block.settings.custom_name != ''%}{{ block.settings.custom_name }}{% else %}{{ collection.title }}{% endif %}</span>{% endif %}
+                    {% if block.settings.show_item_button == 'yes' %}{% if section.settings.show_button %}<span class="btn btn--ys btn--xl">{{ section.settings.button_title }}</span>{% endif %}{% endif %}
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+        {% endfor %}
+
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<style>
+  [data-section-id~="{{ section.id }}"] .banner .figcaption .banner__title {
+    color: {{ section.settings.base_color_title }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "select",
+      "id": "items",
+      "label": "Items In Line",
+      "default": "3",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Buttons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "label": "Button Name",
+      "default": "Shop now!"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_button",
+      "label": "Show Buttons Only in Hover",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "base_color_title",
+      "label": "Base Text Color",
+      "default": "#ffffff"
+    },
+	{
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "usecollectionimage",
+          "label": "Set Collection Image",
+          "default": false,
+		  "info": "Set image in collection settings. Default \"Custom Image\""
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "select",
+          "id": "use_custom_color",
+          "label": "Select Color Type",
+          "default": "no",
+          "options": [
+            {
+              "value": "no",
+              "label": "Default Color"
+            },
+            {
+              "value": "custom_color",
+              "label": "Custom Color"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.banner .figcaption .banner__title.smallsize {
+	font-size: 16px !important;
+}
+{% endstylesheet %}

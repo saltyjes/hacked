@@ -1,0 +1,241 @@
+{% comment %} Price to show. {% endcomment %}
+{% assign sale_on = false %}
+{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+  {% assign sale_on = true %}
+{% endif %}
+
+{% comment %} Main Image URL. {% endcomment %}
+{% assign main_url_image = product.featured_image %}
+
+{% assign hover_url_image = "" %}
+{% if product.images[1] %}
+	{% assign hover_url_image = product.images[1].src %}
+{% else %}
+	{% assign hover_url_image = product.images[0].src %}
+{% endif %}
+
+{% comment %}
+	date_difference = 60 * 60 * 24 * day counter, this is new product period in seconds
+{% endcomment %}
+ 	{% assign date_now = 'now' | date: "%s" %}
+ 	{% assign date_published = product.published_at | date: "%s" %}
+	{% assign date_difference = date_now | minus: date_published %}
+	{% assign date_limit = 86400 | times: settings.new_product_period %}
+	{% assign pr_variant = product.selected_or_first_available_variant %}
+
+<!-- product -->
+<div class="product{% if hoverzoom %} product--zoom{% endif %}{% if smallproduct %} smallproduct{% endif %} {{ pr_variant.id }}{% unless product.available %} sold-out{% endunless %}">
+  {% if product.available %}
+      {% if product.variants.size > 1 %}
+          {% assign func = "" %}
+      {% else %}
+          {% assign func = "Shopify.addItem(" | append: pr_variant.id | append: ", 1)" %}
+      {% endif %}
+  {% endif %}
+  
+  <div class="product__inside">
+    <!-- product image -->
+    <div class="product__inside__image">
+
+      {% if product.images.size > 1 and product.description contains "[item-gallery]" %}
+      <div class="product__inside__carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          {% for image in product.images %}
+          <div class="item{% if forloop.first %} active{% endif %}">
+            <a href="{{ product.url | within: collection }}"><img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}"></a>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- Controls --> 
+        <a class="carousel-control next"></a> <a class="carousel-control prev"></a> 
+      </div>
+      {% else %}
+      <a href="{{ product.url | within: collection }}">
+		<img src="{{ main_url_image | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}"/>
+      </a>
+      {% endif %}
+      
+      {% unless product.available %}
+      <div class="product__label--sold-out"><span>{{ "products.product.sold_out" | t }}</span></div>
+      {% else %}
+
+      {% if settings.product_item_showqv %}<a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view" data-value="{{ product.url | within: collection }}"><b><span class="icon icon-visibility"></span> {{ "products.general.quick_view" | t }}</b></a>{% endif %}
+      {% endunless %}
+      
+      {% if product.description contains '[countdown]' and product.available %}
+        {% assign countdown = product.content | split: '[/countdown]' | first %}
+        {% assign countdown = countdown | split: '[countdown]' | last %}
+        {% assign date = countdown | split: ' ' | first | split: '/' %}
+        {% assign time = countdown | split: ' ' | last | split: ':' %}
+        <div class="countdown_box">
+          <div class="countdown_inner">
+            <div id="{{ product.id }}{{ productCount }}"></div>
+          </div>
+        </div>
+        <script>
+          jQuery(function ($) {
+              // countdown ini
+              var yyyy = {{ date[0] }};
+              var mm = {{ date[1] | minus:1 }};
+              var dd = {{ date[2] }};
+              var hour = {{ time[0] }};
+              var min = {{ time[1] }};
+              var sec = {{ time[2] }};
+
+              var sH = {{'now' | date: "%H" }};//s = shopify
+              var sD = {{'now' | date: "%-d" }};
+              var sM = {{'now' | date: "%m" }};
+              var sY = {{'now' | date: "%Y" }};
+
+              var qH = new Date();
+              var qD = qH.getDate();//q = jQuery
+              var qM = qH.getMonth() + 1;
+              var qY = qH.getFullYear();
+              var qH = qH.getHours();
+
+              if(qD > sD) {
+                qH += 24;
+              }
+              else {
+                if(qD < sD) {
+                  if(qM > sM) {
+                    qH += 24;
+                  }
+                  else {
+                    if(qY > sY) {
+                      qH += 24;
+                    }
+                    else {
+                      sH += 24;
+                    }
+                  }
+                }
+              }
+
+              var fH = sH - qH;
+
+              if ($("#{{ product.id }}{{ productCount }}").length > 0){$('#{{ product.id }}{{ productCount }}').countdown({until: new Date(yyyy, mm, dd, hour, min, sec), timezone: fH});}
+          });
+        </script>
+      {% endif %}
+    </div>
+    <!-- /product image --> 
+    <!-- label news -->
+      {% if product.description contains '[icon-new-always]' %}
+		<div class="product__label product__label--right product__label--new"><span>{{ 'products.general.new' | t }}</span></div>
+      {% else %}
+        {% unless product.description contains '[disable-icon-new]' %}
+          {% if date_difference < date_limit %}
+			<div class="product__label product__label--right product__label--new"><span>{{ 'products.general.new' | t }}</span></div>
+          {% endif %}
+        {% endunless %}
+      {% endif %}
+    <!-- /label news --> 
+    <!-- label sale -->
+      {% unless product.description contains '[disable-icon-sale]' %}
+        {% if sale_on %}
+		  <div class="product__label product__label--left product__label--sale"><span>{{ 'products.general.sale' | t }}<br>
+		  -{{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | money_without_currency | replace: ',', '.' | times: 100 | remove: '.0'}}%</span></div>
+        {% endif %}
+      {% endunless %}
+    <!-- /label sale --> 
+    <!-- product name -->
+    <div class="custom-product">
+    <div class="product__inside__name">
+      <h2 class="product_title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h2>
+    </div>
+    <!-- /product name --> 
+    <!-- product description --> 
+    <!-- visible only in row-view mode -->
+    <div class="product__inside__description row-mode-visible">{% include "get-content-with-key" content: product.content key: "[smallDescription]" %}</div>
+    <!-- /product description --> 
+    <!-- product price -->
+    {% if sale_on %}
+    	<div class="product__inside__price price-box"><span>{{ product.selected_or_first_available_variant.price | money }}</span><span class="price-box__old">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span></div>
+    {% else %}
+    	<div class="product__inside__price price-box baseprice"><span>{{ product.selected_or_first_available_variant.price | money }}</span><span class="price-box__old hide"></span></div>
+    {% endif %}
+
+    <!-- /product price --> 
+    <!-- product review --> 
+    <!-- visible only in row-view mode -->
+    {% if settings.product_item_show_rating %}<div class="product__inside__review row-mode-visible">
+      <div class="rating row-mode-visible"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>
+    </div>{% endif %}
+    <!-- /product review --> 
+    <div class="product__inside__hover">
+      <!-- product info -->
+      <div class="product__inside__info">
+        {% if product.available %}
+          {% capture gallery_check %}{% if product.description contains "[item-gallery]" %}true{% else %}false{% endif %}{% endcapture %}
+          {% if settings.show_product_options and product.options.size < 3 %}{% assign colorindex = -1 %}{% assign sizeindex = -1 %}
+        
+          {% unless product.options[0] contains 'Title' %}{% for option in product.options %}
+            {% assign downcased_option = option | downcase %}
+            {% if downcased_option contains 'color' or downcased_option contains 'colour' %}{% assign colorindex = forloop.index0 %}
+        	{% else %}{% assign sizeindex = forloop.index0 %}
+            {% endif %}
+          {% endfor %}{% endunless %}
+
+        
+          {% if colorindex > -1 %}
+            {% assign check = "" %}
+            <ul class="options-swatch options-swatch--color productitem-color-js">
+              {% assign images_color = '' %}{% for i in (1..10) %}{% assign key = 'filter_color' | append: forloop.index %}{% assign value = '__' | append: settings[key] | handle | downcase | strip | append: '__' | append: forloop.index %}{% assign images_color = images_color | append: value | append: ';' %}{% endfor %}
+              {% for variant in product.variants %}
+              {% unless variant.available %}{% continue %}{% endunless %}
+
+              {% assign tag = variant.options[colorindex] %}
+              {% unless check contains tag %}
+              {% assign check = check | append: tag %}
+              <li>
+                <a href="#" data-tag="{{ tag | handle }}" class="color-border-{{ tag | handle }}" data-img="{% if variant.image %}{{ variant.image.src | product_img_url: 'large' }}{% else %}{% endif %}" data-pr_id="{{ pr_variant.id }}" data-var_id="{{ variant.id }}" data-price="{{ variant.price }}" data-compprice="{{ variant.compare_at_price }}">
+                  {% assign _tag_ = tag | handle | downcase %}
+                  {% assign _tag_ = "__" | append: _tag_ | append: '__' %}
+                  {% if images_color contains _tag_ %}
+                  {% assign imagescr = images_color | split: _tag_ | last %}
+                  {% assign imagescr = imagescr | split: ';' | first %}
+                  {% assign imagescr = 'filter_color' | append: imagescr | append: '.png' %}
+                  <img src="{{ imagescr | asset_url }}" alt="">
+                  {% else %}<span class="swatch-label color-{{ tag | handle }}"></span>
+                  {% endif %}
+                </a>
+              </li>
+              {% endunless %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if sizeindex > -1 %}
+            <ul class="options-swatch options-swatch--size productitem-size-js">
+              {% for variant in product.variants %}
+              {% unless variant.available %}{% continue %}{% endunless %}
+              {% if colorindex > -1 %}{% assign color = variant.options[colorindex] %}{% endif %}
+              {% assign tag = variant.options[sizeindex] %}
+              <li class="{{ color | handle }}-js"{% if colorindex > -1 %} style="display:none;"{% endif %}>
+                <a href="#" data-pr_id="{{ pr_variant.id }}" data-img="{% if variant.image %}{{ variant.image.src | product_img_url: 'large' }}{% else %}{% endif %}" data-var_id="{{ variant.id }}" data-price="{{ variant.price }}" data-compprice="{{ variant.compare_at_price }}">{{ tag }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+		
+          {% endif %}
+        
+        <div class="product__inside__info__btns">
+          {% if settings.product_item_show_cart %}<a {% if func == "" %}{% if settings.product_item_showqv %}href="#" data-toggle="modal" data-target="#quickViewModal" data-value="{{ product.url | within: collection }}" {% else %}href="{{ product.url | within: collection }}"{% endif %}{% else %}href="javascript:void(0);" onclick="{{ func }}; return false;"{% endif %} class="btn btn--ys btn--xl addtocart-js">{% if func == "" %}{{ 'products.product.select_options_html' | t }}{% else %}{{ 'products.product.add_to_cart_html' | t }}{% endif %}</a>{% endif %}
+          {% if settings.product_item_showqv %}<a href="#" data-toggle="modal" data-target="#" class="btn btn--ys btn--xl  row-mode-visible hidden-xs" data-value="{{ product.url | within: collection }}"><span class="icon icon-visibility"></span> {{ "products.general.quick_view" | t }}</a>{% endif %}
+        </div>
+
+        {% endif %}
+      </div>
+      <!-- /product info --> 
+      <!-- product rating -->
+      <div class="rating row-mode-hide">{% if settings.product_item_show_rating %}<span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>{% endif %}</div>
+      <!-- /product rating -->
+    </div>
+    </div>
+  </div>
+  <div class="global-quantity hide" data-quantity="{% for variant in product.variants %}{% if variant.inventory_policy == "continue" %}{{ variant.id }}-continue;{% else %}{{ variant.id }}-{{ variant.inventory_quantity }};{% endif %}{% endfor %}"></div>
+</div>
+<!-- /product -->
+
+{% assign productCount = productCount | plus: 1 %}

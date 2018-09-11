@@ -1,0 +1,77 @@
+{% include 'shogun-products', content: page %}
+<div class="container faqpage">
+  {{ page.content }}
+</div>
+
+<script type="text/javascript" src="{{ 'jquery_accordion.js' | asset_url }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+$('.accordion').accordion({
+defaultOpen: 'section1',
+cookieName: 'accordion_nav'
+});
+});
+</script>
+<style>
+.accordion {
+margin: 0;
+padding:10px;
+border-top:#f0f0f0 1px solid;
+background: #cccccc;
+text-decoration:none;
+color: #000;
+font-size:1em;
+position:relative;
+}
+.accordion-open {
+background:#E03C31;
+color: #fff;
+}
+.accordion-open span {
+display:block;
+position:absolute;
+right:3px;
+top:25%;
+padding:10px;
+}
+.accordion-open span {
+background:url('{{ 'minus.png' | asset_url }}') center center no-repeat;
+}
+.accordion-close span {
+display:block;
+position:absolute;
+right:3px;
+top:25%;
+background:url('{{ 'plus.png' | asset_url }}') center center no-repeat;
+padding:10px;
+}
+.faqpage div.container {
+padding:0;
+margin:0;
+}
+.faqpage div.container {
+max-width:100%;
+padding:5px 0;
+}
+.faqpage div.content {
+background:#f0f0f0;
+margin: 0;
+padding:10px;
+font-size:.9em;
+line-height:1.5em;
+}
+.faqpage div.content ul {
+padding:0;
+margin:0;
+padding:3px;
+}
+.faqpage div.content p {
+padding:0;
+margin:3px 0 10px;
+padding:3px;
+}
+.faqpage div.content ul li {
+list-style-position:inside;
+line-height:25px;
+}
+</style>

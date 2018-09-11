@@ -1,0 +1,85 @@
+{% if settings.popup_newsletter_show %}
+{% assign message = settings.popup_newsletter_message %}
+<div class="modal  modal--bg fade"  id="newsletterModal" data-pause={{ settings.popup_newsletter_delay_first }}>
+  <div class="modal-dialog white-modal center-center  modal-md">
+    <div class="modal-content modal-md{% if settings.popup_newsletter_showimage %} modal-newsletter_backgroundimg{% endif %}{% if settings.popup_newsletter_hidecolor %} hidecolor{% endif %}">
+      {% if settings.popup_newsletter_showicon %}<div class="modal-bg-image bottom-right"> 
+        <img  src="{{ 'newsletter-bg.png' | asset_url }}" alt="" class="img-responsive"> 
+      </div>{% endif %}
+      <div class="modal-block">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+        </div>
+        <div class="modal-newsletter text-center">
+          <img class="logo img-responsive1" src="{{ 'newsletter-logo.png' | asset_url }}" alt=""/>
+          <h2 class="text-uppercase modal-title">{{ settings.popup_newsletter_title }}</h2>
+          <div>{{ settings.popup_newsletter_description }}</div>
+
+          {% if settings.mailchimp_form_action != "" %}
+          <form action="{{ settings.mailchimp_form_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank" class="subscribe-form">
+            <div class="row-subscibe">			           				            		 
+              <input  type="text" name="EMAIL" placeholder="{{ message }}">
+              <button type="submit" class="btn btn--ys btn--xl">{{ settings.popup_newsletter_button }}</button>
+            </div>
+            <div class="checkbox-group form-group-top clearfix">
+              <input type="checkbox" id="checkBox">
+              <label for="checkBox"> 
+                <span class="check"></span>
+                <span class="box"></span>
+                &nbsp;&nbsp;{{ settings.popup_newsletter_question }}
+              </label>
+            </div>
+          </form>
+          {% else %}
+          <strong><u><a href="{{ shop.url }}/admin/themes">
+            Add newsletter redirect link in:<br>
+            Customize Theme / General Settings / Newsletter / MailChimp form action URL
+            </a></u></strong>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(e) {
+
+    var obj = {
+      init: function() {
+        try
+        {
+          if (e.cookie('popupNewsletter') != 'disable') {
+            this.checkboxEvent();
+            var pause = e('#newsletterModal').attr('data-pause');
+            setTimeout(function() {
+              e('#newsletterModal').modal('show');
+              var date = new Date();
+              var minutes = {{ settings.popup_newsletter_delay }};
+              date.setTime(date.getTime() + (minutes * 60 * 1000));
+              e.cookie('popupNewsletter', 'disable', {expires:date, path:'/'});
+            }, pause);
+          }
+        }
+        catch (err) {} // ignore errors reading cookies
+      },
+      checkboxEvent: function() {
+        e('#checkBox').change(function(){
+          if (e(this).is(':checked')) {
+            e.cookie('popupNewsletter', 'disable', {expires:1, path:'/'});
+          } else {
+            e.cookie("popupNewsletter", null, { path: '/' });
+          }
+        });
+      }
+    };
+
+    e(document).ready(function() {
+      obj.init();
+    });
+
+  })(jQuery)
+</script>
+{% endif %}
+
+

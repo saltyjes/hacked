@@ -1,0 +1,397 @@
+{% unless section.settings.use_custom_html %}
+{%- assign lineitem = section.settings.lineitem | append: ',' | split: ',' -%}
+{%- assign linerow = '' -%}{%- assign count = 0 -%}{%- assign itemlimit = section.settings.item_grid | plus: 0 -%}
+{%- assign newlinecount = 0 -%}{%- capture current_itemlimit -%}{%- if lineitem[newlinecount] != empty? -%}{{ lineitem[newlinecount] | strip }}{%- else -%}{{ itemlimit }}{%- endif -%}{%- endcapture -%}{%- assign current_itemlimit = current_itemlimit | plus: 0 -%}{%- if current_itemlimit > 4 -%}{%- assign current_itemlimit = itemlimit -%}{%- endif -%}
+{%- for block in section.blocks limit: limit -%}{%- assign count = count | plus: 1 -%}
+{%- if count == current_itemlimit or forloop.last -%}{%- assign linerow = linerow | append: count -%}{%- assign count = 0 -%}{%- unless forloop.last -%}{%- assign linerow = linerow | append: "|" -%}{%- endunless -%}
+{%- assign newlinecount = newlinecount | plus: 1 -%}{%- capture current_itemlimit -%}{%- if lineitem[newlinecount] != empty? -%}{{ lineitem[newlinecount] | strip }}{%- else -%}{{ itemlimit }}{%- endif -%}{%- endcapture -%}{%- assign current_itemlimit = current_itemlimit | plus: 0 -%}{%- if current_itemlimit > 4 -%}{%- assign current_itemlimit = itemlimit -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}{%- assign linerow = linerow | split: '|' -%}{%- assign array = '' -%}{%- assign clearfix = '' -%}
+{%- for _linerow in linerow -%}{%- for i in (1.._linerow) -%}
+{%- if _linerow == '1' -%}{%- assign array = array | append: 'col-sm-12 col-md-12' | append: '|' -%}
+{%- elsif _linerow == '2' -%}{%- assign array = array | append: 'col-sm-6' | append: '|' -%}
+{%- elsif _linerow == '3' -%}{%- assign array = array | append: 'col-sm-6 col-md-6 col-lg-4' | append: '|' -%}
+{%- elsif _linerow == '4' -%}{%- assign array = array | append: 'col-sm-6 col-md-6 col-lg-3' | append: '|' -%}
+{%- endif -%}{%- unless forloop.last -%}{%- assign clearfix = clearfix | append: ',' -%}{%- endunless -%}
+{%- endfor -%}{%- assign clearfix = clearfix | append: '<div class="clearfix hidden-xs hidden-sm"></div>' | append: ',' -%}{%- endfor -%}{%- assign array = array | split: '|' -%}{%- assign clearfix = clearfix | split: ',' -%}
+
+{% unless template == 'list-collections' %}
+<section class="content resize-js-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="resize-section">
+  <div class="container collectionsall">
+{% else %}<div class="container collectionsall resize-js-{{ section.id }} {% if template != 'index' and section.settings.hide_breadcrumbs %} nomargintop{% endif %}" data-section-id="{{ section.id }}" data-section-type="resize-section">
+{% endunless %}
+  <div class="row">
+    <div class="clearfix"></div>
+	{% if section.blocks.size > 0 %}
+    {% for block in section.blocks limit: limit %}{%- assign collection = collections[block.settings.collection] -%}
+    <div class="{{ array[forloop.index0] }}">
+      <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="banner zoom-in">
+        <span class="figure{% if section.settings.hide_button and block.settings.show_item_button == 'yes' and section.settings.show_button %} buttononhover{% endif %}">
+          {% unless block.settings.usecollectionimage %}
+            {% if block.settings.image == blank %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<span class="editor-image" data-width="870" data-height="870" data-position="top"></span>
+              {% else %}<span class="editor-image" data-width="1760" data-height="870" data-position="top"></span>
+              {% endif %}
+            {% else %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<img src="{{ block.settings.image | img_url: '1024x1024' }}" alt="{{ block.settings.image.alt }}">
+              {% else %}<img src="{{ block.settings.image | img_url: '2048x2048' }}" alt="{{ block.settings.image.alt }}">
+              {% endif %}
+            {% endif %}
+          {% else %}
+            {% if collection.empty? or collection.image == blank %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<span class="editor-image" data-width="870" data-height="870" data-position="top"></span>
+              {% else %}<span class="editor-image" data-width="1760" data-height="870" data-position="top"></span>
+              {% endif %}
+            {% else %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<img src="{{ collection.image | img_url: '1024x1024' }}" alt="{{ collection.image.alt }}">
+              {% else %}<img src="{{ collection.image | img_url: '2048x2048' }}" alt="{{ collection.image.alt }}">
+              {% endif %}
+            {% endif %}
+          {% endunless %}
+          <span class="figcaption">
+            <span class="block-table">
+              <span class="block-table-cell">
+                {% if collection.empty? %}<span class="banner__title" style="font-size:16px; {% if block.settings.use_custom_color == 'custom_color' %}color:{{ block.settings.color_title }}{% endif %};">{{ 'homepage.onboarding.collection_title' | t }}</span>{% else %}<span class="banner__title size40{% if block.settings.show_item_button == 'no' or section.settings.show_button == false %} nomargin{% endif %}"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{% if block.settings.custom_name != ''%}{{ block.settings.custom_name }}{% else %}{{ collection.title }}{% endif %}</span>{% endif %}
+                {% if block.settings.show_item_button == 'yes' and section.settings.show_button %}<span class="btn btn--ys btn--xl">{{ section.settings.button_title }}</span>{% endif %}
+              </span>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+    {% if array[forloop.index0] contains 'col-sm-6' %}{% cycle '','<div class="clearfix visible-sm"></div>' %}{% endif %}
+    {{ clearfix[forloop.index0] }}
+    {% endfor %}
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+{% if template == 'list-collections' %}</div>{% else %}</div></section>{% endif %}
+
+<style>
+  {% if section.settings.change_buttons_colors %}
+  [data-section-id~="{{ section.id }}"] .btn--ys{
+  background: {{ section.settings.base_color_button }};
+  color: {{ section.settings.base_color_buttontext }};
+  }
+  [data-section-id~="{{ section.id }}"] .btn--ys:hover{
+  background: {{ section.settings.active_color_button }};
+  color: {{ section.settings.active_color_buttontext }};
+  }
+  {% endif %}
+  [data-section-id~="{{ section.id }}"] .banner .figcaption .banner__title {
+    color: {{ section.settings.base_color_title }};
+  }
+  {% if section.settings.use_custom_tint %}
+  [data-section-id~="{{ section.id }}"] .banner .figure {
+    background: {{ section.settings.tint_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .zoom-in .figure img {
+    opacity: {{ section.settings.base_opacity }};
+  }
+  [data-section-id~="{{ section.id }}"] .zoom-in .figure:hover img {
+    opacity: 0.9;
+  }
+  {% endif %}
+  {% if section.settings.use_custom_bgactivecolor %}
+  [data-section-id~="{{ section.id }}"] .banner .figure:hover {
+    background: {{ section.settings.bg_hover_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .zoom-in .figure:hover img {
+  	opacity: {{ section.settings.active_opacity }};
+  }
+  {% endif %}
+</style>
+{% else %}
+{% if template != 'index' and section.settings.hide_breadcrumbs %}<div style="margin-top: 30px;">{% endif %}
+{{ section.settings.custom_html }}
+{% if template != 'index' and section.settings.hide_breadcrumbs %}</div>{% endif %}
+{% endunless %}
+
+
+{% if template != 'index' and section.settings.hide_breadcrumbs %}<script>
+$(".breadcrumb").length && $(".breadcrumb").remove();
+</script>{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Collections All",
+    "settings": [
+        {
+          "type": "checkbox",
+          "id": "hide_breadcrumbs",
+          "label": "Hide Breadcrumbs",
+          "default": true,
+		  "info": "Will change after SAVE. Work only in pages."
+        },
+        {
+          "type": "header",
+          "content": "Settings"
+        },
+        {
+          "type": "radio",
+          "id": "item_grid",
+          "label": "Default Grid",
+          "options": [
+            { "value": "2", "label": "2" },
+            { "value": "3", "label": "3" },
+			{ "value": "4", "label": "4" }
+          ],
+          "default": "3"
+        },
+        {
+          "type": "textarea",
+          "id": "lineitem",
+          "label": "Unique value in row",
+		  "info": "Integers(max 4). Separate by comma: 1,2,3,4"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "base_color_title",
+          "label": "Base Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "change_buttons_colors",
+          "label": "Change Button Colors?",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "base_color_buttontext",
+          "label": "Base Text Button",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "base_color_button",
+          "label": "Base Background Button",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "active_color_buttontext",
+          "label": "Active Text Button",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "active_color_button",
+          "label": "Active Background Button",
+          "default": "#1fc0a0"
+        },
+        {
+          "type": "header",
+          "content": "Image Hover Color"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_custom_bgactivecolor",
+          "label": "Change Active Image Color?",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "active_opacity",
+          "label": "Color Opacity",
+          "options": [
+			{ "value": "1", "label": "100%" },
+            { "value": "0.9", "label": "90%" },
+            { "value": "0.8", "label": "80%" },
+            { "value": "0.7", "label": "70%" },
+            { "value": "0.6", "label": "60%" },
+            { "value": "0.5", "label": "50%" },
+            { "value": "0.4", "label": "40%" },
+            { "value": "0.3", "label": "30%" },
+            { "value": "0.2", "label": "20%" },
+            { "value": "0.1", "label": "10%" },
+            { "value": "0", "label": "0%" }
+          ],
+          "default": "0.2"
+        },
+        {
+          "type": "color",
+          "id": "bg_hover_color",
+          "label": "Active Image Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Custom Tint"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_custom_tint",
+          "label": "Use Tint?",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "base_opacity",
+          "label": "Tint Opacity",
+          "options": [
+            { "value": "0.5", "label": "50%" },
+            { "value": "0.6", "label": "40%" },
+            { "value": "0.7", "label": "30%" },
+            { "value": "0.8", "label": "20%" },
+            { "value": "0.9", "label": "10%" },
+            { "value": "1", "label": "0%" }
+          ],
+          "default": "0.7"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "Tint Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Buttons",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_title",
+          "label": "Button Name",
+          "default": "Shop now!"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_button",
+          "label": "Show Buttons Only in Hover",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Custom Html"
+        },
+        {
+          "type": "paragraph",
+          "content": "Edit content with help [\"Online Editor\"](http:\/\/ocean.tonytemplates.com\/shopify\/yourstore-help-v2\/collections.html). Create your custom information."
+        },
+        {
+          "type": "checkbox",
+          "id": "use_custom_html",
+          "label": "Use Custom Html?",
+          "default": false
+        },
+        {
+          "type": "textarea",
+          "id": "custom_html",
+          "label": "Custom Html"
+        }
+	],
+    "blocks": [
+      {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "type": "checkbox",
+            "id": "usecollectionimage",
+            "label": "Set Collection Image",
+            "default": false,
+			"info": "Set image in collection settings. Default \"Custom Image\""
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Custom Image"
+          },
+          {
+            "type": "text",
+            "id": "custom_name",
+            "label": "Custom Name",
+            "info": "If \"Custom Name\" is empty, title = default collection name"
+          },
+          {
+            "type": "select",
+            "id": "show_item_button",
+            "label": "Show Button?",
+            "default": "yes",
+            "options": [
+              {
+                "value": "no",
+                "label": "No"
+              },
+              {
+                "value": "yes",
+                "label": "Yes"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "select",
+            "id": "use_custom_color",
+            "label": "Select Color Type",
+            "default": "no",
+            "options": [
+              {
+                "value": "no",
+                "label": "Default Color"
+              },
+              {
+                "value": "custom_color",
+                "label": "Custom Color"
+              }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Text Color",
+            "default": "#ffffff"
+          }
+		]
+	  }
+	],
+    "presets": [
+      {
+        "name": "Collections All",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

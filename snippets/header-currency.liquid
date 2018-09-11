@@ -1,0 +1,17 @@
+{% capture _class %}{% unless disable_align_right %} text-right{% endunless %}{% endcapture %}
+<!-- currency start -->
+<div class="currency dropdown{{ _class }}">
+  {% if settings.title_currency != '' %}<div class="dropdown-label hidden-sm hidden-xs">{{ settings.title_currency }}</div>{% endif %}
+  <a class="dropdown-toggle" data-toggle="dropdown"><span class="current-currency">{{ shop.currency }}</span><span class="caret"></span></a>
+  {% assign currency = settings.supported_currencies | split: '|' %}
+  <ul class="dropdown-menu dropdown-menu--xs-full">
+    {% for value in currency %}
+      {% assign array = value | split: ',' %}
+      {% assign iso_4217 = array[0] | upcase | strip %}
+      {% assign name = array[1] | strip %}
+      <li data-currency="{{ iso_4217 }}" class="currency__item"><a style="cursor: pointer">{{ name }}</a></li>
+    {% endfor %}
+    <li class="dropdown-menu__close"><a href="#"><span class="icon icon-close"></span>close</a></li>
+  </ul>
+</div>
+<!-- currency end -->

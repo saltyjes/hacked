@@ -1,0 +1,120 @@
+{% include 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{%- include 'bold-ro' -%}
+{%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
+{% assign sale_on = false %}
+{% if product.compare_at_price_min > product.price_min %}
+  {% assign sale_on = true %}
+{% endif %}
+
+{% comment %} Main Image URL. {% endcomment %}
+{% assign main_url_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+{% assign PAGE_CONST = "product_custom_page" %}
+{% assign current_product = product %}
+
+{% assign images_color = '' %}{% for i in (1..10) %}{% assign key = 'filter_color' | append: forloop.index %}{% assign value = '__' | append: settings[key] | handle | downcase | strip | append: '__' | append: forloop.index %}{% assign images_color = images_color | append: value | append: ';' %}{% endfor %}
+
+<div itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">  
+
+  {% if settings.product_page_design == "default" %}
+  <section class="content offset-top-0">
+    <div class="container">
+      <div class="row product-info-outer">
+
+        {% include "product-switcher" %}
+
+        <div class="col-sm-12 col-md-12 col-lg-12 {% if settings.show_productpage_htmlblock %}col-xl-8{% endif %}">
+          <div class="row">
+            <div class="{% if settings.product_header_type == "default" %}col-sm-6 col-md-6 col-lg-6 col-xl-6{%else%}col-sm-4 col-md-4 col-lg-4 col-xl-4{% endif %} hidden-xs">
+              {% include "product-page-gallery" type: "default" %}
+            </div>
+            <div class="product-info {% if settings.product_header_type == "default" %}col-sm-6 col-md-6 col-lg-6 col-xl-6{%else%}col-sm-8 col-md-8 col-lg-8 col-xl-8{% endif %}">
+              {% include "product-page-description" %}
+            </div>
+          </div>
+          {% if settings.product_tabs_work != "design3full" %}<div class="row content{% if settings.product_tabs_work == "design3" %} tabdesign3{% endif %}">{% include "product-page-tabs" %}</div>{% endif %}
+        </div>
+
+        {% if settings.show_productpage_htmlblock %}<div class="custom-product-block col-xl-4 visible-xl">{{ settings.productpage_htmlblock }}</div>{% endif %}
+
+      </div>
+
+    </div>
+  </section>
+  {% endif %}
+
+  {% if settings.product_page_design == "design2" %}
+  {% include "product-page-gallery-2" %}
+  <section class="content">
+    <div class="container">
+      <div class="product-info product-info-big text-center product-info-outer">
+        {% include "product-switcher" %}
+        {% include "product-page-description-2" %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% unless product.variants[0].option1 contains "Default" %}
+  {% include "swatch-javascript" %}
+  {% else %}
+  <script>
+    if(jQuery('.product-info .product-info__sku .sku').length) {
+      if(jQuery('.product-info .product-info__sku .sku').text() == "") {
+        var $ava = jQuery(".product-info .product-info__availability");
+        if($ava.hasClass('product-info__availability')){ $ava.removeClass('product-info__availability') }
+        jQuery('.product-info .product-info__sku').remove();
+      }
+    }
+  </script>
+  {% endunless %}
+
+  {% if settings.product_tabs_work == "design3full" or settings.product_page_design == "design2" %}{% include "product-page-tabs2" %}{% endif %}
+
+
+  {% if settings.show_upsell_collection %}
+  {% assign name_collection = settings.product_upsell_collection %}
+  {% if name_collection == blank %}{% assign name_collection = "all" %}{% endif %}{% assign selected_collection = collections[name_collection] %}
+  {% assign _lenght = settings.product_upsell_collection_count | plus: 0 %}
+  <!-- related products -->
+  <section class="content">
+    <div class="container">
+      <!-- title -->
+      <div class="title-with-button">
+        <div class="{% if settings.upsell_collection_title_center %}carousel-products__button{% else %}carousel-products__center{% endif %} pull-right"> <span class="btn-prev"></span> <span class="btn-next"></span> </div>
+        <h2 class="{% if settings.upsell_collection_title_center %}text-center text-uppercase  title-under{% else %}text-left text-uppercase title-under{% endif %}">{{ settings.product_upsell_collection_title }}</h2>
+      </div>
+      <!-- /title --> 
+
+      <!-- carousel -->
+      <div class="carousel-products row" id="carouselRelated">
+        {% assign _product_id = product.id %}
+        {% for product in selected_collection.products limit: _lenght %}{%- comment %}<locksmith:c34d>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: selected_collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:c34d>{% endcomment -%}{% if _product_id != product.id %}<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 col-xl-one-six">
+        {% include "product-grid-item" collection: selected_collection %}
+        </div>{% endif %}{% endfor %}
+      </div>
+      <!-- /carousel --> 
+    </div>
+  </section>
+  <!-- /related products -->
+  {% endif %}
+
+</div>
+
+<script>
+  global_quantity = {};
+  {% for variant in product.variants %}
+  {% if variant.inventory_policy == "continue" %}
+  	global_quantity[{{ variant.id }}] = 'continue';
+  {% else %}
+  	global_quantity[{{ variant.id }}] = {{ variant.inventory_quantity }};
+  {% endif %}
+  {% endfor %}
+</script>
+
+{{product.metafields.shogun.below}}
+

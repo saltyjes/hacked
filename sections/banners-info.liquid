@@ -1,0 +1,100 @@
+<div class="content" data-section-id="{{ section.id }}" data-section-type="resize-section">
+  <div class="container">
+    {% if section.blocks.size > 0 %}
+    <div class="row text-info-banner-listing">
+      {% for block in section.blocks limit: section.blocks.size %}
+      <div class="col-md-6">
+        <div class="text-info-banner"{% unless section.settings.show_border %} style="border:none;"{% endunless %}>
+          <div class="img">
+            {% if block.settings.image != blank %}<img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}">
+            {% else %}<span class="editor-image" data-width="450" data-height="370" data-position="top"></span>
+          	{% endif %}
+          </div>
+          <div class="description">
+            <div class="block-title">{{ block.settings.text1 }}</div>
+            {{ block.settings.text2 }}
+            <a href="{{ block.settings.link }}" class="btn btn--ys btn-lg text-uppercase  btn--xl">{{ section.settings.button_name }}</a>
+          </div>
+        </div>
+      </div>
+      {% cycle "", "<div class='clearfix'></div>" %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Info Banners",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show Border",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_name",
+      "label": "Button Name",
+      "default": "Shop Now!"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+          "default": "Natural<br>Skin Care"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "Text 2",
+          "default": "<p>Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis<\/p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info Banners",
+      "category": "Banner",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

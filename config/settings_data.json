@@ -1,0 +1,1896 @@
+{
+  "current": {
+    "home_page_layout": "home-page_layout-1",
+    "enable_rtl": false,
+    "show_preloader": false,
+    "hide_title_underline": false,
+    "show_helper": true,
+    "helper_info": "https:\/\/cdn.shopify.com\/s\/files\/1\/2154\/7153\/files\/yourstore_v2.0.1.js?17249508198905744634",
+    "color_body": "#ffffff",
+    "color_base": "#333333",
+    "color_baselinetitle": "rgba(0,0,0,0)",
+    "color_text": "#333333",
+    "color_desc": "#777777",
+    "color_line": "#e5e5e5",
+    "color_header": "#ffffff",
+    "color_stucknavigation": "#ffffff",
+    "color_headerborder": "rgba(0,0,0,0)",
+    "color_stucknavigationtext": "#333333",
+    "color_stucknavigationtextactive": "#333333",
+    "color_stucknavigationtextactiveline": "#e43d30",
+    "color_submenuhoverbg": "#f5f5f5",
+    "color_submenuhovertext": "#333333",
+    "color_iconnewbg": "#333333",
+    "color_iconsale": "#e43d30",
+    "color_slogan": "#e43d30",
+    "color_customericon": "#333333",
+    "color_customericonhover": "#e43d30",
+    "color_carticon": "#e43d30",
+    "color_carticonhover": "#333333",
+    "color_cartcircle": "#e8e8e8",
+    "color_cartcircletext": "#333333",
+    "color_linksacountheader8": "#000000",
+    "color_linksacountheader8_hover": "#474747",
+    "color_linksheader8": "#777777",
+    "color_linksheader8_hover": "#000000",
+    "color_linksheader8drop": "#777777",
+    "color_linksheader8drop_hover": "#000000",
+    "color_searchheader8": "#000000",
+    "color_searchheader8_hover": "#474747",
+    "color_searchbg": "#ffffff",
+    "color_searchborder": "#ffffff",
+    "color_searchtext": "#777777",
+    "color_searchicon": "#333333",
+    "color_searchiconactive": "#333333",
+    "color_customerline": "#ffffff",
+    "color_infotextline": "#ffffff",
+    "color_customertextline": "#ffffff",
+    "color_mobiletext": "#ffffff",
+    "color_dropbg": "#ffffff",
+    "color_dropicons": "#e43d30",
+    "color_droptext": "#999999",
+    "color_dropbgactive": "#171717",
+    "color_droptextactive": "#ffffff",
+    "color_dropline": "#777777",
+    "color_dropclose": "#e43d30",
+    "color_smallcartbasecolor": "#e43d30",
+    "color_smallcartbg": "#333333",
+    "color_smallcartline": "#606060",
+    "color_smallcarttext": "#ffffff",
+    "color_smallcarttexthover": "#ffffff",
+    "color_footer": "#292929",
+    "color_footerbase": "#f2f2f2",
+    "color_titleline": "#e43d30",
+    "color_footertitle": "#9d9d9d",
+    "color_footertext": "#868686",
+    "color_footerlinks": "#d7d7d7",
+    "color_footerlinksactive": "#e43d30",
+    "color_footerlines": "#3c3c3c",
+    "color_footerbtnbg": "#e43d30",
+    "color_footerbtntext": "#ffffff",
+    "color_footerbtnbgactive": "#f5f5f5",
+    "color_footerbtntextactive": "#c5c5c5",
+    "color_socialbase": "#292929",
+    "color_socialtextbase": "#dedede",
+    "color_socialactive": "#e43d30",
+    "color_socialtextactive": "#ffffff",
+    "color_sliderbutton": "#f5f5f5",
+    "color_sliderbuttontext": "#333333",
+    "color_sliderbuttonhover": "#e43d30",
+    "color_sliderbuttontexthover": "#ffffff",
+    "color_btnbg": "#e43d30",
+    "color_btntext": "#ffffff",
+    "color_btnbghover": "#f5f5f5",
+    "color_btntexthover": "#e43d30",
+    "color_inversebtnbg": "#f5f5f5",
+    "color_inversebtntext": "#333333",
+    "color_inversebtnbghover": "#e43d30",
+    "color_inversebtntexthover": "#ffffff",
+    "color_filterbtnbg": "#f5f5f5",
+    "color_filterbtntext": "#333333",
+    "color_filterbtnbghover": "#333333",
+    "color_filterbtntexthover": "#ffffff",
+    "color_filterbtnbgclose": "#e43d30",
+    "color_filterbtntextclose": "#ffffff",
+    "color_product_item": "#ffffff",
+    "color_prtitle": "#e43d30",
+    "color_prtitlehover": "#333333",
+    "color_prlinks": "#333333",
+    "color_prlinkshover": "#e43d30",
+    "color_salebadgecolor": "#f2e63d",
+    "color_salebadgecolortext": "#ffffff",
+    "color_newbadgecolor": "#474747",
+    "color_newbadgecolortext": "#ffffff",
+    "color_baseprice": "#333333",
+    "color_price": "#333333",
+    "color_oldprice": "#fa6b6b",
+    "color_quickview": "255, 255, 255, 0.8",
+    "color_quickviewtext": "#e43d30",
+    "color_quickviewhover": "31, 192, 160, 0.8",
+    "color_quickviewtexthover": "#ffffff",
+    "color_counteritembg": "249, 99, 50, 0.85",
+    "color_counteritemtext": "#ffffff",
+    "color_infotext": "#ff0000",
+    "color_counterpagebg": "#67e0fa",
+    "color_counterpagetext": "#ffffff",
+    "color_startbase": "#d2d2d2",
+    "color_startactive": "#ffaf47",
+    "color_popupbg": "#ffffff",
+    "color_popuptitle": "#333333",
+    "color_popuptext": "#777777",
+    "color_popupclose": "#e43d30",
+    "color_popupclosehover": "#333333",
+    "color_producttabs": "#f5f5f5",
+    "color_badgebg": "#e43d30",
+    "color_badgetext": "#ffffff",
+    "color_badgebghover": "#ffffff",
+    "color_badgetexthover": "#e43d30",
+    "color_blogtitle": "#e43d30",
+    "color_blogtitlehover": "#333333",
+    "color_blogcomments": "#e43d30",
+    "color_blogcommentshover": "#333333",
+    "color_lay2categories": "#e43d30",
+    "color_lay2categoriestext": "#ffffff",
+    "color_lay2bg": "rgba(0,0,0,0)",
+    "color_lay2text": "#333333",
+    "color_lay2bgactive": "#f5f5f5",
+    "color_lay2textactive": "#e43d30",
+    "colorize_bages": false,
+    "color_lay2lines": "#e5e5e5",
+    "enable_custom_fonts": false,
+    "font_family_1": "default_font",
+    "font_name_1": "",
+    "font_family_2": "default_font",
+    "font_name_2": "",
+    "show_menu_language": false,
+    "title_language": "Language:",
+    "default_language": "English",
+    "linklist_language": "",
+    "header_logo_size": "retina",
+    "header_retina_height": "100",
+    "header_design": "header_design4",
+    "topoffset": false,
+    "use_favicon": true,
+    "transparent_header": true,
+    "headertransparentcolor": "#ffffff",
+    "headertransparentbgcolor": "#ffffff",
+    "header_slogan": "",
+    "show_line": false,
+    "showfixedbar": false,
+    "transparent_footer": false,
+    "footertransparentcolor": "#ffffff",
+    "footer_design": "footer_design3",
+    "tabBlockAll": true,
+    "tabBlock1": true,
+    "blockName1": "QUICK LINKS",
+    "footer-links-1": "",
+    "tabBlock2": true,
+    "blockName2": "INFORMATION",
+    "footer-links-2": "",
+    "tabBlock3": true,
+    "blockName3": "ADVOCATE RESOURCES",
+    "footer-links-3": "",
+    "show_footer_soc_but": true,
+    "footer_soc_but": "<li><a class=\"icon fa fa-facebook\" href=\"https:\/\/www.facebook.com\/PFCsnacks\/\"><\/a><\/li>\n<li><a class=\"icon fa fa-twitter\" href=\"https:\/\/twitter.com\/Hackedsnacks\"><\/a><\/li>\n<li><a class=\"icon fa fa-instagram\" href=\"https:\/\/www.instagram.com\/hackedsnacks\/\"><\/a><\/li>\n<li><a class=\"icon fa fa-youtube-square\" href=\"https:\/\/www.youtube.com\/channel\/UCimuUxjX8PtfNa6ejKFe-ZQ\/featured\"><\/a><\/li>",
+    "showfooternewsletter": false,
+    "footer_address": "&copy;2018 HACKED SNACKS LLC. ALL RIGHTS RESERVED",
+    "contentBlockAll": true,
+    "showfooterlogo": true,
+    "showfootercontenttext": true,
+    "footercontenttexttitle": "ABOUT US",
+    "footercontenttext": "<p> No more need to look for other ecommerce themes. We provide huge number of different layouts. Yourstore comes packed with free and useful features developed to make your website creation easier. Innovative clean design, advanced functionality, UI made for humans, extensive documenta- tion and support i continue this list infinitely... <\/p>",
+    "contentBlockAll_design2": true,
+    "showfooterlogo_design2": true,
+    "showfootercontenttext_design2": true,
+    "footercontenttexttitle_design2": "ABOUT US",
+    "footercontenttext_design2": "<p> No more need to look for other ecommerce themes. We provide huge number of different layouts. Yourstore comes packed with free and useful features developed to make your website creation easier. Innovative clean design, advanced functionality, UI made for humans, extensive documenta- tion and support i continue this list infinitely... <\/p>\r\n\t\t\t\t\t\t\t\t\t<!-- address -->\r\n\t\t\t\t\t\t\t\t\t<address class=\"box-address\">\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-home\"><\/span> 7563 St. Vincent Place, Glasgow <br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-call\"><\/span> <b class=\"color-dark\">+777 2345 7885 <\/b><br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-access_time\"><\/span> 7 Days a week from  10:00 am to 6:00 pm<br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-markunread\"><\/span> <a class=\"color\" href=\"mailto:info@mydomain.com\">info@mydomain.com<\/a>\r\n\t\t\t\t\t\t\t\t\t<\/address>\r\n\t\t\t\t\t\t\t\t\t<!-- \/address -->",
+    "contentBlockAll_design3": true,
+    "showfooterlogo_design3": true,
+    "showfootercontenttext_design3": true,
+    "footercontenttexttitle_design3": "Contact",
+    "footercontenttext_design3": "<address class=\"box-address\">\n<span class=\"icon icon-home\"><\/span> 13552 S 110 W Suite #101, Draper, UT 84020 <br>\n<span class=\"icon icon-call\"><\/span> <b class=\"color-light\">801-948-9500 <\/b><br>\n<span class=\"icon icon-access_time\"><\/span> 5 Days a week from 11:00 am to 7:00 pm (MST)<br>\n<span class=\"icon icon-markunread\"><\/span> <a class=\"color link-underline\" href=\"mailto:support@hackedsnacks.com\">support@hackedsnacks.com<\/a>\n<\/address>",
+    "show_top_line": true,
+    "contentBlockAll_design4": true,
+    "footercontenttext_design4": "<div class=\"col-sm-6 col-md-3\">\r\n\t<!--  -->\r\n\t<div class=\"mobile-collapse\">\r\n\t\t<h4 class=\"text-left text-uppercase  title-under  mobile-collapse__title\">Shipping AND Delivery<\/h4>\r\n\t\t<div class=\"v-links-list mobile-collapse__content\">\r\n\t\t\t<p>\r\n\t\t\t\tWe're dedicated to delivering your purchase as quickly and affordably as possible. We offer a range of delivery and pickup options, so you can choose the shipping method that best meets your needs.\r\n\t\t\t<\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!-- \/ -->\r\n<\/div>\r\n<div class=\"col-sm-6 col-md-3\">\r\n\t<!--  -->\r\n\t<div class=\"mobile-collapse\">\r\n\t\t<h4 class=\"text-left text-uppercase  title-under  mobile-collapse__title\">Payment Methods<\/h4>\r\n\t\t<div class=\"v-links-list mobile-collapse__content\">\r\n\t\t\t<p>\r\n\t\t\t\tEvery country and shopper has their prefered method to pay online. Offering your buyers safe and convenient payment choices can help your sale go smoothly, earn you positive Feedback, and bring them back for more.\r\n\t\t\t<\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!-- \/ -->\r\n<\/div>\r\n<div class=\"divider divider--lg visible-sm\"><\/div>\r\n<div class=\"col-sm-6 col-md-3\">\r\n\t<!-- -->\r\n\t<div class=\"mobile-collapse\">\r\n\t\t<h4 class=\"text-left text-uppercase  title-under  mobile-collapse__title text-uppercase\">Contact<\/h4>\r\n\t\t<div class=\" mobile-collapse__content\">\t\t\t\t\t\t\t\r\n\t\t\t<!-- address -->\r\n\t\t\t<address class=\"box-address\">\r\n\t\t\t\t<span class=\"icon icon-home\"><\/span> 7563 St. Vincent Place, Glasgow <br>\r\n\t\t\t\t<span class=\"icon icon-call\"><\/span> <b>+777 2345 7885 <\/b><br>\r\n\t\t\t\t<span class=\"icon icon-access_time\"><\/span> 7 Days a week from  10:00 am to 6:00 pm<br>\r\n\t\t\t\t<span class=\"icon icon-markunread\"><\/span> <a class=\"color link-underline\" href=\"mailto:info@mydomain.com\">info@mydomain.com<\/a>\r\n\t\t\t<\/address>\r\n\t\t\t<!-- \/address -->\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!-- \/ -->\r\n<\/div>\r\n<div class=\"col-sm-6 col-md-3\">\r\n\t<!--  -->\r\n\t<div class=\"mobile-collapse\">\r\n\t\t<h4 class=\"text-left text-uppercase  title-under  mobile-collapse__title\">Facebook like box<\/h4>\r\n\t\t<div class=\"v-links-list mobile-collapse__content\">\r\n\t\t\t<!--======= facebook =======-->\r\n\t\t\t\r\n\t\t\t\t<div class=\"display-inline-block\"><iframe src=\"\/\/facebook.com\/plugins\/likebox.php?id=134612429900944&width=270px&connections=9&stream=false&header=false&height=236\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:270px; height:236px;\" allowtransparency=\"true\"><\/iframe><\/div>\r\n\t\t\t\r\n\t\t\t<!--======= \/facebook =======-->\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!-- \/ -->\r\n<\/div>",
+    "shownewslettertext_design4": true,
+    "newslettertitle_design4": "Contact",
+    "newslettertext_design4": "<!-- address -->\r\n<address class=\"box-address\">\r\n\t<span class=\"icon icon-home\"><\/span> 7563 St. Vincent Place, Glasgow <br>\r\n\t<span class=\"icon icon-call\"><\/span> <b>+777 2345 7885 <\/b><br>\r\n\t<span class=\"icon icon-access_time\"><\/span> 7 Days a week from  10:00 am to 6:00 pm<br>\r\n\t<span class=\"icon icon-markunread\"><\/span> <a class=\"color link-underline\" href=\"mailto:info@mydomain.com\">info@mydomain.com<\/a>\r\n<\/address>\r\n<!-- \/address -->",
+    "contentBlockAll_design5": true,
+    "footercontenttext_design5": "<h4 class=\"mobile-collapse__title text-left text-uppercase visible-xs\">telephone<\/h4>\r\n<div class=\"mobile-collapse__content\">\r\n\t<address class=\"font-medium\">\r\n\t\t<span class=\"icon icon-call\"><\/span> +777 2345 7885\t\t\t\t\t\t\t\t\t\t\r\n\t<\/address>\r\n\t<span class=\"color-gray\">7 Days a week from  10:00 am to 6:00 pm<\/span>\r\n<\/div>",
+    "show_top_line_d6": false,
+    "show_fotter_content1_design6": false,
+    "footer_text1_design6": "Html Code",
+    "footer_text_design6": "<!-- address -->\r\n<address class=\"box-address\">\r\n<span class=\"icon icon-home\"><\/span> 7563 St. Vincent Place, Glasgow <br>\r\n<span class=\"icon icon-call\"><\/span> <b class=\"color-dark\">+777 2345 7885 <\/b><br>\r\n<span class=\"icon icon-access_time\"><\/span> 7 Days a week from  10:00 am to 6:00 pm<br>\r\n<span class=\"icon icon-markunread\"><\/span> <a class=\"color\" href=\"mailto:info@mydomain.com\">info@mydomain.com<\/a>\r\n<\/address>\r\n<!-- \/address -->",
+    "main_menu_selected": "main-menu",
+    "menu_icon_hot": "Men’s",
+    "menu_icon_new": "WOMEN’s",
+    "submenu_type3": "",
+    "submenu_type_and_list_1": "",
+    "submenu_type_and_list_grid_1": "3",
+    "submenu_images_1": "",
+    "submenu_customhtml_1": "<div class=\"row\">\r\n<div class=\"col-sm-6\"> <a href=\"#\" class=\"discolor-hover\"><img class=\"img-responsive\" src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/banner-megamenu-01.jpg?16466298140297529436\" alt=\"\"><\/a>\r\n<\/div>\r\n<div class=\"col-sm-6\"> <a href=\"#\" class=\"discolor-hover\"><img class=\"img-responsive\" src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/banner-megamenu-02.jpg?16466298140297529436\" alt=\"\"><\/a>\r\n<\/div>\r\n<\/div>",
+    "submenu_showcollection_1": true,
+    "submenu_collectiontitle_1": "FEATURED",
+    "submenu_collectiontitlelink_1": "#",
+    "submenu_collection_1": "",
+    "submenu_collectionlength_1": "4",
+    "submenu_type_and_list_2": "",
+    "submenu_type_and_list_grid_2": "3",
+    "submenu_images_2": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/mens-category-1.jpg?7991156427119609511,\r\n\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/mens-category-2.jpg?7991156427119609511,\r\n\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/mens-category-3.jpg?7991156427119609511",
+    "submenu_customhtml_2": "<div class=\"hor-line\"><\/div>\r\n<ul class=\"list-inline brands-list\">\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-01.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-03.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-02.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-05.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-04.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-06.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-07.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-08.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-09.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<li><a href=\"#\"><img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/brand-10.png?7991156427119609511\" alt=\"\"><\/a><\/li>\r\n<\/ul>",
+    "submenu_showcollection_2": true,
+    "submenu_collectiontitle_2": "FEATURED",
+    "submenu_collectiontitlelink_2": "#",
+    "submenu_collection_2": "",
+    "submenu_collectionlength_2": "4",
+    "submenu_type_and_list_3": "",
+    "submenu_type_and_list_grid_3": "3",
+    "submenu_images_3": "",
+    "submenu_customhtml_3": "",
+    "submenu_showcollection_3": true,
+    "submenu_collectiontitle_3": "FEATURED",
+    "submenu_collectiontitlelink_3": "#",
+    "submenu_collection_3": "",
+    "submenu_collectionlength_3": "4",
+    "submenu_type_and_list_4": "",
+    "submenu_type_and_list_grid_4": "3",
+    "submenu_images_4": "",
+    "submenu_customhtml_4": "",
+    "submenu_showcollection_4": true,
+    "submenu_collectiontitle_4": "FEATURED",
+    "submenu_collectiontitlelink_4": "#",
+    "submenu_collection_4": "",
+    "submenu_collectionlength_4": "4",
+    "submenu_type_and_list_5": "",
+    "submenu_type_and_list_grid_5": "3",
+    "submenu_images_5": "",
+    "submenu_customhtml_5": "",
+    "submenu_showcollection_5": true,
+    "submenu_collectiontitle_5": "FEATURED",
+    "submenu_collectiontitlelink_5": "#",
+    "submenu_collection_5": "",
+    "submenu_collectionlength_5": "4",
+    "use_scale_product_image": false,
+    "product_scale_height": "250",
+    "product_item_showqv": false,
+    "product_item_show_cart": false,
+    "product_item_show_rating": false,
+    "show_product_options": false,
+    "show_product_switcer": false,
+    "product_page_design": "default",
+    "productpage_zoomenable": false,
+    "product_header_type": "default",
+    "show_product_rating": true,
+    "show_product_quantity": false,
+    "show_product_sku": false,
+    "show_product_vendor": true,
+    "variant_combobox": true,
+    "show_product_alarm_message": false,
+    "count_start_show": "10",
+    "product_tabs_work": "default",
+    "show_product_tab_1": true,
+    "product_tab_title_1": "About",
+    "show_product_tab_2": false,
+    "product_tab_title_2": "Custom Tab",
+    "product_tab_desc_2": "<h5><strong class=\"color text-uppercase\">Lorem ipsum dolor sit amet conse ctetur adipisicing elit<\/strong><\/h5>\r\n\t\t\t\t\t\t\t\t<div class=\"divider divider--xs\"><\/div>\r\n\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  orem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>\r\n\t\t\t\t\t\t\t\t<ul class=\"marker-list-circle\">\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Lorem ipsum dolor sit amet<\/span><\/li>\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Conse ctetur adipisicing<\/span><\/li>\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Elit sed do eiusmod tempor<\/span><\/li>\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Incididunt ut laborev<\/span><\/li>\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Et dolore magna aliqua<\/span><\/li>\r\n\t\t\t\t\t\t\t\t\t<li><span class=\"text-uppercase\">Ut enim ad min<\/span><\/li>\r\n\t\t\t\t\t\t\t\t<\/ul>",
+    "show_product_tab_3": false,
+    "product_tab_title_3": "SIZING GUIDE",
+    "product_tab_desc_3": "<h5><strong class=\"color text-uppercase\">Clothing - Single Size Conversion (Continued)<\/strong><\/h5>\r\n\t\t\t\t\t\t\t\t<div class=\"divider divider--xs\"><\/div>\r\n\t\t\t\t\t\t\t\t<div class=\"table-responsive\">\r\n\t\t\t\t\t\t\t\t\t<table class=\"table table-params\">\r\n\t\t\t\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-right\"><span class=\"color\">UK<\/span><\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"sizes-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>18<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>20<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>22<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>24<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>26<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<\/ul>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t<\/tr>\r\n\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-right\"><span class=\"color\">European<\/span><\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"sizes-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>46<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>48<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>50<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>52<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>54<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<\/ul>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t<\/tr>\r\n\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-right\"><span class=\"color\">US<\/span><\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"sizes-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>14<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>16<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>18<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>20<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>22<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<\/ul>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t<\/tr>\r\n\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-right\"><span class=\"color\">Australia<\/span><\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"sizes-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>8<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>10<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>12<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>14<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>16<\/li>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<\/ul>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<\/td>\r\n\t\t\t\t\t\t\t\t\t\t\t<\/tr>\r\n\t\t\t\t\t\t\t\t\t\t<\/tbody>\r\n\t\t\t\t\t\t\t\t\t<\/table>\r\n\t\t\t\t\t\t\t\t<\/div>",
+    "show_product_tab_4": false,
+    "product_tab_title_4": "TAGS",
+    "show_product_tab_5": false,
+    "product_tab_title_5": "REVIEWS",
+    "show_upsell_collection": false,
+    "upsell_collection_title_center": true,
+    "product_upsell_collection_title": "You Might be interested in these",
+    "product_upsell_collection": "frontpage",
+    "product_upsell_collection_count": "4",
+    "show_productpage_htmlblock": false,
+    "productpage_htmlblock": "<div class=\"delivery-banner\" onclick=\"window.location.href = '#'\">\r\n<div class=\"delivery-banner__icon\"><span class=\"icon-redeem\"><\/span><\/div>\r\n<div class=\"delivery-banner__text\">\r\n<h3>SPECIAL OFFER 1+1=3<\/h3>\r\n<h5>Get a gift!<\/h5>\r\n<p>Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis.<\/p>\r\n<\/div>\r\n<\/div>\r\n<div class=\"delivery-banner\" onclick=\"window.location.href = '#'\">\r\n<div class=\"delivery-banner__icon\"><span class=\"icon-card_membership\"><\/span><\/div>\r\n<div class=\"delivery-banner__text\">\r\n<h3>FREE REWARD CARD<\/h3>\r\n<h5>Worth 10$, 50$, 100$<\/h5>\r\n<p>Eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. <\/p>\r\n<\/div>\r\n<\/div>\r\n<div class=\"delivery-banner\" onclick=\"window.location.href = '#'\">\r\n<div class=\"delivery-banner__icon\"><span class=\"icon-local_shipping\"><\/span><\/div>\r\n<div class=\"delivery-banner__text\">\r\n<h3>Free Shipping<\/h3>\r\n<h5>on orders over $100<\/h5>\r\n<p>Eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. <\/p>\r\n<\/div>\r\n<\/div>\r\n<div class=\"delivery-banner\" onclick=\"window.location.href = '#'\">\r\n<div class=\"delivery-banner__icon\"><span class=\"icon-replay_5\"><\/span><\/div>\r\n<div class=\"delivery-banner__text\">\r\n<h3>Order Return<\/h3>\r\n<h5>Returns within 5 days<\/h5>\r\n<p>Eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. <\/p>\r\n<\/div>\r\n<\/div>",
+    "show_trust_badge": false,
+    "quickview_sku": false,
+    "quickview_availability": false,
+    "quickview_showrating": true,
+    "blog_tags": "",
+    "blog_post_count": "3",
+    "blog_grid": "blog2",
+    "blog_show_author": true,
+    "blog_show_date": true,
+    "show_comments": true,
+    "truncate": "2",
+    "truncate_last_symbols": "...",
+    "show_blog_sidebar": true,
+    "show_blog_sidebar_article": true,
+    "sidebar_show_blogs": true,
+    "sidebar_blogs_title": "Blogs",
+    "sidebar_blogs": "blog, news, sport",
+    "sidebar_show_tags": true,
+    "sidebar_tags_title": "Tags",
+    "sidebar_show_recent_blog": true,
+    "sidebar_recent_blog_title": "RECENT POSTS",
+    "sidebar_recent_blog_name": "",
+    "sidebar_recent_blog_count": "3",
+    "blog_show_author_recent": true,
+    "blog_show_date_recent": true,
+    "show_comments_recent": true,
+    "truncate_recent": "4",
+    "truncate_last_symbols_recent": "...",
+    "blog_sidebar_customhtml1_show": true,
+    "blog_sidebar_customhtml1_title": "ARCHIVES",
+    "blog_sidebar_customhtml1_content": "<ul class=\"categories-list\">\n    <li><a href=\"#\">July 2018<\/a><\/li>\n    <li><a href=\"#\">June 2018<\/a><\/li>\n    <li><a href=\"#\">May 2018<\/a><\/li>\n    <li><a href=\"#\">April 2018<\/a><\/li>\t\t\t              \n  <\/ul>",
+    "blog_sidebar_customhtml2_show": false,
+    "blog_sidebar_customhtml2_title": "META",
+    "blog_sidebar_customhtml2_content": "<ul class=\"categories-list\">\r\n<li><a href=\"#\">Entries RSS<\/a><\/li>\r\n<li><a href=\"#\">WordPress.org<\/a><\/li>\r\n<li><a href=\"#\">Magento<\/a><\/li>\r\n<li><a href=\"#\">Shopify<\/a><\/li>\r\n<\/ul>",
+    "pagination_limit": "6",
+    "products_in_column": "three",
+    "enable_infinite_scroll": false,
+    "show_collection_description": true,
+    "enable_scroll_sidebar": true,
+    "listing_page_design": "disable-sidebar",
+    "sidebar_opened_tabs": "1,2,3,4,5,6,7,8",
+    "show_shopby_type_filter": true,
+    "shopby_type_filter": "Dresses, Coats, Jackets, Trousers, Jeans,Jewellery,Scarves & snoods, Sunglasses, Caps & Hats, Grooming, Blazers, umpers & Cardigans, Sweat Pants, Leather Jackets, Loungewear",
+    "show_shopby_color_filter": true,
+    "shopby_color_filter_border": "White",
+    "shopby_color_filter": "Yellow,\r\nOrange,\r\nViolet,\r\nPink,\r\nGrey,\r\nBlack",
+    "show_shopby_size_filter": true,
+    "shopby_size_filter": "34, 36, 38, 40,42, 44",
+    "show_shopby_tags_filter": true,
+    "shopby_tags_filter": "vintage,style,streetstyle,prom dresses,model,colorful,club dresses,clothes,bikini",
+    "show_shopby_price_filter": true,
+    "shopby_price_filter": "$10-$100, $100-$200, $200-$500",
+    "show_shopby_vendor_filter": false,
+    "shopby_vendor_filter": "Levi's, GAP, ZARA, Polo, ecco\r\nH&M, Deisel, DOCKERS, Lacoste, Guess",
+    "show_sidebar_collection": false,
+    "sidebar_collection": "variety-packs",
+    "show_sidebar_customhtml": true,
+    "sidebar_customhtml": "<p class=\"light-font\">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.<\/p>\r\n<ul class=\"marker-list\">\r\n<li>Lorem ipsum dolor sit amet<\/li>\r\n<li>Conse ctetur adipisicing<\/li>\r\n<li>Elit sed do eiusmod tempor<\/li>\r\n<\/ul>\r\n<p class=\"light-font\">Amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labor.<\/p>",
+    "filter_color1": "",
+    "filter_color2": "",
+    "filter_color3": "",
+    "filter_color4": "",
+    "filter_color5": "",
+    "filter_color6": "",
+    "filter_color7": "",
+    "filter_color8": "",
+    "filter_color9": "",
+    "filter_color10": "",
+    "mailchimp_form_action": "https:\/\/hackedsnacks.us16.list-manage.com\/subscribe\/post?u=03d40adebd6427dc1d5099409&amp;id=24cfeea99f",
+    "popup_newsletter_show": false,
+    "popup_newsletter_showicon": true,
+    "popup_newsletter_showimage": true,
+    "popup_newsletter_hidecolor": false,
+    "popup_newsletter_title": "Hacked Snacks Likes you!",
+    "popup_newsletter_description": "<p>Thanks<\/p>\n<p class=\"color font24 custom-font font-lighter\">\nHacked Snacks\n<\/p>",
+    "popup_newsletter_message": "Your E-mail...",
+    "popup_newsletter_button": "subscribe",
+    "popup_newsletter_question": "DON'T SHOW THIS POPUP AGAIN",
+    "popup_newsletter_delay_first": "4000",
+    "popup_newsletter_delay": "15",
+    "cart_design": "design2",
+    "shipping_calculator": false,
+    "shipping_calculator_heading": "ESTIMATE SHIPPING AND TAX",
+    "shipping_calculator_heading_desc": "Enter your destination to get a shipping estimate.",
+    "shipping_calculator_default_country": "United States",
+    "shipping_calculator_submit_button_label": "Calculate shipping",
+    "lookbookbreadcrumbs": false,
+    "lookbookshowblock1": true,
+    "lookbook_block1_pr1": "",
+    "lookbook_block1_coord_pr1": "top: 2.4%; left: 3.7%; width:53.7%;",
+    "lookbook_block1_tool_pr1": "right",
+    "lookbook_block1_pr2": "",
+    "lookbook_block1_coord_pr2": "top: 52.2%; left: 3.7%; width:28%;",
+    "lookbook_block1_tool_pr2": "right",
+    "lookbook_block1_pr3": "",
+    "lookbook_block1_coord_pr3": "top: 68.3%; left: 3.7%; width:28%;",
+    "lookbook_block1_tool_pr3": "right",
+    "lookbook_block1_pr4": "",
+    "lookbook_block1_coord_pr4": "top: 83.3%; left: 3.7%; width:48%;",
+    "lookbook_block1_tool_pr4": "right",
+    "lookbook_block1_pr5": "",
+    "lookbook_block1_coord_pr5": "top: 3.3%; right: 4.3%; width:37.5%;",
+    "lookbook_block1_tool_pr5": "left",
+    "lookbook_block1_pr6": "",
+    "lookbook_block1_coord_pr6": "top: 22.3%; right: 4.3%; width:37.5%;",
+    "lookbook_block1_tool_pr6": "left",
+    "lookbook_block1_pr7": "",
+    "lookbook_block1_coord_pr7": "top: 32.2%; right: 4.3%; width:37.5%;",
+    "lookbook_block1_tool_pr7": "left",
+    "lookbook_block1_pr8": "",
+    "lookbook_block1_coord_pr8": "top: 36.6%; left: 25.2%; width:55%;",
+    "lookbook_block1_tool_pr8": "center",
+    "lookbookshowblock2": true,
+    "lookbookblock2": "",
+    "lookbookblock2length": "7",
+    "lookbookshowblock3": true,
+    "lookbook_block3_pr1": "",
+    "lookbook_block3_coord_pr1": "top: 17.8%; left: 63.5%;",
+    "lookbook_block3_tool_pr1": "right",
+    "lookbook_block3_pr2": "",
+    "lookbook_block3_coord_pr2": "top: 34%; left: 37%;",
+    "lookbook_block3_tool_pr2": "left",
+    "lookbook_block3_pr3": "",
+    "lookbook_block3_coord_pr3": "top:47.8%; left: 63.5%;",
+    "lookbook_block3_tool_pr3": "right",
+    "lookbook_block3_pr4": "",
+    "lookbook_block3_coord_pr4": "top: 86%; left: 32%;",
+    "lookbook_block3_tool_pr4": "left",
+    "lookbook_block3_pr5": "",
+    "lookbook_block3_coord_pr5": "",
+    "lookbook_block3_tool_pr5": "left",
+    "show_multiple_currencies": false,
+    "title_currency": "Currency:",
+    "supported_currencies": "USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound Sterling | INR, INR - India Rupee",
+    "use_favicon_pass": true,
+    "title_pass": "WE'RE COMING SOON",
+    "text_pass": "We are working very hard on the new version of our site. <br>It will bring a lot of joy to your life. Stay tuned!",
+    "social_pass": "<div class=\"divider divider--md\"><\/div>\n          <div class=\"social-links social-links-no-bg  social-links--large text-center\">\n            <ul>\n              <li><a class=\"icon fa fa-facebook\" href=\"https:\/\/www.facebook.com\/PFCsnacks\/\"><\/a><\/li>\n              <li><a class=\"icon fa fa-twitter\" href=\"https:\/\/twitter.com\/Hackedsnacks\"><\/a><\/li>\n              <li><a class=\"“icon\" fa=\"\" fa-instagram=\"\" href=\"https:\/\/www.instagram.com\/hackedsnacks\/\"><\/a><\/li>\n              <li><a class=\"icon fa fa-youtube-square\" href=\"https:\/\/www.youtube.com\/channel\/UCimuUxjX8PtfNa6ejKFe-ZQ\/featured\"><\/a><\/li>\n            <\/ul>\n          <\/div>",
+    "countdown_pass": "",
+    "title_nws_pass": "SUBSCRIBE TO OUR NEWSLETTER",
+    "text_nws_pass": "Sign up now to our newsletter and you'll be one of the first to know when the site is ready:",
+    "title_pass_pass": "ENTER STORE USING PASSWORD:",
+    "button_pass": "ENTER",
+    "footer_address_pass": "<b>HackedSnacks<\/b> © 2018. All Rights Reserved.",
+    "recurring-orders-loading": "Loading subscription info...",
+    "recurring-orders-inherit-classes": false,
+    "recurring-orders-additional-button-classes": "",
+    "bab-default-product": "love-it-pack-customize-36-snacks",
+    "checkout_header_image": "",
+    "checkout_use_storefront_logo": true,
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#e43d30",
+    "checkout_button_color": "#e43d30",
+    "checkout_error_color": "#a43930",
+    "color_lay2testimonials": "#1fc0a0",
+    "color_lay2testimonialsquote": "#ffffff",
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "lay2bgactive": "#e51e1e",
+    "showfooterlogo_design4": true,
+    "showfootercontenttext_design4": true,
+    "footercontenttexttitle_design4": "Contact",
+    "shownewslettertext_design5": true,
+    "newslettertitle_design5": "Contact",
+    "newslettertext_design5": "<address class=\"box-address\">\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-home\"><\/span> 7563 St. Vincent Place, Glasgow <br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-call\"><\/span> <b class=\"color-dark\">+777 2345 7885 <\/b><br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-access_time\"><\/span> 7 Days a week from  10:00 am to 6:00 pm<br>\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon icon-markunread\"><\/span> <a class=\"color link-underline\" href=\"mailto:info@mydomain.com\">info@mydomain.com<\/a>\r\n\t\t\t\t\t\t\t\t\t<\/address>",
+    "contentBlockAll_design6": true,
+    "footercontenttext_design6": "<h4 class=\"mobile-collapse__title text-left text-uppercase visible-xs\">telephone<\/h4>\r\n<div class=\"mobile-collapse__content\">\r\n<address class=\"font-medium\">\r\n<span class=\"icon icon-call\"><\/span> +777 2345 7885\t\t\t\t\t\t\t\t\t\t\r\n<\/address>\r\n<time class=\"color-gray\">7 Days a week from  10:00 am to 6:00 pm<\/time>\r\n<\/div>",
+    "layout6_productsliderblock": true,
+    "show_layout3_slider0": true,
+    "show_collection_sidebar_menu": true,
+    "sections": {
+      "layout-2-brands": {
+        "type": "layout-2-brands",
+        "blocks": {
+          "1478034348386": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478034350144": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478034351905": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478034348386",
+          "1478034350144",
+          "1478034351905"
+        ],
+        "settings": {
+          "show_block": true,
+          "show_line": false,
+          "step": "2",
+          "module_autoplay": false,
+          "delay_time": "7000"
+        }
+      },
+      "layout-2-sliders-group": {
+        "type": "layout-2-sliders-group",
+        "settings": {
+          "show_block": true,
+          "show_line": true,
+          "title1": "Title",
+          "collection1": "",
+          "limit_1": "8",
+          "step_1": "1",
+          "module_autoplay_1": false,
+          "delay_time_1": "7000",
+          "show_slider2": true,
+          "title2": "Title",
+          "collection2": "",
+          "limit_2": "8",
+          "step_2": "1",
+          "module_autoplay_2": false,
+          "delay_time_2": "7000"
+        }
+      },
+      "layout-2-collections-list": {
+        "type": "layout-2-collections-list",
+        "blocks": {
+          "1478039803755": {
+            "type": "featured_collection",
+            "settings": {
+              "image": "",
+              "collection": "",
+              "use_custom_color": "no",
+              "color_title": "#ffffff"
+            }
+          },
+          "1478039806013": {
+            "type": "featured_collection",
+            "settings": {
+              "image": "",
+              "collection": "",
+              "use_custom_color": "no",
+              "color_title": "#ffffff"
+            }
+          },
+          "1478039807795": {
+            "type": "featured_collection",
+            "settings": {
+              "image": "",
+              "collection": "",
+              "use_custom_color": "no",
+              "color_title": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1478039803755",
+          "1478039806013",
+          "1478039807795"
+        ],
+        "settings": {
+          "show_block": true,
+          "banner_design": "design2",
+          "step": "1",
+          "module_autoplay": false,
+          "delay_time": "7000",
+          "show_border": false,
+          "border_color": "#ffffff",
+          "position": "center",
+          "show_arrows": true,
+          "bg_base_color": "121, 121, 121, 0.85",
+          "bg_active_color": "31, 192, 160, 0.85"
+        }
+      },
+      "layout-2-slider-products": {
+        "type": "layout-2-slider-products",
+        "settings": {
+          "show_block": true,
+          "show_line": false,
+          "title1": "Title",
+          "collection1": "",
+          "limit_1": "8",
+          "step_1": "1",
+          "module_autoplay_1": false,
+          "delay_time_1": "7000",
+          "show_slider2": false,
+          "title2": "Title",
+          "collection2": "",
+          "limit_2": "8",
+          "step_2": "1",
+          "module_autoplay_2": false,
+          "delay_time_2": "7000"
+        }
+      },
+      "layout-2-revolution-slider": {
+        "type": "layout-2-revolution-slider",
+        "blocks": {
+          "1478043056757": {
+            "type": "slider_list",
+            "settings": {
+              "image": "",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type1",
+              "infoposition": "value",
+              "info_point": "205",
+              "text1": "Text 1",
+              "text2": "Text 2",
+              "text3": "Text 3",
+              "text4": "",
+              "use_custom_color": "no",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#1fc0a0",
+              "color_textactive": "#1fc0a0",
+              "color_bgactive": "#1fc0a0",
+              "show_customhtml": "no",
+              "code": "<div class=\"tp-caption lfl stb\" data-x=\"205\" data-y=\"center\" data-voffset=\"0\" data-speed=\"600\" data-start=\"900\" data-easing=\"Power4.easeOut\" data-endeasing=\"Power4.easeIn\" style=\"z-index: 2;\">\r\n<div>CONTENT<\/div>\r\n<a href=\"#\" class=\"link-button button--border-thick\">Shop now!<\/a>\r\n<\/div>"
+            }
+          },
+          "1478043090706": {
+            "type": "slider_list",
+            "settings": {
+              "image": "",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type1",
+              "infoposition": "value",
+              "info_point": "205",
+              "text1": "Text 1",
+              "text2": "Text 2",
+              "text3": "Text 3",
+              "text4": "",
+              "use_custom_color": "no",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#1fc0a0",
+              "color_textactive": "#1fc0a0",
+              "color_bgactive": "#1fc0a0",
+              "show_customhtml": "no",
+              "code": "<div class=\"tp-caption lfl stb\" data-x=\"205\" data-y=\"center\" data-voffset=\"0\" data-speed=\"600\" data-start=\"900\" data-easing=\"Power4.easeOut\" data-endeasing=\"Power4.easeIn\" style=\"z-index: 2;\">\r\n<div>CONTENT<\/div>\r\n<a href=\"#\" class=\"link-button button--border-thick\">Shop now!<\/a>\r\n<\/div>"
+            }
+          }
+        },
+        "block_order": [
+          "1478043056757",
+          "1478043090706"
+        ],
+        "settings": {
+          "button_title": "Shop now!",
+          "delay_time": "16000",
+          "fullscreen": "on",
+          "start_height": "800",
+          "show_border": false,
+          "border_color": "#ffffff"
+        }
+      },
+      "layout-2-testimonials": {
+        "type": "layout-2-testimonials",
+        "blocks": {
+          "1478045755068": {
+            "type": "comment_item",
+            "settings": {
+              "image": "",
+              "link": "",
+              "item_title": "<b>Eleanor<\/b><br><em>designer<\/em>",
+              "item_hobby": "- Hobby",
+              "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.<\/p>"
+            }
+          },
+          "1478045823732": {
+            "type": "comment_item",
+            "settings": {
+              "image": "",
+              "link": "",
+              "item_title": "Author",
+              "item_hobby": "- Hobby",
+              "text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478045755068",
+          "1478045823732"
+        ],
+        "settings": {
+          "show_widget": true,
+          "title": "Testimonials",
+          "show_quotes": true,
+          "module_autoplay": false,
+          "delay_time": "7000",
+          "use_custom_color": true,
+          "color_base": "#1fc0a0",
+          "color_title1": "#ffffff",
+          "color_quotes": "#ffffff",
+          "color_title2": "#ffffff",
+          "color_author": "#ffffff",
+          "color_hobby": "#ffffff",
+          "color_title3": "#a5e6d9",
+          "color_title4": "#ffffff"
+        }
+      },
+      "layout-2-blog": {
+        "type": "layout-2-blog",
+        "settings": {
+          "show_block": true,
+          "title": "Blog posts",
+          "blog": "",
+          "post_limit": "3",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_comments": true,
+          "truncate": "15",
+          "truncate_last_symbols": "...",
+          "step": "1",
+          "module_autoplay": false,
+          "delay_time": "7000"
+        }
+      },
+      "layout-2-banners": {
+        "type": "layout-2-banners",
+        "blocks": {
+          "1478119683471": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119705420": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119708549": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119712013": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119715697": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119719632": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119723161": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478119726635": {
+            "type": "banner_item",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478119683471",
+          "1478119705420",
+          "1478119708549",
+          "1478119712013",
+          "1478119715697",
+          "1478119719632",
+          "1478119723161",
+          "1478119726635"
+        ],
+        "settings": {
+          "show_widget": true,
+          "module_autoplay": false,
+          "delay_time": "7000",
+          "use_custom_color": false,
+          "color_title3": "#a5e6d9",
+          "color_title4": "#ffffff"
+        }
+      },
+      "layout-2-customhtml": {
+        "type": "layout-2-customhtml",
+        "settings": {
+          "show_block": true,
+          "facebook_id": "134612429900944",
+          "show_customhtml": false,
+          "title": ""
+        }
+      },
+      "layout-2-asidtitle": {
+        "type": "layout-2-asidtitle",
+        "settings": {
+          "show_block": true,
+          "title": "CATEGORIES"
+        }
+      },
+      "1479772071311": {
+        "type": "revolution-slider",
+        "blocks": {
+          "1479772071311-2": {
+            "type": "slider_list",
+            "settings": {
+              "topcolor": "#e43d2f",
+              "mainrevtitle": "How'd we hack it?",
+              "revtop-bgimg": "shopify:\/\/shop_images\/popcorn-top-right_2x_2398f8a5-2f6d-4169-ab01-8b03198843b9.png",
+              "rev-centerimg": "shopify:\/\/shop_images\/Popcorn_light_Saltysweet_mockup-sm1000px.png",
+              "revbottom-leftimg": "shopify:\/\/shop_images\/hackit_ProteinPopcorn01_2x_9effa63f-32b2-46c8-bb9e-edb7a125fec4.jpg",
+              "revbottom-rightimg": "shopify:\/\/shop_images\/hackit_ProteinPopcorn02_2x_f650930a-68c0-4371-bb77-7ba4e5df0409.jpg",
+              "bottomrevfirsttext": "Protein 12g",
+              "bottomrevsecondtext": "Fat 10g",
+              "bottomrevthirdtext": "Net Carbs 6g",
+              "bottomrevstiltext": "Salty sweet protein popcorn",
+              "banner_link": "shopify:\/\/products\/protein-popcorn-snack-pack-customize-24-snacks",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "no",
+              "show_item_button": "yes",
+              "text_design": "type3",
+              "infoposition": "center",
+              "info_point": "10",
+              "text1": "",
+              "text2": "",
+              "text3": "",
+              "text4": "",
+              "use_custom_color": "custom_color",
+              "color_text1": "#ffffff",
+              "color_text2": "#e43d30",
+              "color_text3": "#333333",
+              "color_text4": "#333333",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#f31301",
+              "color_textactive": "#e43d30",
+              "color_bgactive": "#e43d30",
+              "show_customhtml": "yes",
+              "rev-subtitle": "Protein Popcorn",
+              "code": "<p><b>WE STARTED AT THE KERNEL <\/b><br>\nThe size & shape of our kernels allows us to infuse our blend of protein and all-natural flavors.<\/p>\n<p><b>BRING ON THE PROTEIN<\/b><br>\nProtein Popcorn kernals are infused with premium Whey Protein Isolate and Milk Protein Isolate to deliver you 2x-5x times the protein of store brands. <\/p>",
+              "rev-listbtn": "LEARN MORE",
+              "rev-listbtnlink": "\/products\/protein-popcorn-snack-pack-customize-24-snacks"
+            }
+          },
+          "1525380374035": {
+            "type": "slider_list",
+            "settings": {
+              "topcolor": "#ff9319",
+              "mainrevtitle": "How'd we hack it?",
+              "revtop-bgimg": "shopify:\/\/shop_images\/protein-bite-top-right_2x_c18967b9-4daa-4e31-a503-d69209468fa5.png",
+              "rev-centerimg": "shopify:\/\/shop_images\/Protein-Bites-Peach-sm.png",
+              "revbottom-leftimg": "shopify:\/\/shop_images\/hackit_ProteinBites01_2x_b10948f7-111e-4a9b-9538-5b9641134aa9.jpg",
+              "revbottom-rightimg": "shopify:\/\/shop_images\/hackit_ProteinBites02_2x_c58e8d56-7dc9-44c5-8e8d-ba7f0e9f5a06.jpg",
+              "bottomrevfirsttext": "Protein 15g",
+              "bottomrevsecondtext": "Fat 5g",
+              "bottomrevthirdtext": "Net Carbs 5g",
+              "bottomrevstiltext": "Peach Pie Protein Bites",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type3",
+              "infoposition": "center",
+              "info_point": "205",
+              "text1": "",
+              "text2": "WE CRACK THE CODE",
+              "text3": "TO HEALTHY",
+              "text4": "SNACKING",
+              "use_custom_color": "custom_color",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#e43d30",
+              "color_textactive": "#e43d30",
+              "color_bgactive": "#e43d30",
+              "show_customhtml": "yes",
+              "rev-subtitle": "Protein Bites",
+              "code": "<p><b>IT’S NOT MAGIC... JUST SWEET SCIENCE:<\/b><\/p>\n<p>Its a real trick to create a tasty-yet-sweet bite-sized snack that’s not loaded with cheap ingredients like sugar.<\/p>\n\n<p>After experimenting with prototype after prototype, we finally created a tasty bite that's sure to kick any sweet cravings you have to the curb. Enjoy!<\/p>",
+              "rev-listbtn": "LEARN MORE",
+              "rev-listbtnlink": "\/products\/protein-bites-snack-pack-customize-24-snacks"
+            }
+          },
+          "1533071321429": {
+            "type": "slider_list",
+            "settings": {
+              "topcolor": "#789c4a",
+              "mainrevtitle": "How'd We Hack It?",
+              "revtop-bgimg": "shopify:\/\/shop_images\/top-right-crispy_2x_fc30aa40-aadc-4fa7-a300-e71102fc1f00.png",
+              "rev-centerimg": "shopify:\/\/shop_images\/crispycakes-light-carmelApple-single.png",
+              "revbottom-leftimg": "shopify:\/\/shop_images\/hackit_CrispyCakes01_2x_06988217-6b65-4c2e-8335-3f06e82aafa4.jpg",
+              "revbottom-rightimg": "shopify:\/\/shop_images\/hackit_CrispyCakes02_2x_ed3bd906-4766-444f-8b07-3126ffe94e9a.jpg",
+              "bottomrevfirsttext": "PROTEIN 22G",
+              "bottomrevsecondtext": "FAT 11G",
+              "bottomrevthirdtext": "NET CARBS 18G",
+              "bottomrevstiltext": "CARAMEL APPLE CRISPY CAKE",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type1",
+              "infoposition": "value",
+              "info_point": "205",
+              "text1": "Text 1",
+              "text2": "Text 2",
+              "text3": "Text 3",
+              "text4": "",
+              "use_custom_color": "no",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#1fc0a0",
+              "color_textactive": "#1fc0a0",
+              "color_bgactive": "#1fc0a0",
+              "show_customhtml": "yes",
+              "rev-subtitle": "Crispy Cakes",
+              "code": "<p><b>Gourmet Rice Crispy treats… Hacked!<\/b><\/p>\n<p>Rather than using cheap filler ingredients like rice cereal or sugar, we’ve infused our Crispy Cakes with high quality whey protein isolate. This ensures our Crispy Cakes are not only mouth watering, but also PFC balanced.<\/p>",
+              "rev-listbtn": "LEARN MORE",
+              "rev-listbtnlink": ""
+            }
+          }
+        },
+        "block_order": [
+          "1479772071311-2",
+          "1525380374035",
+          "1533071321429"
+        ],
+        "settings": {
+          "button_title": "Shop now",
+          "delay_time": "10000",
+          "fullscreen": "off",
+          "start_height": ""
+        }
+      },
+      "collectionsall": {
+        "type": "collectionsall",
+        "blocks": {
+          "1532106311930": {
+            "type": "item",
+            "settings": {
+              "collection": "",
+              "usecollectionimage": false,
+              "image": "",
+              "custom_name": "",
+              "show_item_button": "yes",
+              "use_custom_color": "no",
+              "color_title": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1532106311930"
+        ],
+        "settings": {
+          "hide_breadcrumbs": true,
+          "item_grid": "3",
+          "lineitem": "",
+          "base_color_title": "#ffffff",
+          "change_buttons_colors": false,
+          "base_color_buttontext": "#ffffff",
+          "base_color_button": "#333333",
+          "active_color_buttontext": "#ffffff",
+          "active_color_button": "#1fc0a0",
+          "use_custom_bgactivecolor": false,
+          "active_opacity": "0.2",
+          "bg_hover_color": "#ffffff",
+          "use_custom_tint": false,
+          "base_opacity": "0.7",
+          "tint_color": "#000000",
+          "show_button": true,
+          "button_title": "Shop now!",
+          "hide_button": false,
+          "use_custom_html": true,
+          "custom_html": ""
+        }
+      },
+      "show-helper": {
+        "type": "show-helper",
+        "settings": {}
+      },
+      "1525727133245": {
+        "type": "slider-with-banners",
+        "disabled": true,
+        "blocks": {
+          "1525727413077": {
+            "type": "slide_design_4",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/HS_Banner1024x855.jpg",
+              "link": "",
+              "text1": "SHARE IT PACK",
+              "text2": "Get a Variety Pack of all our snacks, the share it pack has 72 snacks!",
+              "show_item_button": "yes",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1525727413077"
+        ],
+        "settings": {
+          "button_title": "Shop now",
+          "image_1": "shopify:\/\/shop_images\/HS_LearnMore02_01Banner512x428.jpg",
+          "link_1": "",
+          "position_1": "center",
+          "show_button_1": false,
+          "design_1": "design_3",
+          "title_size_1": "font-size82",
+          "text_size_1": "emptyclass",
+          "text_1_1": "",
+          "text_1_2": "READ ABOUT <br>HACKED SNACKS",
+          "wrapper_1": "no",
+          "wrapper_color_1": "#41df7c",
+          "bannercolor_title1_1": "#333333",
+          "bannercolor_title2_1": "#ffffff",
+          "bannercolor_buttontext_1": "#333333",
+          "bannercolor_buttontexthover_1": "#e43d30",
+          "bannercolor_buttonbg_1": "#e43d30",
+          "bannercolor_buttonbghover_1": "#f5f5f5",
+          "image_2": "shopify:\/\/shop_images\/HS_LearnMore_02Banner512x428.jpg",
+          "link_2": "",
+          "position_2": "center",
+          "show_button_2": false,
+          "design_2": "design_1",
+          "title_size_2": "font-size82",
+          "text_size_2": "font-medium",
+          "text_2_1": "",
+          "text_2_2": "Watch our <br>explainer video",
+          "wrapper_2": "no",
+          "wrapper_color_2": "#41df7c",
+          "bannercolor_title1_2": "#333333",
+          "bannercolor_title2_2": "#333333",
+          "bannercolor_buttontext_2": "#333333",
+          "bannercolor_buttontexthover_2": "#e43d30",
+          "bannercolor_buttonbg_2": "#e43d30",
+          "bannercolor_buttonbghover_2": "#f5f5f5",
+          "image_3": "shopify:\/\/shop_images\/HS_Banner1024x427.jpg",
+          "link_3": "",
+          "position_3": "left",
+          "show_button_3": true,
+          "design_3": "design_3",
+          "title_size_3": "font-size82",
+          "text_size_3": "emptyclass",
+          "text_3_1": "LOVE IT PACK",
+          "text_3_2": "GET A VARIETY OF ALL OUR SNACKS, <br> THIS PACK HAS 36 SNACKS",
+          "wrapper_3": "no",
+          "wrapper_color_3": "#41df7c",
+          "bannercolor_title1_3": "#ffffff",
+          "bannercolor_title2_3": "#ffffff",
+          "bannercolor_buttontext_3": "#ffffff",
+          "bannercolor_buttontexthover_3": "#e43d30",
+          "bannercolor_buttonbg_3": "#e43d30",
+          "bannercolor_buttonbghover_3": "#f5f5f5"
+        }
+      },
+      "1528697550132": {
+        "type": "home-top",
+        "blocks": {
+          "1528699573380": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "FREE SHIPPING ON <br>ALL SUBSCRIPTIONS"
+            }
+          },
+          "1528699586038": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "High Protein <br> Snacks"
+            }
+          },
+          "1528699596306": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "12-22 GRAMS OF <br> PROTEIN PER SNACK"
+            }
+          },
+          "1528699600030": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "DELICIOUS & UNIQUE <br> FLAVORS"
+            }
+          },
+          "1528699624094": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "HEALTHY & NATURAL<br> INGREDIENTS"
+            }
+          },
+          "1528699629663": {
+            "type": "homelist",
+            "settings": {
+              "item_list": "PFC BALANCED <br> SNACKS"
+            }
+          }
+        },
+        "block_order": [
+          "1528699573380",
+          "1528699586038",
+          "1528699596306",
+          "1528699600030",
+          "1528699624094",
+          "1528699629663"
+        ],
+        "settings": {
+          "htopbg-image": "shopify:\/\/shop_images\/banner1opt.png",
+          "htopvideo-image": "shopify:\/\/shop_images\/arrowred.png",
+          "top-bannertext": "SNACKS THAT WILL HELP<br>\nYOU STAY ON-TRACK! \n<br>DID WE MENTION THEY ARE<br> MACRO BALANCED & YUMMY!",
+          "banner-button-text": "SHOP NOW",
+          "banner-button-url": "\/collections\/subscription-boxes",
+          "topvideo-url": "https:\/\/www.youtube.com\/embed\/GhR4_YLOPME?autoplay=1"
+        }
+      },
+      "1528702635322": {
+        "type": "pfc-section",
+        "settings": {
+          "pfc-image": "shopify:\/\/shop_images\/pfc-balanced_e4eda5e6-32ba-47cc-8604-824a8ba2e1c2.png",
+          "pfctitle": "<br>WHAT DOES IT MEANS <br>TO BE PFC BALANCED?",
+          "pfc-bannertext": "Hacked Snacks contain a balance of protein, fat and carbohydrates (PFC’s). Eating a snack or meal with balanced PFCs every 3 hours has been proven to balance blood sugar, protect muscles and trigger the body to consistently release stored fat."
+        }
+      },
+      "1528704330251": {
+        "type": "four-col-section",
+        "disabled": true,
+        "settings": {
+          "fstcol-image": "shopify:\/\/shop_images\/HS_Cinnamon_Header2048x855.jpg",
+          "fstcol-text": "SNACKS AT HOME",
+          "sstcol-image": "shopify:\/\/shop_images\/HS_BlueBerryCheeseCake_Header2048x855.jpg",
+          "sstcol-text": "SNACKS AT WORK",
+          "tstcol-image": "shopify:\/\/shop_images\/HS_PB_Header2048x855.jpg",
+          "tstcol-text": "SNACKS AT SCHOOL",
+          "fostcol-image": "shopify:\/\/shop_images\/HS_Smores_Header2048x855.jpg",
+          "fostcol-text": "SNACKS ON THE GO"
+        }
+      },
+      "1528708066453": {
+        "type": "track-section",
+        "disabled": true,
+        "settings": {
+          "track-image": "shopify:\/\/shop_images\/loveboxx600.png",
+          "tracktitle": "Stay on track with a snack box",
+          "track-bannertext": "We understand what its like to be on the go and to try to eat healthy... it's hard! To reach our health goals we created a better way of snacking. Stay on track with your health goals by continuing to eat Balanced PFC (Protein, Fat & Carbs) Snacks. Don't go without!",
+          "trackbuttontext": "CUSTOMIZE YOUR SNACK BOX NOW",
+          "trackbuttonurl": "\/products\/love-it-pack-customize-36-snacks"
+        }
+      },
+      "1528711299728": {
+        "type": "subscribeandsave-section",
+        "settings": {
+          "ssbg-image": "shopify:\/\/shop_images\/HS_Smores_Header2048x855.jpg",
+          "mainimg-front-image": "shopify:\/\/shop_images\/brownbox.png",
+          "ss-bannertitle": "SUBSCRIBE <br> & SAVE",
+          "ss-bannertext": "<p>Get the most PFC Balanced Snacks ever made to your door on a monthly subscription.<\/p>\n        <p>Don't worry, you can cancel Any time! Subscribe and get free shipping on all orders! Dont worry about junky snacks - get the healthy ones to your door.<\/p>",
+          "ss-buttontitle": "Build your snack box now",
+          "ss-buttonurl": "\/products\/love-it-pack-customize-36-snacks"
+        }
+      },
+      "1528722341187": {
+        "type": "subscribe-bottom-section",
+        "settings": {
+          "sub-image": "shopify:\/\/shop_images\/Popcorn_light_Saltysweet_mockup-sm.png",
+          "sub-bannertext": "SUBSCRIBE TO OUR NEWSLETTER FOR A CHANCE TO WIN A\n24 PACK OF VARIETY POPCORN"
+        }
+      },
+      "cart-bottom-left": {
+        "type": "cart-bottom-left",
+        "settings": {
+          "cart1menu": "cart-menu-1",
+          "cart2menu": "cart-menu-2",
+          "fblink": "https:\/\/www.facebook.com\/PFCsnacks\/",
+          "twitterlink": "https:\/\/twitter.com\/Hackedsnacks",
+          "instalink": "https:\/\/www.instagram.com\/hackedsnacks\/",
+          "youtubelink": "https:\/\/www.youtube.com\/channel\/UCimuUxjX8PtfNa6ejKFe-ZQ\/featured"
+        }
+      },
+      "cart-bottom-right": {
+        "type": "cart-bottom-right",
+        "settings": {
+          "subtextcart": "Subscribe to our newsletter to win a protein popcorn variety pack (24 pack)"
+        }
+      },
+      "footer-left": {
+        "type": "footer-left",
+        "settings": {
+          "footer1title": "QUICK LINKS",
+          "footer2title": "POLICIES",
+          "footer3title": "ADVOCATES",
+          "footer1menu": "cart-menu-1",
+          "footer2menu": "cart-menu-2",
+          "footer3menu": "footer-menu3",
+          "contacttitle": "CONTACT US",
+          "addresone": "13552 S 110 W Suite #101<br>  Draper, UT 84020",
+          "shoptiming": "M-F 9:00 - 5:00pm (MST)",
+          "siteemail": "support@hackedsnacks.com",
+          "sitephonenumber": "text\/call: 801-948-9500"
+        }
+      },
+      "footer-right": {
+        "type": "footer-right",
+        "settings": {
+          "subtextfooter": "Subscribe to our newsletter to win a protein popcorn variety pack (24 pack)"
+        }
+      },
+      "1529345948257": {
+        "type": "testimonials",
+        "blocks": {
+          "1536351189782": {
+            "type": "comment_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/me.2_d9e76831-c1d3-4659-9893-52fe126306e8.jpg",
+              "link": "",
+              "item_title": "I EAT HACKED SNACKS A FEW TIMES A DAY & IM LOSING WEIGHT & STAYING ON-TRACK!",
+              "item_hobby": "",
+              "auth_name": "JESSICA W.",
+              "auth_link": "",
+              "text": "Mom & Health Connoisseur"
+            }
+          },
+          "1529345948257-0": {
+            "type": "comment_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/scottWarner.jpeg",
+              "link": "",
+              "item_title": "TASTES SO GOOD - THERE IS NO WAY THIS IS HEALTHY FOR YOU!",
+              "item_hobby": "",
+              "auth_name": "Scott Warner",
+              "auth_link": "",
+              "text": "Entrepreneur & Social Media Guru"
+            }
+          }
+        },
+        "block_order": [
+          "1536351189782",
+          "1529345948257-0"
+        ],
+        "settings": {
+          "title": "",
+          "show_quotes": true,
+          "parllax_image": "shopify:\/\/shop_images\/HS_ParalaxBanner2048x1114.jpg",
+          "module_autoplay": true,
+          "delay_time": "8000",
+          "use_custom_color": false,
+          "color_base": "#e43d30",
+          "color_title1": "#333333",
+          "color_title2": "#333333",
+          "color_title3": "#777777",
+          "color_title4": "#333333"
+        }
+      },
+      "1529347401715": {
+        "type": "texts-section",
+        "blocks": {
+          "1529347401715-0": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/boxes_2x_9bf7014b-926a-4160-8d47-d8b86a015bde.png",
+              "title_block": "pull-right",
+              "item_title": "<h1>PICK YOUR BOX<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>We have many box options to choose from! Small to Large, rectangular to square, Protein Popcorn to Crispy Cakes, you are sure to find the perfect fit for you.<\/p>"
+            }
+          },
+          "1529414485488": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/products_2x_fb268070-29ae-4251-9c9e-3ad4c7ccfd63.png",
+              "title_block": "pull-left",
+              "item_title": "<h1>CUSTOMIZE IT<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Choose the flavors you want. We have Protein Popcorn, Crispy Cakes, and Protein Bites.&nbsp;<\/p>"
+            }
+          },
+          "1529433545696": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/calendar_2x_addd9f80-9ace-40d0-abe5-6eca36036a13.png",
+              "title_block": "pull-right",
+              "item_title": "<h1>GET YOUR SNACKS WHEN YOU WANT THEM<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Order one time or get free shipping with a subscription. You can always cancel, move your subscription date earlier or skip a shipment.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1529347401715-0",
+          "1529414485488",
+          "1529433545696"
+        ],
+        "settings": {
+          "show_line": false,
+          "showbigindent": false,
+          "title_design": "design2",
+          "maintext_title": "WE MAKE HEALTHY SNACKING EASY!",
+          "buttontext_text": "Build your box now",
+          "buttontext_link": ""
+        }
+      },
+      "1529433256164": {
+        "type": "custom_html",
+        "settings": {
+          "custom_html": "<section class=\"content\">\n\t<div class=\"container\">\n\t\t<div class=\"row\">\n<div id=\"evm-instagram-feed\"><\/div>\n<script src=\"https:\/\/expertvillagemedia.com\/instagramfeed\/embed.js\" data-shop-id=\"hackedsnacksstaging.myshopify.com\"><\/script>\n<\/div>\n<\/div>\n<\/section>",
+          "custom_html_example": "<section class=\"content\">\n\t<div class=\"container\">\n\t\t<div class=\"row\">\n\t\t<\/div>\n\t<\/div>\n<\/section>"
+        }
+      },
+      "1529433415628": {
+        "type": "text3-section",
+        "disabled": true,
+        "settings": {
+          "top_indent": false,
+          "title": "We make healthy snacking easy!",
+          "content": "",
+          "bg_base_color": "#ffffff"
+        }
+      },
+      "1529512644801": {
+        "type": "collection-2-list",
+        "disabled": true,
+        "blocks": {
+          "1529512644801-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "",
+              "usecollectionimage": false,
+              "image": "shopify:\/\/shop_images\/try_it.png",
+              "custom_name": "Try It Variety Pack",
+              "text_content": "<p><\/p>\n<p><\/p>",
+              "show_item_button": "yes"
+            }
+          },
+          "1529512644801-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "",
+              "usecollectionimage": false,
+              "image": "shopify:\/\/shop_images\/love_it.png",
+              "custom_name": "",
+              "text_content": "",
+              "show_item_button": "yes"
+            }
+          },
+          "1529512644801-2": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "",
+              "usecollectionimage": false,
+              "image": "shopify:\/\/shop_images\/share_it.png",
+              "custom_name": "",
+              "text_content": "",
+              "show_item_button": "yes"
+            }
+          }
+        },
+        "block_order": [
+          "1529512644801-0",
+          "1529512644801-1",
+          "1529512644801-2"
+        ],
+        "settings": {
+          "title_size": "40",
+          "items": "3",
+          "step": "1",
+          "show_button": true,
+          "button_title": "Build your box now",
+          "custom_colors": true,
+          "base_color_title": "#333333",
+          "base_color_text": "#777777",
+          "hover_color_title": "#e43d30",
+          "base_color_btn": "#e43d30",
+          "hover_color_btn": "#333333",
+          "module_autoplay": false,
+          "delay_time": "7000"
+        }
+      },
+      "build-a-box": {
+        "type": "build-a-box",
+        "blocks": {
+          "1530280621499": {
+            "type": "Section",
+            "settings": {
+              "title": "Protein Popcorn",
+              "slot_ref": "protein-popcorn"
+            }
+          },
+          "1530280721253": {
+            "type": "Section",
+            "settings": {
+              "title": "Protein Bites",
+              "slot_ref": "protein-bites"
+            }
+          },
+          "1530280762359": {
+            "type": "Section",
+            "settings": {
+              "title": "Crispy Cakes",
+              "slot_ref": "crispy-cakes"
+            }
+          }
+        },
+        "block_order": [
+          "1530280621499",
+          "1530280721253",
+          "1530280762359"
+        ],
+        "settings": {
+          "collection": "box-products"
+        }
+      },
+      "1531808150684": {
+        "type": "fullscreen_banners",
+        "disabled": true,
+        "blocks": {
+          "1531808150684-0": {
+            "type": "banner_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-07-17_at_12.20.15_AM.jpg",
+              "banner_link": "",
+              "show_item_button": "no",
+              "title1": "",
+              "size_title1": "size4",
+              "title2": "",
+              "size_title2": "text",
+              "title3": "",
+              "size_title3": "text size3 margin-1_4em",
+              "use_custom_color": "no",
+              "color_title1": "#ffffff",
+              "color_title2": "#ffffff",
+              "color_title3": "#ffffff"
+            }
+          },
+          "1531808150684-1": {
+            "type": "banner_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-07-17_at_12.20.15_AM.png",
+              "banner_link": "",
+              "show_item_button": "no",
+              "title1": "",
+              "size_title1": "size3",
+              "title2": "",
+              "size_title2": "text",
+              "title3": "",
+              "size_title3": "text size3 margin-1_4em",
+              "use_custom_color": "no",
+              "color_title1": "#ffffff",
+              "color_title2": "#ffffff",
+              "color_title3": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1531808150684-0",
+          "1531808150684-1"
+        ],
+        "settings": {
+          "hide_top_indent": false,
+          "show_button": false,
+          "button_title": "",
+          "step": "1",
+          "module_autoplay": false,
+          "delay_time": "7000"
+        }
+      },
+      "page_opporunity": {
+        "type": "page_opporunity",
+        "settings": {
+          "show_line": true,
+          "showbigindent": false,
+          "title_design": "design1",
+          "maintext_title": "Title",
+          "buttontext_text": "Title",
+          "buttontext_link": "Title"
+        }
+      },
+      "banners-info": {
+        "type": "banners-info",
+        "blocks": {
+          "1531823775129": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/popcorn_bowl.png",
+              "link": "",
+              "text1": "Natural<br>Skin Care",
+              "text2": "<p>Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1531823775129"
+        ],
+        "settings": {
+          "show_border": true,
+          "button_name": "Shop Now!"
+        }
+      },
+      "revolution-slider": {
+        "type": "revolution-slider",
+        "blocks": {
+          "1531824240163": {
+            "type": "slider_list",
+            "settings": {
+              "topcolor": "#e43d2f",
+              "mainrevtitle": "",
+              "revtop-bgimg": "shopify:\/\/shop_images\/popcorn_bowl.png",
+              "rev-centerimg": "shopify:\/\/shop_images\/popcorn01_48950f74-4e95-4ed0-9429-7a8cae8638e1.jpg",
+              "revbottom-leftimg": "",
+              "revbottom-rightimg": "",
+              "bottomrevfirsttext": "",
+              "bottomrevsecondtext": "",
+              "bottomrevthirdtext": "",
+              "bottomrevstiltext": "",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type1",
+              "infoposition": "value",
+              "info_point": "205",
+              "text1": "Text 1",
+              "text2": "Text 2",
+              "text3": "Text 3",
+              "text4": "",
+              "use_custom_color": "no",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#1fc0a0",
+              "color_textactive": "#1fc0a0",
+              "color_bgactive": "#1fc0a0",
+              "show_customhtml": "no",
+              "rev-subtitle": "",
+              "code": "<div class=\"tp-caption lfl stb\" data-x=\"205\" data-y=\"center\" data-voffset=\"0\" data-speed=\"600\" data-start=\"900\" data-easing=\"Power4.easeOut\" data-endeasing=\"Power4.easeIn\" style=\"z-index: 2;\">\n<div>CONTENT<\/div>\n<a href=\"#\" class=\"link-button button--border-thick\">Shop now!<\/a>\n<\/div>",
+              "rev-listbtn": "",
+              "rev-listbtnlink": ""
+            }
+          },
+          "1531824320272": {
+            "type": "slider_list",
+            "settings": {
+              "topcolor": "#e43d2f",
+              "mainrevtitle": "",
+              "revtop-bgimg": "",
+              "rev-centerimg": "",
+              "revbottom-leftimg": "",
+              "revbottom-rightimg": "",
+              "bottomrevfirsttext": "",
+              "bottomrevsecondtext": "",
+              "bottomrevthirdtext": "",
+              "bottomrevstiltext": "",
+              "banner_link": "",
+              "position": "center",
+              "show_video": "no",
+              "video_url": "\/\/cdn.shopify.com\/s\/files\/1\/1236\/4838\/files\/explore.mp4?14925391354568980494",
+              "show_infoblock": "yes",
+              "show_item_button": "yes",
+              "text_design": "type1",
+              "infoposition": "value",
+              "info_point": "205",
+              "text1": "Text 1",
+              "text2": "Text 2",
+              "text3": "Text 3",
+              "text4": "",
+              "use_custom_color": "no",
+              "color_text1": "#ffffff",
+              "color_text2": "#ffffff",
+              "color_text3": "#ffffff",
+              "color_text4": "#ffffff",
+              "color_textbase": "#ffffff",
+              "color_bgbase": "#1fc0a0",
+              "color_textactive": "#1fc0a0",
+              "color_bgactive": "#1fc0a0",
+              "show_customhtml": "no",
+              "rev-subtitle": "",
+              "code": "<div class=\"tp-caption lfl stb\" data-x=\"205\" data-y=\"center\" data-voffset=\"0\" data-speed=\"600\" data-start=\"900\" data-easing=\"Power4.easeOut\" data-endeasing=\"Power4.easeIn\" style=\"z-index: 2;\">\n<div>CONTENT<\/div>\n<a href=\"#\" class=\"link-button button--border-thick\">Shop now!<\/a>\n<\/div>",
+              "rev-listbtn": "",
+              "rev-listbtnlink": ""
+            }
+          }
+        },
+        "block_order": [
+          "1531824240163",
+          "1531824320272"
+        ],
+        "settings": {
+          "button_title": "Shop now!",
+          "delay_time": "16000",
+          "fullscreen": "on",
+          "start_height": "800"
+        }
+      },
+      "banners-section": {
+        "type": "banners-section",
+        "blocks": {
+          "1531826263877": {
+            "type": "item-block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/popcorn_bowl.png",
+              "link": "",
+              "position": "left",
+              "button_design": "design1",
+              "title_size": "font-size82",
+              "title_weight": "font-normal",
+              "title_text": "<h1>SHARE WHAT YOU<br> LOVE & EARN MONEY<br> DOING IT<\/h1>",
+              "content_size": "font-size26",
+              "content_weight": "font-normal",
+              "content_indent": "empty-style",
+              "content_text": "<button>BECOME AN ADVOCATE<\/button>",
+              "bannercolor_title1": "#d15454",
+              "bannercolor_title2": "#d23434",
+              "bannercolor_buttontext": "#bd1b1b",
+              "bannercolor_buttontexthover": "#1fc0a0",
+              "bannercolor_buttonbg": "#1fc0a0",
+              "bannercolor_buttonbghover": "#e32121"
+            }
+          }
+        },
+        "block_order": [
+          "1531826263877"
+        ],
+        "settings": {
+          "hide_top_indent": true,
+          "grid": "20",
+          "button_title": ""
+        }
+      },
+      "texts-section": {
+        "type": "texts-section",
+        "blocks": {
+          "1531827341044": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/products_2x_19f88016-ec30-4c45-a7a6-d988b4697d3a.png",
+              "title_block": "pull-left",
+              "item_title": "<h1>PFC BALANCED SNAKES<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Hacked snakes contain a balance of protien fats and carbohydrate (PFC'S).<\/p>"
+            }
+          },
+          "1531827639533": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/calendar_2x_addd9f80-9ace-40d0-abe5-6eca36036a13.png",
+              "title_block": "pull-right",
+              "item_title": "<h1>CUSTOMISED SNACK <br> BOX SUBSCRIPTIONS<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>You don't have to keep selling<\/p>"
+            }
+          },
+          "1531827886446": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/boxes_2x_9bf7014b-926a-4160-8d47-d8b86a015bde.png",
+              "title_block": "pull-left",
+              "item_title": "<h1>PROMO CODE LOOK UP <br> FEATURES AND REFFEREL CODES<\/h1>",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Tried of getting bypassed?we've created three ways of referels<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1531827341044",
+          "1531827639533",
+          "1531827886446"
+        ],
+        "settings": {
+          "show_line": true,
+          "showbigindent": false,
+          "title_design": "design2",
+          "maintext_title": "WHAT SETS US APART?",
+          "buttontext_text": "",
+          "buttontext_link": ""
+        }
+      },
+      "opportunity": {
+        "type": "opportunity",
+        "blocks": {
+          "1531892124542": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/popcorn01_48950f74-4e95-4ed0-9429-7a8cae8638e1.jpg",
+              "title_block": "pull-right",
+              "item_title": "<h1>SIGN UP TO BECAME <br> AN ADVOCATE<\/h1>",
+              "shop_titles": "STEP1",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>When you sign up to became an advocate to share our products you will be purchasing an advocate kit $49.<\/p>"
+            }
+          },
+          "1531892571369": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/banner1opt.png",
+              "title_block": "pull-left",
+              "item_title": "<h1>GET YOUR PERSONALIZED <br> SNACK BOX SUBSCRIPTION<\/h1>",
+              "shop_titles": "STEP2",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Customized a snacked subscription for you and your crew.<\/p>"
+            }
+          },
+          "1531892900779": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/theStorySiteImage.jpg",
+              "title_block": "pull-right",
+              "item_title": "<h1>START SHARING & <br> EARN MONEY<\/h1>",
+              "shop_titles": "STEP3",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>Make sure you get a share it pack to start sharing your amazing snacks with all your friends and family.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1531892124542",
+          "1531892571369",
+          "1531892900779"
+        ],
+        "settings": {
+          "show_line": false,
+          "showbigindent": false,
+          "title_design": "design2",
+          "maintext_title": "",
+          "buttontext_text": "",
+          "buttontext_link": ""
+        }
+      },
+      "GET_STARTED": {
+        "type": "GET_STARTED",
+        "blocks": {
+          "1531894065712": {
+            "type": "item-block",
+            "settings": {
+              "secimg": "shopify:\/\/shop_images\/loveboxx600.png",
+              "title_block": "pull-left",
+              "item_title": "",
+              "shop_titles": "",
+              "shop_links": "",
+              "item_icon": "",
+              "item_text": "<p>As hacked snacks Advocate, you'll be joining an aware, on-the-gotribe- who are on mission to change the way people view neutrition.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1531894065712"
+        ],
+        "settings": {
+          "show_line": true,
+          "showbigindent": false,
+          "title_design": "design2",
+          "maintext_title": "GET STARTED",
+          "buttontext_text": "BECOME AN ADVOCATE",
+          "buttontext_link": ""
+        }
+      },
+      "home-top": {
+        "type": "home-top",
+        "settings": {
+          "htopbg-image": "shopify:\/\/shop_images\/theStorySiteImage.jpg",
+          "htopvideo-image": "shopify:\/\/shop_images\/arrowred.png",
+          "top-bannertext": "SHARE WHAT YOU LOVE<br> & EARN MONEY<br>DOING IT!",
+          "banner-button-text": "BECOME AN ADVOCATE",
+          "banner-button-url": "",
+          "topvideo-url": ""
+        }
+      },
+      "1532084920870": {
+        "type": "double-click-section",
+        "disabled": true,
+        "settings": {
+          "left_d_title": "Snaccident <span>[snax eh dent] Noun.<\/span>",
+          "left_d_description": "Eating an entire Pizza\/Box of chocolates\/family size bag of chips by mistake",
+          "right_d_title": "Stopping snaccidents one box at time"
+        }
+      },
+      "about-noticed": {
+        "type": "about-noticed",
+        "settings": {
+          "aboutnotice_top_image": "shopify:\/\/shop_images\/HS_light_ParalaxBanner2048x1114.jpg",
+          "left_first_title": "WE NOTICED",
+          "left_sub_title": "IT WASN’T JUST US.",
+          "left_bottom_text": "Everyone else is snacking On-the-go",
+          "right_top_image": "shopify:\/\/shop_images\/download_3.png",
+          "right_bottom_text": "WOW! THAT’S MORE THAN 1\/2 OUR MONTHLY FOOD EXPENSE"
+        }
+      },
+      "about-bottom-section": {
+        "type": "about-bottom-section",
+        "settings": {
+          "aboutbottom_bg_image": "shopify:\/\/shop_images\/whitebrick-bg-03mirror-lighter.jpg",
+          "top_first_title": "WE HACK SNACKS TO BETTER<br>BALANCE (PFCs)<br>\nPROTEINS, FATS & CARBS",
+          "bottom_btn_text": "SHOP NOW",
+          "bottom_btn_link": "https:\/\/hackedsnacks.com\/collections\/subscription-boxes"
+        }
+      },
+      "about-intro": {
+        "type": "about-intro",
+        "settings": {
+          "right_top_image": "shopify:\/\/shop_images\/AustinColby_2x_c06f98c7-2fe1-4ace-86c1-bdcd88c268b7.png",
+          "left_ab_first_title": "We couldn’t find snacks",
+          "left_ab_second_title": "that would Keep our",
+          "left_ab_third_title": "health goals on track…",
+          "left_ab_top_text": "so we created them",
+          "ab_description": "<p>Austin is on the go a ton and loves to snack. He got fed\nup with the choices (or lack of good choices).<\/p>\n <p>When he met Colby who had created private label\nsnacks for years they found out they both had a passion\nfor creating healthy snacks that tasted good. Shortly\nafter that the PFC balanced snack revolution began.<\/p>"
+        }
+      },
+      "1536350638431": {
+        "type": "featured-products",
+        "settings": {
+          "center_title": true,
+          "title": "FEATURED PRODUCTS",
+          "collection": "frontpage",
+          "products_in_row": "4",
+          "limit": "6",
+          "show_lookbook": false,
+          "title2": "Lookbook",
+          "image": "",
+          "link": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1528697550132",
+      "1529433415628",
+      "1529347401715",
+      "1529345948257",
+      "1528702635322",
+      "1479772071311",
+      "1532084920870",
+      "1529512644801",
+      "1531808150684",
+      "1528708066453",
+      "1536350638431",
+      "1525727133245",
+      "1528704330251",
+      "1528711299728",
+      "1528722341187",
+      "1529433256164"
+    ]
+  },
+  "presets": {}
+}

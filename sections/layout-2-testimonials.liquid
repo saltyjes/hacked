@@ -1,0 +1,209 @@
+{% if section.settings.show_widget %}
+<!--======= testimonials =======-->
+<div class="fill-bg-custom aside-inner color-white testimonial-color-l2" data-section-id="{{ section.id }}" data-section-type="testimonials-section">
+  <h4 class="text-center text-uppercase color-white mega">{{ section.settings.title }}</h4>
+  {% if section.blocks.size > 0 %}
+  <div class="testimonialsAsid nav-dot nav-dot-invert sliderblog-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="1">
+    {% for block in section.blocks %}
+    {% if block.settings.image != blank %}{% assign img_url = block.settings.image | img_url: 'grande' %}
+    {% else %}{% assign img_url = 'template_testim.png' | asset_url %}
+    {% endif %}
+    <!-- slide-->
+    {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="link-hover-block">
+    {% else %}<div class="link-hover-block">{% endif %}
+      <!-- slide-->
+      <div class="text-center box-data">
+        <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}">
+        <p>{% if section.settings.show_quotes %}<span class="icon"></span>{% endif %}{{ block.settings.text | strip_html }}</p>
+        <p>{{ block.settings.item_title }}{% if block.settings.item_hobby != '' %} <em>{{ block.settings.item_hobby }}</em>{% endif %}</p>
+      </div>
+    {% if block.settings.link == blank %}</div>
+    {% else %}</a>{% endif %}
+    <!-- /slide-->
+    {% endfor %}
+  </div>
+  {% else %}
+  <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+  {% endif %}
+</div>
+<div class="divider divider--lg"></div>
+
+{% if section.settings.use_custom_color %}
+<style>
+  [data-section-id~="{{ section.id }}"] h4 {
+    color: {{ section.settings.color_title1 }};
+  }
+  [data-section-id~="{{ section.id }}"] .box-data p {
+    color: {{ section.settings.color_title2 }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .box-data p:last-child {
+    color: {{ section.settings.color_author }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .box-data p:last-child em {
+    color: {{ section.settings.color_hobby }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .testimonialsAsid .slick-slide p span:before {
+    color: {{ section.settings.color_quotes }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .nav-dot.nav-dot-invert .slick-dots li button:before {
+    opacity: 1;
+  }
+  [data-section-id~="{{ section.id }}"] .nav-dot .slick-dots li button:before {
+    color: {{ section.settings.color_title3 }};
+  }
+  [data-section-id~="{{ section.id }}"] .nav-dot.nav-dot-invert .slick-dots li button:hover:before,
+  [data-section-id~="{{ section.id }}"] .nav-dot.nav-dot-invert .slick-dots li button:focus:before,
+  [data-section-id~="{{ section.id }}"] .nav-dot.nav-dot-invert .slick-dots li.slick-active button:before {
+    color: {{ section.settings.color_title4 }};
+  }
+  [data-section-id~="{{ section.id }}"].testimonial-color-l2 {
+  	background: {{ section.settings.color_base }};
+  }
+</style>
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Aside Testimonials",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_widget",
+      "label": "Show Widget",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quotes",
+      "label": "Show Quotes",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_color",
+      "label": "Use Custom Colors",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "color_base",
+      "label": "Background Color",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "color_title1",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_quotes",
+      "label": "Quotes Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_title2",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_author",
+      "label": "Author Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_hobby",
+      "label": "Hobby Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_title3",
+      "label": "Dots Base Color",
+      "default": "#a5e6d9"
+    },
+    {
+      "type": "color",
+      "id": "color_title4",
+      "label": "Dots Active Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comment_item",
+      "name": "Comment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Author",
+          "default": "Author"
+        },
+		{
+          "type": "text",
+          "id": "item_hobby",
+          "label": "Hobby",
+          "default": "- Hobby"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

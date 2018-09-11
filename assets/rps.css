@@ -1,0 +1,197 @@
+.join .relative_banner.top-banner-section {
+  padding-top: 0;
+  margin-top: -60px;
+}
+
+.join .banner-txt {
+	width: 40%;
+}
+
+.join .video-icon {
+	right: 38%;
+}
+
+button.button.red {
+	background: #E23E36;
+  	font-size: 20px;
+    padding: 12px 30px;
+    color: #fff;
+}
+
+button.button.red a {
+	color: #fff;
+}
+
+.join .section-cu-block h3 {
+	font-family: inherit; 
+  	font-size: 30px;
+    margin-top: 50px;
+}
+
+.join .texts-block-top .text-block-with-bg h2 {
+	line-height: 4;
+}
+
+.join .text-block-with-bg h2 {
+	line-height: 3;
+}
+
+.join .text-block-with-bg {
+	padding: 0 17%;
+}
+
+.join .texts-block-bottom .section-cu-block {
+	max-width: none;
+}
+
+
+.join .texts-block-bottom .text-block-with-bg {
+	text-align: left;
+  	padding: 0;
+}
+
+.join .texts-block-bottom .text-block-with-bg .content {
+	max-width: 75%;
+  	margin: 100px auto;
+}
+
+.cork {
+	background: url(//cdn.shopify.com/s/files/1/0048/6699/8323/files/HS_ParalaxBanner2048x1114_2048x2048.jpg?v=1525796798) center center no-repeat;
+}
+
+.journal {
+	background: url(//cdn.shopify.com/s/files/1/0048/6699/8323/t/9/assets/journal.png?8172316089299087043) center center no-repeat;
+	background-size: cover;
+}
+
+.box-subscription {
+	background: url(//cdn.shopify.com/s/files/1/0048/6699/8323/t/9/assets/box-subsciption.png?13465511356532356557) center center no-repeat;
+	background-size: cover;
+}
+
+.start-sharing {
+	background: url(//cdn.shopify.com/s/files/1/0048/6699/8323/t/9/assets/start-sharing.png?18038144466094647789) center center no-repeat;
+	background-size: cover;
+}
+
+
+
+.join .section-cu-block {
+	padding-bottom: 0;
+}
+
+.join .text-block-with-bg h3 {
+	margin-top: 0;
+}
+
+.join .texts-block-bottom .text-block-with-bg {
+	min-height: 550px;
+}
+
+.join .texts-block-bottom .cu-main-section {
+	margin: 0;
+}
+
+.join .texts-block-last .cu-main-section {
+  	padding-bottom: 60px;
+}
+
+.join .texts-block-top .section-cu-block {
+  	padding-bottom: 15px;
+}
+
+@media screen and (max-width:1600px) {
+ 	.join .texts-block-bottom .text-block-with-bg {
+    	min-height: 560px;
+	}
+}
+
+@media screen and (max-width:1200px) {
+  .join .texts-block-bottom .text-block-with-bg .content {
+  	margin: 50px auto;
+  }
+  .join .banner-txt {
+      width: 75%;
+    	margin: 0 auto;
+  }
+  .top-banner-section .banner-txt button {
+    margin: 30px auto;
+  }
+  .join .relative_banner .container {
+  	text-align: center;
+  }
+}
+
+.join .show-mobile {
+  	display: none;
+  }
+  .join .hide-mobile {
+  	display: block;
+  }
+
+.cork.show-mobile {
+  padding: 20px 0;
+}
+
+/* .join .top-banner-section .banner-txt h1 {
+	font-size: 33px !important;
+} */
+ 
+.join .show-mobile p {
+	padding-bottom: 20px;
+}
+
+.join .show-mobile h3 {
+	padding: 10px 0;
+}
+
+@media screen and (max-width:992px) {
+  .join .texts-block-bottom .text-block-with-bg .content {
+  	max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .join .texts-block-bottom .text-block-with-bg {
+      min-height: 320px;
+      max-height: 320px;
+  }
+  .join .texts-block-last {
+  	text-align: center;
+  }
+  
+  .join .pull-left {
+  	float: none !important;
+  }
+  .join .texts-block-last img {
+  	max-width: 400px;
+    margin: 0 auto;
+  }
+  .join .journal, .join .box-subscription, .join .start-sharing {
+  	display: none;
+  } 
+  .join .texts-block-bottom .text-block-with-bg p:not(:first-child) {
+      margin: 0;
+  }
+  
+  .join .show-mobile {
+  	display: block;
+  }
+  .join .hide-mobile {
+  	display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width:640px) {
+	.join .banner-txt {
+      width: 100%;
+      margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:575px) {
+  .join .texts-block-bottom .text-block-with-bg {
+  	min-height: 440px;
+  }
+}

@@ -1,0 +1,827 @@
+<!--=== box-baners ===-->
+<section class="content container-fluid box-baners" data-section-id="{{ section.id }}" data-section-type="sliderwithbanners-section">
+  <div class="row">
+    <!-- col-left -->
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      {% if section.blocks.size > 0 %}
+      <!-- banner-slider -->
+      <div class="banner-slider banner-slider-button banner-slider-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="1">
+        {% for block in section.blocks %}
+        <div>
+          <a href="{{ block.settings.link }}" class="banner banner{{ forloop.index }} zoom-in font-size-responsive">
+            <span class="figure">
+              {% if block.settings.image != blank %}<img src="{{ block.settings.image | img_url: '1024x1024' }}" alt="{{ block.settings.image.alt }}">
+              {% else %}<span class="editor-image" data-width="1024" data-height="855"></span>
+              {% endif %}
+			  {% include "section_slider-with-banners" %}
+            </span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- /banner-slider -->
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+    <!-- /col-left -->
+    {% assign button_name = section.settings.button_title %}
+    <!-- col-right -->
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <a href="{{ section.settings.link_1 }}" class="banner zoom-in">
+            <span class="figure">
+              {% if section.settings.image_1 != blank %}
+              <img src="{{ section.settings.image_1 | img_url: 'grande' }}" alt="{{ section.settings.image_1.alt }}">
+              {% else %}
+              <span class="editor-image" data-width="512" data-height="428" data-position="top"></span>
+              {% endif %}
+              <span class="figcaption {% if section.settings.position_1 == "left" %}text-left{% endif %}">
+                <span class="block-table">
+                  <span class="block-table-cell slidbanner_1">
+                    {% assign desingtype = section.settings.design_1 %}
+                    {% assign show_button = section.settings.show_button_1 %}
+                    {% assign title_size = section.settings.title_size_1 %}
+                    {% assign text_1 = section.settings.text_1_1 %}
+                    {% assign text_2 = section.settings.text_1_2 %}
+                    {% assign wrapper = section.settings.wrapper_1 %}
+                    {% assign bold = section.settings.text_size_1 %}
+                    {% include "section_banner_text" %}
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+        <div class="col-sm-6  col-md-6">
+          <a href="{{ section.settings.link_2 }}" class="banner zoom-in">
+            <span class="figure">
+              {% if section.settings.image_2 != blank %}
+              <img src="{{ section.settings.image_2 | img_url: 'grande' }}" alt="{{ section.settings.image_2.alt }}">
+              {% else %}
+              <span class="editor-image" data-width="512" data-height="428" data-position="top"></span>
+              {% endif %}
+              <span class="figcaption {% if section.settings.position_2 == "left" %}text-left{% endif %}">
+                <span class="block-table">
+                  <span class="block-table-cell slidbanner_2">
+                    {% assign desingtype = section.settings.design_2 %}
+                    {% assign show_button = section.settings.show_button_2 %}
+                    {% assign title_size = section.settings.title_size_2 %}
+                    {% assign text_1 = section.settings.text_2_1 %}
+                    {% assign text_2 = section.settings.text_2_2 %}
+                    {% assign wrapper = section.settings.wrapper_2 %}
+                    {% assign bold = section.settings.text_size_2 %}
+                    {% include "section_banner_text" %}
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <a href="{{ section.settings.link_3 }}" class="banner zoom-in">
+            <span class="figure">
+              {% if section.settings.image_3 != blank %}
+              <img src="{{ section.settings.image_3 | img_url: '1024x1024' }}" alt="{{ section.settings.image_3.alt }}">
+              {% else %}
+              <span class="editor-image" data-width="1024" data-height="427" data-position="top"></span>
+              {% endif %}
+              <span class="figcaption {% if section.settings.position_3 == "left" %}text-left{% endif %}">
+                <span class="block-table">
+                  <span class="block-table-cell slidbanner_3">
+                    {% assign desingtype = section.settings.design_3 %}
+                    {% assign show_button = section.settings.show_button_3 %}
+                    {% assign title_size = section.settings.title_size_3 %}
+                    {% assign text_1 = section.settings.text_3_1 %}
+                    {% assign text_2 = section.settings.text_3_2 %}
+                    {% assign wrapper = section.settings.wrapper_3 %}
+                    {% assign bold = section.settings.text_size_3 %}
+                    {% include "section_banner_text" %}
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /col-right -->
+  </div>
+</section>
+<!--=== /box-baners ===-->
+<style>
+  {% for i in (1..3) %}
+  .slidbanner_{{ i }} .text1{
+    {% assign value = "bannercolor_title1_" | append: i %}
+    color: {{ section.settings[value] }};
+  }
+  .slidbanner_{{ i }} .text2{
+    {% assign value = "bannercolor_title2_" | append: i %}
+    color: {{ section.settings[value] }};
+  }
+  .slidbanner_{{ i }} .link-btn-20,
+  .slidbanner_{{ i }} .link-btn-20 span {
+    {% assign value = "bannercolor_buttontext_" | append: i %}
+    color: {{ section.settings[value] }};
+  }
+  .slidbanner_{{ i }} .link-btn-20:hover,
+  .slidbanner_{{ i }} .link-btn-20:hover span {
+    {% assign value = "bannercolor_buttontexthover_" | append: i %}
+    color: {{ section.settings[value] }} !important;
+  }
+  .slidbanner_{{ i }} .btn--ys {
+    {% assign value1 = "bannercolor_buttontext_" | append: i %}
+    {% assign value2 = "bannercolor_buttonbg_" | append: i %}
+    color: {{ section.settings[value1] }};
+  	background: {{ section.settings[value2] }};
+  }
+  .slidbanner_{{ i }} .btn--ys:hover, .slidbanner_1 .btn--ys:active, .slidbanner_1 .btn--ys:focus {
+    {% assign value1 = "bannercolor_buttontexthover_" | append: i %}
+    {% assign value2 = "bannercolor_buttonbghover_" | append: i %}
+    color: {{ section.settings[value1] }};
+  	background: {{ section.settings[value2] }};
+  }
+    {% assign value1 = "wrapper_color_" | append: i %}{% if section.settings[value1] %}
+    .slidbanner_{{ i }} .wrapper-green {
+      background: {{ section.settings[value1] }} !important;
+    }{% endif %}
+  {% endfor %}
+  
+  {% for block in section.blocks %}
+  [data-section-id~="{{ section.id }}"] .banner{{ forloop.index }} .figcaption .title-1 {
+  	color: {{ block.settings.color_text1 }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .banner{{ forloop.index }} .figcaption {
+  	color: {{ block.settings.color_text2 }} !important;
+  }
+  [data-section-id~="{{ section.id }}"] .banner{{ forloop.index }} .figcaption .text_sm {
+  	color: {{ block.settings.color_text2 }} !important;
+  }
+  {% endfor %}
+</style>
+
+{% schema %}
+{
+  "name": "Slider With Banners",
+  "class": "index-section",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_title",
+      "label": "Button Name",
+      "default": "Shop now!"
+    },
+    {
+      "type": "header",
+      "content": "Right Banners Block"
+    },
+    {
+      "type": "header",
+      "content": "Banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link",
+      "info": "Optional"
+    },
+    {
+      "type": "radio",
+      "id": "position_1",
+      "label": "Info Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_1",
+      "label": "Show Button?",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "design_1",
+      "label": "Select Button Design",
+      "options": [
+        { "value": "design_1", "label": "Design 1" },
+        { "value": "design_2", "label": "Design 2" },
+        { "value": "design_3", "label": "Design 3" }
+      ],
+      "default": "design_1"
+    },
+    {
+      "type": "radio",
+      "id": "title_size_1",
+      "label": "Text 1",
+      "options": [
+        { "value": "font-size62", "label": "Medium" },
+        { "value": "font-size82", "label": "Big" },
+		{ "value": "font-size82 font-light", "label": "Big Light" }
+      ],
+      "default": "font-size82"
+    },
+    {
+      "type": "radio",
+      "id": "text_size_1",
+      "label": "Text 2",
+      "options": [
+		{ "value": "font-light", "label": "Light" },
+        { "value": "emptyclass", "label": "Regular" },
+        { "value": "font-medium", "label": "Medium" }
+      ],
+      "default": "font-medium"
+    },
+    {
+      "type": "text",
+      "id": "text_1_1",
+      "label": "Text 1",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "text_1_2",
+      "label": "Text 2",
+      "default": "Season essentials!"
+    },
+    {
+      "type": "radio",
+      "id": "wrapper_1",
+      "label": "Show Text 1 Wrapper?",
+      "options": [
+        { "value": "no", "label": "No" },
+        { "value": "yes", "label": "Yes" }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_color_1",
+      "label": "Wrapper Color",
+      "default": "#41df7c"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title1_1",
+      "label": "Text 1 Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title2_1",
+      "label": "Text 2 Color",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontext_1",
+      "label": "Button Text Base",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontexthover_1",
+      "label": "Button Text Active",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbg_1",
+      "label": "Button Background Base",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbghover_1",
+      "label": "Button Background Active",
+      "default": "#f5f5f5"
+    },
+
+    {
+      "type": "header",
+      "content": "Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link",
+      "info": "Optional"
+    },
+    {
+      "type": "radio",
+      "id": "position_2",
+      "label": "Info Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_2",
+      "label": "Show Button?",
+      "default": false
+    },
+    {
+      "type": "radio",
+      "id": "design_2",
+      "label": "Select Button Design",
+      "options": [
+        { "value": "design_1", "label": "Design 1" },
+        { "value": "design_2", "label": "Design 2" },
+        { "value": "design_3", "label": "Design 3" }
+      ],
+      "default": "design_1"
+    },
+    {
+      "type": "radio",
+      "id": "title_size_2",
+      "label": "Text 1",
+      "options": [
+        { "value": "font-size62", "label": "Medium" },
+        { "value": "font-size82", "label": "Big" },
+		{ "value": "font-size82 font-light", "label": "Big Light" }
+      ],
+      "default": "font-size82"
+    },
+    {
+      "type": "radio",
+      "id": "text_size_2",
+      "label": "Text 2",
+      "options": [
+		{ "value": "font-light", "label": "Light" },
+        { "value": "emptyclass", "label": "Regular" },
+        { "value": "font-medium", "label": "Medium" }
+      ],
+      "default": "font-medium"
+    },
+    {
+      "type": "text",
+      "id": "text_2_1",
+      "label": "Text 1",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "text_2_2",
+      "label": "Text 2",
+      "default": "Season essentials!"
+    },
+    {
+      "type": "radio",
+      "id": "wrapper_2",
+      "label": "Show Text 1 Wrapper?",
+      "options": [
+        { "value": "no", "label": "No" },
+        { "value": "yes", "label": "Yes" }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_color_2",
+      "label": "Wrapper Color",
+      "default": "#41df7c"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title1_2",
+      "label": "Text 1 Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title2_2",
+      "label": "Text 2 Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontext_2",
+      "label": "Button Text Base",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontexthover_2",
+      "label": "Button Text Active",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbg_2",
+      "label": "Button Background Base",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbghover_2",
+      "label": "Button Background Active",
+      "default": "#f5f5f5"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Banner 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Link",
+      "info": "Optional"
+    },
+    {
+      "type": "radio",
+      "id": "position_3",
+      "label": "Info Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_3",
+      "label": "Show Button?",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "design_3",
+      "label": "Select Button Design",
+      "options": [
+        { "value": "design_1", "label": "Design 1" },
+        { "value": "design_2", "label": "Design 2" },
+        { "value": "design_3", "label": "Design 3" }
+      ],
+      "default": "design_2"
+    },
+    {
+      "type": "radio",
+      "id": "title_size_3",
+      "label": "Text 1",
+      "options": [
+        { "value": "font-size62", "label": "Medium" },
+        { "value": "font-size82", "label": "Big" },
+		{ "value": "font-size82 font-light", "label": "Big Light" }
+      ],
+      "default": "font-size62"
+    },
+    {
+      "type": "radio",
+      "id": "text_size_3",
+      "label": "Text 2",
+      "options": [
+		{ "value": "font-light", "label": "Light" },
+        { "value": "emptyclass", "label": "Regular" },
+        { "value": "font-medium", "label": "Medium" }
+      ],
+      "default": "font-medium"
+    },
+    {
+      "type": "text",
+      "id": "text_3_1",
+      "label": "Text 1",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "text_3_2",
+      "label": "Text 2",
+      "default": "Season essentials!"
+    },
+    {
+      "type": "radio",
+      "id": "wrapper_3",
+      "label": "Show Text 1 Wrapper?",
+      "options": [
+        { "value": "no", "label": "No" },
+        { "value": "yes", "label": "Yes" }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_color_3",
+      "label": "Wrapper Color",
+      "default": "#41df7c"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title1_3",
+      "label": "Text 1 Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_title2_3",
+      "label": "Text 2 Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontext_3",
+      "label": "Button Text Base",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttontexthover_3",
+      "label": "Button Text Active",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbg_3",
+      "label": "Button Background Base",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bannercolor_buttonbghover_3",
+      "label": "Button Background Active",
+      "default": "#f5f5f5"
+    }
+ 
+  ],
+  "blocks": [
+    {
+      "type": "slide_design_1",
+      "name": "Slide Design 1",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+		  "default": "Season sale!",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+		  "default": "Get huge savings!",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_text1",
+          "label": "Text 1",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Text 2",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "slide_design_2",
+      "name": "Slide Design 2",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+		  "default": "A great selection of superb brands",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+		  "default": "50% off",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Text 3",
+		  "default": "on all lingerie",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "textarea",
+          "id": "text4",
+          "label": "Text 4",
+		  "default": "Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, sociis natoque penatibus et magnis. Dolor sit amet, consectetuer adipiscing elit. Donec eros tellus.",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Texts",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "slide_design_3",
+      "name": "Slide Design 3",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+		  "default": "Spring -Summer 2017",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+		  "default": "Save 20% on",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Text 3",
+		  "default": "new arrivals",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Texts",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "slide_design_4",
+      "name": "Slide Design 4",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1",
+		  "default": "iMaci",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2",
+		  "default": "27-inch with Retina 5K display",
+		  "info": "Empty field delete text"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color_text1",
+          "label": "Text 1",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_text2",
+          "label": "Text 2",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider With Banners",
+      "category": "Sliders",
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

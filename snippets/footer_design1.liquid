@@ -1,0 +1,47 @@
+<!-- FOOTER section -->
+<footer>
+  <!-- footer-data -->
+  <div class="container inset-bottom-60">
+    <div class="row" >
+      {% if settings.contentBlockAll %}
+        <div class="{% if settings.tabBlockAll %}col-sm-12 col-md-5 col-lg-6 border-sep-right{% else %}col-sm-12{% endif %}">
+          {% include "footer-content" %}        
+        </div>
+      {% endif %}
+      {% if settings.tabBlockAll %}
+        <div class="{% if settings.contentBlockAll %}col-sm-12 col-md-7 col-lg-6 border-sep-left{% else %}col-sm-12{% endif %}">
+          <div class="row">
+            {% include "footer-column-links" %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% unless settings.contentBlockAll %}<br><br>{% endunless %}
+
+  {% if settings.show_footer_soc_but %}
+  <div class="divider divider-md visible-xs visible-sm visible-md"></div>
+  <!-- social-icon -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="social-links social-links--large">
+          <ul>
+            {{ settings.footer_soc_but }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /social-icon -->
+  {% endif %}
+  
+  <!-- footer-copyright -->
+  <div class="container footer-copyright">
+    <div class="row">{{ settings.footer_address }}</div>
+  </div>
+  <!-- /footer-copyright --> 
+  <a href="#" class="btn btn--ys btn--full visible-xs" id="backToTop">Back to top <span class="icon icon-expand_less"></span></a> 
+
+</footer>
+<!-- END FOOTER section -->

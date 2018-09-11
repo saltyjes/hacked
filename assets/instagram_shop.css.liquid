@@ -1,0 +1,276 @@
+/* banner */
+.content--parallax-sm1{
+  height: 570px;
+}
+.content--parallax-sm1 .parallax-text .font88 {
+  font-size: 88px;
+  line-height: 1;
+  letter-spacing: 0em;
+  margin-top: 51px;
+}
+.content--parallax-sm1 .parallax-text .font22{
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  width: 54%;
+  display: inline-block;
+  margin: 0 auto;
+}
+.content--parallax-sm1 .divider--xs {
+  height: 6px;
+}
+@media (max-width: 1024px) {
+  .content--parallax-sm1 .parallax-text .font88{
+    font-size: 50px;
+    margin-top: 0;
+  }
+  .content--parallax-sm1 .parallax-text .font22{
+    font-size: 18px;
+    width:80%;
+  }
+}
+@media (max-width: 767px) {
+  .content--parallax-sm1{
+    height: inherit;
+  }
+  .content--parallax-sm1 .parallax-text .font88{
+    font-size: 30px;
+  }
+  .content--parallax-sm1 .parallax-text .font22{
+    font-size: 15px;
+    width:90%;
+  }
+}
+/* /banner */
+/* snptwdgt */
+.snptwdgt__ftr,
+.fauximg-bin .snptico,
+.public-modal .modal-left-column .snptico-shopping-bag{
+  display: none;
+}
+.snptwdgt-container-liner .fauximg-bin,
+.snptwdgt-container .snptwdgt__item .snpt__fauxim img{
+  backface-visibility: hidden;
+}
+.snptwdgt-container .snptwdgt__item .snpt__fauximg{
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  backface-visibility: hidden;
+}
+.snptwdgt-container .snptwdgt__item:hover .snpt__fauximg{
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+.widget-hotspot:hover{
+  background: {{ settings.color_base }};
+  text-decoration: none;
+}
+.hotspot.hotspot--highlighted, .hotspot:hover{
+  background: {{ settings.color_base }};
+  text-decoration: none;
+}
+.hotspot{
+  backface-visibility: hidden;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  text-decoration: none;
+}
+.widget-hotspot{
+  background: {{ settings.color_base }};
+  color: #FFF;
+  border-width: 3px;
+}
+/* /snptwdgt */
+
+/* loader */
+.loadr-arc-rotate-move .loader:before{
+  border-color: rgba(31,192,160,.155);
+  opacity: .3;
+}
+.loadr-arc-rotate-move .loader:after{
+  border-bottom-color: {{ settings.color_base }};
+}
+/* /loader */
+
+/* snptwdgt lightbox */
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn .snpt-cta-btn_ico i{
+  font-family: 'Material Icons' !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info{
+  padding-bottom: 30px;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__second-line{
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__number{
+  display: block;
+  width: 100%;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__first-line{
+  height: auto;
+  overflow-x: inherit;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__price{
+  color: {{ settings.color_base }};
+  margin-top: 16px;
+  display: inline-block;
+}
+.snptico-right-arrow:before{
+  content: "\e409" !important;
+  font-family: 'Material Icons' !important;
+  font-size: 23px;
+  font-weight: 400;
+}
+.public-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn{
+  letter-spacing: 0 !important;
+}
+.public-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn>span.snpt-cta-btn_txt{
+  font-weight: 500 !important;
+  background: red;
+  letter-spacing: 0 !important;
+  padding: 0;
+}
+.hotspot-modal .modal-content{
+  background-color: #fff !important;
+}
+.hotspot-modal--frontend .product-images-slide img,
+.hotspot-modal .modal-content,
+.hotspot-modal .modal-dialog .slick-active{
+  border-radius: 0 !important;
+}
+.snpt-modal.hotspot-modal a,
+.hotspot-modal .modal-dialog .chevron{
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+}
+.snpt-modal.hotspot-modal a:hover,
+.hotspot-modal .modal-dialog .chevron:hover{
+  text-decoration: none;
+  color: {{ settings.color_base }};
+}
+.widget-hotspot:hover{
+  background: #333333;
+}
+.hotspot-modal{font-family: Ubuntu, sans-serif;}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__number{
+  color: #333333;
+  font-size: 28px;
+  font-weight: 500;
+  font-family: Ubuntu, sans-serif;
+}
+.hotspot-modal  .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn{
+  background: {{ settings.color_base }};
+  color: #fff;
+  border-radius: 0 !important;
+}
+.hotspot-modal  .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn:hover{
+  background: #333333;
+  color: #fff;
+}
+
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn .snpt-cta-btn_ico{
+  background: none !important;
+  color: #fff!important;
+  font-size: 16px;
+  text-align: center;
+
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__product-image{
+  background-position: 0%;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn .snpt-cta-btn_ico i{
+  transform: rotate(0deg);
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__product-image{
+  border-radius: 0 !important;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn{
+  font-size: 16px;
+  font-weight: 500 !important;
+  padding: 0;
+  line-height: 1.2em;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn>span.snpt-cta-btn_txt{
+  letter-spacing: 1px;
+  padding:0;
+  line-height: 1.2em;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn{
+  padding: 6px 7px 5px 17px;
+  text-align: center;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__btn-buy.snpt-cta-btn .snpt-cta-btn_ico{
+  padding: 0
+}
+.hotspot-modal .public-hotspot-info__second-line{
+  color: #333333;
+}
+.hotspot-modal .above-previews-row{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.public-hotspot--username:not(:hover){
+  color: #333333 !important;
+}
+.hotspot-modal .hotspot{
+  background: {{ settings.color_base }};
+  -webkit-transform: scale(1,1);
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 300ms;
+  -moz-transform: scale(1,1);
+  -moz-transition-timing-function: ease-out;
+  -moz-transition-duration: 300ms;
+  text-decoration: none !important;
+}
+.hotspot-modal .hotspot.hotspot--highlighted,
+.hotspot-modal .hotspot:hover.hotspot--highlighted{
+  background: #333333;
+  color: #fff;
+  -webkit-transform: scale(1.2,1.2);
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 300ms;
+  -moz-transform: scale(1.2,1.2);
+  -moz-transition-timing-function: ease-out;
+  -moz-transition-duration: 300ms;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info:hover .public-hotspot-info__number{
+  color: #333;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__second-line{
+  height: auto;
+  margin-top: 7px;
+  font-family: Ubuntu, sans-serif;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__product-image{
+  transition: all 0.3s cubic-bezier(.455,.03,.515,.955);
+  transform: translateZ(0) scale(1);
+}
+.public-hotspot-info__first-line{
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+.hotspot-modal .public-hotspot-info-holder .public-hotspot-info .public-hotspot-info__first-line{
+  margin-top: 15px;
+}
+.public-hotspot-info__btn-buy{
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+}
+.hotspot-modal .crd-cta-blck .snpt-logo{
+  display: none;
+}
+@media only screen and (min-width: 768px){
+  padding-right: 0px;
+}

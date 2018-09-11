@@ -1,0 +1,36 @@
+<div class="advocate-search">
+
+  <div>
+    <label>Who referred you?</label>
+    <select id="advocate-list" name="attributes[advocate_id]" placeholder="Start typing your Advocate's name here">
+      <option selected="selected"></option>
+    </select>
+  </div>
+  <div class="found-on-my-own">
+    <label><input type="checkbox" name="attributes[no_advocate]"/> <small>I found Hacked Snacks on my own</small></label>
+  </div>
+
+  <!-- Custom styles for selectize -->
+  <style>
+    .advocate-search {
+      display: none;
+    }
+
+    .selectize-dropdown [data-selectable],
+    .selectize-dropdown .optgroup-header,
+    .selectize-dropdown .no-results {
+      padding: 5px 8px;
+    }
+    .selectize-dropdown .active.create,
+    .selectize-dropdown .active.no-results {
+      color: #495c68;
+    }
+    .selectize-dropdown .create,
+    .selectize-dropdown .no-results {
+      color: rgba(48, 48, 48, 0.5);
+    }
+  </style>
+
+
+
+</div>

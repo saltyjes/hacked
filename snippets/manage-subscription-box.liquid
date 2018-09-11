@@ -1,0 +1,1335 @@
+<div class="shopify_content_for_layout">
+  {{ content_for_layout }}
+</div>
+
+{% comment %} Get the product id and variant id from url {% endcomment %}
+{%- section 'build-a-box' -%}
+
+<div class="custom-manage-box">
+  <div class="custom-manage-box-body container">
+    <div class="manage-box-header">
+      <h3 class="head-title">BUILD YOUR BOX</h3>
+      <div class="selected-subscription-box">
+        <span class="selected-product-title"></span> - <span class="selected-product-price"></span>
+        <span class="selected-product-box-limit float-right"></span>
+        <span class="dropdown-arrow"></span>
+      </div>
+
+      {% comment %} Hide box selections if user is navigated from their manage subscription page in the account admin {% endcomment %}
+      {% unless request.path contains '/manage_subscription_box/select_products/' %}
+      <div class="box-selections">
+        <div class="box-type-selection">
+          <div class="variety-box-type-selection">VARIETY SNACK BOX</div><div class="single-box-type-selection">SINGLE SNACK BOX</div>
+        </div>
+        <div class="row">
+          {%- for product in collections['subscription-boxes'].products -%}
+            {%- comment %}<locksmith:e518>{% endcomment -%}
+              {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collections.subscription-boxes %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:e518>{% endcomment -%}
+            <div class="col-md-4">
+              <script>
+                window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }});
+                {%- for variant in product.variants -%} window.BOLD.common.Shopify.saveVariant({{ variant.id | json }}, {product_id: {{ product.id | json }}, price: {{ variant.price | json }}, group_id: '{{variant.metafields.bold_rp.rp_group_id}}'}); {%- endfor -%}
+              </script>
+
+              <div data-product-id="{{ product.id }}" class="subscription-box {% if product.tags contains 'variety-box-product' %}variety{% else %}single{% endif %}">
+                <img src="{{ product.featured_image | img_url: large }}" />
+                {% assign product_title = product.title | split: '-' %}
+                <h4 class="h-title">{{ product_title | first | upcase  }}</h4>
+                <div class="h-subtitle">
+                  <h5 class="h-subtitle-line">{{ product_title[1] | upcase  }}</h5>
+                  <h5 class="h-subtitle-line">{{ product_title[2] | upcase  }}</h5>
+                </div>
+                <span class="sub-box-price"> - {{ product.price | money_without_trailing_zeros }}</span>
+                <span class="sub-box-snack-total float-right">0/{{- product_title[1] | strip -}}</span>
+                <form action="/tools/checkout/manage_subscription_box/select_products_checkout/{{product.id}}/{{product.first_available_variant.id}}" method="post" enctype="multipart/form-data" style="display: none;">
+                  <input type="hidden" name="id" value="{{product.first_available_variant.id}}" />
+                  <button name="add" id="AddtoCart" class="btn btn-select-plan addtocart">Select Choices</button>
+                </form>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      {% endunless %}
+
+    </div>
+
+    <hr class="first-divide">
+
+    <div class="box-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-9">
+            <div class="box-options-wrapper">
+                    
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="side-panel">
+              <div class="subscription-box-title h3"></div>
+              <span class="snacks_total"></span><span class="subscription-box-price"></span>
+              <span class="subscription-box-quantity-progress float-right"></span>
+              <hr class="hr-small">
+              <div class="progress-container"></div>
+              <hr class="hr-medium">
+              
+              <div class="widget-container">
+                {% unless request.path contains '/manage_subscription_box/select_products/' %}
+                  <h4>SUBSCRIBE &amp; SAVE</h4>
+                  <div class=choice-options>
+                    <div>
+                      <input type="radio" id="one-time" name="ro_choice" class="one-time-input">
+                      <label for="one-time">One time Purchase</label>
+                    </div>
+                    <div class="subscribe-option">
+                      <input checked type="radio" id="subscribe" name="ro_choice" class="subscribe-input">
+                      <label for="subscribe">Subscribe every </label>
+                    </div>
+                  </div>
+                {% endunless %}
+
+                <div class="box-total-progress">
+                  <div class="box-progress-indicator"></div>
+                  <label class="box-title">ADD MORE SNACKS</label>
+                  <span class="box-quantity-progress"></span>
+                </div>
+
+                <div class="button_actions">
+                  {% unless request.path contains '/manage_subscription_box/select_products/' %}
+                    <button class="cta_button add_to_cart">Add To Cart</button>
+                    <button class="cta_button subscribe">Subscribe &amp; save</button>
+                    <div class="subscribe-message">
+                      <img src="{{ 'fast-delivery.svg' | asset_url }}"/>
+                      <p>Subscribe today & get free shipping</p>
+                      <p>Get PFC Balanced Snacks to your door no hassel cancel anytime</p>
+                    </div>
+                  {% else %}
+                   <button class="cta_button save_selections">Save Selections</button>
+                  {% endunless %}
+                </div>
+              </div>
+            </div>
+            <div class="mobile-panel">
+              <div class="box-total-progress fixed">
+                <div class="box-progress-indicator"></div>
+                <label class="box-title">ADD MORE SNACKS</label>
+                <span class="box-quantity-progress"></span>
+              </div>
+              <div class="button_actions">
+                {% unless request.path contains '/manage_subscription_box/select_products/' %}
+                  <button class="cta_button fixed add_to_cart_fixed">Add To Cart</button>
+                  <button class="cta_button fixed subscribe_fixed">Subscribe &amp; save</button>
+                {% else %}
+                  <button class="cta_button fixed save_selections">Save Selections</button>
+                {% endunless %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/**
+* box_products variable comes from build-a-box.liquid
+*/
+
+{% capture boxes %}
+[
+  {%- comment %}<locksmith:1493>{% endcomment -%}
+    {%- assign locksmith_4f42_forloop__size = 0 %}{%- for product in collections['subscription-boxes'].products -%}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product %}{% if locksmith_transparent %}{% assign locksmith_4f42_forloop__size = locksmith_4f42_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_4f42_forloop__index = nil -%}
+  {%- comment %}</locksmith:1493>{% endcomment -%}
+  {%- for product in collections['subscription-boxes'].products -%}
+    {%- comment %}<locksmith:b81b>{% endcomment -%}
+      {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collections.subscription-boxes %}{% if locksmith_transparent %}{% if locksmith_4f42_forloop__index == nil %}{% assign locksmith_4f42_forloop__index = 1 %}{% assign locksmith_4f42_forloop__index0 = 0 %}{% else %}{% assign locksmith_4f42_forloop__index = locksmith_4f42_forloop__index | plus: 1 %}{% assign locksmith_4f42_forloop__index0 = locksmith_4f42_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_4f42_forloop__index == 1 %}{% assign locksmith_4f42_forloop__first = true %}{% else %}{% assign locksmith_4f42_forloop__first = false %}{% endif %}{% if locksmith_4f42_forloop__index == locksmith_4f42_forloop__size %}{% assign locksmith_4f42_forloop__last = true %}{% else %}{% assign locksmith_4f42_forloop__last = false %}{% endif %}{% assign locksmith_4f42_forloop__rindex = locksmith_4f42_forloop__size | minus: locksmith_4f42_forloop__index | minus: 1 %}{% assign locksmith_4f42_forloop__rindex0 = locksmith_4f42_forloop__size | minus: locksmith_4f42_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:b81b>{% endcomment -%}
+    {
+      id: {{ product.id | json }},
+      featured_image: {{ product.featured_image | img_url: 'large' | json }},
+      title: {{ product.title | split: '-' | first | strip | json }},
+      price: {{ product.price | money_without_trailing_zeros | json }},
+      variant_id: {{ product.first_available_variant.id | json }},
+      group_id: {{ product.first_available_variant.metafields.bold_rp.rp_group_id | json }}
+    }{%- unless locksmith_4f42_forloop__last -%},{% endunless %}
+  {%- endfor -%}
+]
+{%- endcapture -%}
+var subscription_boxes = {{ boxes }}
+
+var current_box_group_id;
+
+subscription_boxes.some(function(box){
+  if (box.id == window.BOLD.recurring_orders.subscription_box.product_id && box.variant_id == window.BOLD.recurring_orders.subscription_box.variant_id){
+    current_box_group_id = box.group_id;
+    window.loaded_box = box;
+    return true;
+  }
+  return false;
+});
+
+if (current_box_group_id){
+    var url =  'https://ro.boldapps.net/api_public/group/' + current_box_group_id + '?access_all=1&shop_url=' + {{ shop.permanent_domain | json }};
+    $.ajax({
+      type: 'GET',
+      url: url,
+      dataType: 'json',
+      success: function(data){
+        window.ro_data = data;
+        // wait till DOMcontent loaded so I have some gaurantee that RO will have loaded all its stuff too
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+          loadCustomRoInerface();
+        }
+        else{
+          document.addEventListener("DOMContentLoaded", loadCustomRoInerface);
+        }
+      }
+    });
+}
+else{
+  //Hide custom layout
+  $('.custom-manage-box').hide();
+}
+
+function createFrequencySelector(selector){
+  // Update widget with information from RO
+  // This is in javascript because it is reused code :D
+  var freq_id = window.ro_data.frequency_type[0].frequency_type_id;
+  var freq_trans = window.ro_data.frequency_type[0].frequency_type_translation;
+  
+  
+  var dw_freq = document.createElement('select');
+  dw_freq.className = 'frequency_num';
+  dw_freq.name = 'properties[frequency_num]';
+  for(var i = 0; i < window.ro_data.frequency_num; i++){
+    var trans = freq_trans;
+    var option = document.createElement("option");
+    trans = trans.charAt(0).toUpperCase() + trans.slice(1);
+    if(i != 0) trans += 's';
+
+    option.value = i + 1;
+    option.text = i + 1 + ' ' + trans;
+    dw_freq.appendChild(option);
+  }
+  document.querySelector(selector) && document.querySelector(selector).appendChild(dw_freq);
+}
+
+function loadCustomRoInerface(){
+  createFrequencySelector('.subscribe-option')
+
+  //Hide RO layout
+  $('.shopify_content_for_layout').hide();
+
+  //Grab all the products information loaded on the page by RO
+  var loaded_product_objs = []; 
+  $('article.bold-product:not(.bold-grid)').each(function(el){
+    loaded_product_objs.push({
+      id: $(this).data('slotVariantId'),
+      slot_id: $(this).data('slotId'),
+      slot_label: $(this).data('slotLabel'),
+      slot_inventory: $(this).find('.bold-product__quantity-val').data('slotInventory'),
+      slot_quantity: parseInt($(this).find('.bold-product__quantity-val').val()),
+      category: $(this).data('slotLabel').substring(0, $(this).data('slotLabel').length - 2) // -2 accounts for index, e.g catergory-1
+    })
+  });
+
+  //merge them with the information of all boxes from the collection of products
+  for (var i = 0; i < loaded_product_objs.length; i++) {
+    var id = loaded_product_objs[i].id;
+
+    for (var j = 0; j < box_products.length; j++) {
+      if (box_products[j].variants[0].id == id){
+        loaded_product_objs[i] = Object.assign(loaded_product_objs[i], box_products[j])
+      }
+    }
+  }
+
+  // create categories based on the loaded product objects
+  var categories = {};
+  for (var i = 0; i < loaded_product_objs.length; i++) {
+    var category = loaded_product_objs[i].category;
+    if (!categories[category]) {
+      categories[category] = [];
+    }
+    categories[category].push(loaded_product_objs[i]);
+  }
+
+  // hack to get selection total limit value from RO
+  window.current_box_total = current_selection_total() + parseInt($('.bold-ro__choice-progress-value').text());
+  // selection total / nummber of categories = each category limit
+  var category_limit = Math.floor(window.current_box_total/Object.keys(categories).length)
+
+  //update box info
+  updateBoxInformation();
+
+  var $box_options_wrapper = $('.box-options-wrapper');
+  var $progress_container = $('.progress-container');
+
+  var custom_box_selection_limit = 0;
+
+  //box_settings comes from section build-box.liquid
+  box_settings.forEach(function (box){
+    var ref = box.ref;
+    var title = box.title;
+    var limit = parseInt(category_limit);
+
+    //if ref was loaded on the page by build a box. Ref is the slot reference used to set up the box from RO
+    // i.e if this box was loaded on the page by RO, create UI view for that category
+    if (categories[ref]){
+      //Add progress tracker to dom
+      var progress_tracker = '\
+        <div class="progress-wrapper">\
+          <div class="box-progress" data-category="' + ref + '" data-limit="' + limit + '">\
+            <div class="box-progress-indicator"></div>\
+            <label class="box-title">' + title.toUpperCase() + '</label>\
+            <span class="box-quantity-progress"></span>\
+          </div>\
+        </div>\
+      '
+      $progress_container.append(progress_tracker);
+      custom_box_selection_limit += limit;
+
+      //Add product category to dom
+      var category = categories[ref];
+
+      var product_options_html = "";
+      category.forEach(function(product){
+        var title = product.title.split('—')[0].trim();
+        var q_hide = product.slot_quantity <= 0 ? 'q_hide' : ''
+        var product_html = '\
+        <div class="col-xs-6 col-md-3">\
+          <div class="bold__product">\
+            <article class="bold__product_item">\
+              <span data-category="' + ref + '" data-category-limit="' + limit + '" data-slot-id="' + product.slot_id + '" data-slot-inventory="' + product.slot_inventory + '" class="bold__product_quantity ' + q_hide + '">'  + product.slot_quantity + '</span>\
+              <div class="bold__product_info">\
+                <div class="bold__product_title">' + title + '</div>\
+              </div>\
+              <div class="bold__product_image-container">\
+                <img src="' + product.featured_image + '" alt="' + title + '">\
+              </div>\
+              <div class="bold__product_quantity_selectors">\
+                <span data-slot-id="' + product.slot_id + '" data-slot-inventory="' + product.slot_inventory + '" class="bold__product__quantity-decrease custom-quantity_selectors">-</span><span data-slot-id="' + product.slot_id + '" data-slot-inventory="' + product.slot_inventory + '" class="bold__product__quantity-increase custom-quantity_selectors">+</span>\
+              </div>\
+            </article>\
+          </div>\
+        </div>\
+        '
+        product_options_html += product_html;
+      });
+
+      //generate category skeleton
+      var category_html = '\
+      <div class="box-option">\
+        <h4 class="box-category-title">' + title + '</h4>\
+        <span>' + category.length + ' Flavors</span>\
+        <span class="cat-quantity-progress float-right md-view" data-category="' + ref + '" data-limit="' + limit + '"></span>\
+        <div data-ref="' + ref + '"></div>\
+          <div class="prods-row-wrapper">\
+            <div class="row no-gutter">\
+            ' + product_options_html + '\
+            </div>\
+          </div>\
+        </div>\
+        <hr class="hr-medium">\
+      </div>\
+      '
+
+      $box_options_wrapper.append(category_html);
+    }
+  });
+
+  function updateCTA(complete){
+    var $checked = $("input[name='ro_choice']:checked");
+    var $subscribe_button = $('button.subscribe');
+    var $cart_button = $('button.add_to_cart');
+    
+    if(complete){
+      $('.box-total-progress').hide();
+      if($checked.hasClass('subscribe-input')){
+        $cart_button.hide();
+        $subscribe_button.show();
+      }
+      else{
+        $subscribe_button.hide();
+        $cart_button.show();
+      }
+      $('.button_actions').show();
+    }
+    else{
+      $('.button_actions').hide();
+      $('.box-total-progress').show();
+    }
+
+  }
+
+  function getCategoryCount(category){
+    var total = 0;
+    $('.bold__product_quantity[data-category="' + category + '"]').each(function () {
+      total += parseInt($(this).text());
+    })
+    return total;
+  }
+
+  function updateBoxInformation(){
+    $('.subscription-box-title').text(window.loaded_box.title)
+    $('.snacks_total').text(window.current_box_total + " Snacks")
+    $('.subscription-box-price').text(" - " + window.loaded_box.price)
+
+    //select appropriate box
+    var $box_element = $('.subscription-box[data-product-id="' + window.loaded_box.id + '"]');
+    $box_element.addClass('selected');
+    $box_element.parent().addClass('selected'); // for css styling
+    if ($box_element.hasClass('variety')){
+      showVarietyBoxes();
+    }
+    else{
+      showSingleBoxes();
+    }
+
+    //For mobile sticky header
+    $('.selected-product-title').text(window.loaded_box.title)
+    $('.selected-product-price').text(window.loaded_box.price)
+  }
+
+  function updateProgessTracker(){
+    var total_count = 0;
+    $('.box-progress').each(function(){
+      var category = $(this).data('category');
+      var limit = $(this).data('limit');
+      var count = getCategoryCount(category);
+      total_count += count;
+      $(this).find('.box-quantity-progress').text(count + "/" + limit);
+      $(this).find('.box-progress-indicator').css({ width: count/parseInt(limit) * 100 + "%"})
+    });
+
+    //update progress for medium size view down
+    $('.cat-quantity-progress.md-view').each(function(){
+      var category = $(this).data('category');
+      var limit = $(this).data('limit');
+      var count = getCategoryCount(category);
+      $(this).text(count + "/" + limit);
+    });
+
+    $('.box-total-progress .box-quantity-progress').text(total_count + "/" + custom_box_selection_limit);
+    $('.subscription-box-quantity-progress').text(total_count + "/" + custom_box_selection_limit + " snacks");
+    $('.selected-product-box-limit').text(total_count + "/" + custom_box_selection_limit + " snacks");
+    $('.box-total-progress .box-progress-indicator').css({ width: total_count/parseInt(custom_box_selection_limit) * 100 + "%" })
+
+    if(total_count == custom_box_selection_limit){
+      updateCTA(true);
+    }
+    else{
+      updateCTA(false);
+    }
+  }
+
+  //update progress tracker after it has been appended to the dom
+  updateProgessTracker()
+
+  function adjust_slot_quantity_custom(slot_id, adjustment){
+    
+
+    //Get custom quantity element value
+    var $quantity = $('.bold__product_quantity[data-slot-id="' + slot_id + '"]');
+    var slot_inventory = $quantity.data('slotInventory');
+    var current_slot_val = parseInt($quantity.text());
+    var category_count = getCategoryCount($quantity.data('category'))
+    var category_limit = parseInt($quantity.data('categoryLimit'));
+
+    if (slot_inventory !== 'no_inventory' && (current_slot_val + adjustment) > slot_inventory) {
+      $quantity.parent().addClass('out-of-stock')
+      return;
+    }
+
+    if ((current_slot_val + adjustment) < 0) {
+      return;
+    }
+    if ((category_count + adjustment) > category_limit) {
+      return;
+    }
+    
+    $quantity.text(current_slot_val + adjustment);
+    current_slot_val + adjustment <= 0 ? $quantity.hide() : $quantity.show();
+
+    updateProgessTracker();
+
+    //call original RO function to handle change
+    adjust_slot_quantity(slot_id, adjustment);
+  }
+
+  function addToCart(){
+    var slot_variants = [];
+    var box_variant_id = window.BOLD.recurring_orders.subscription_box.variant_id;
+    $('div.bold-grid__column.bold-grid__column--quarter').each(function(){
+      var slot_variant_id = $(this).find('article').data('slot-variant-id');
+      var slot_qty = parseInt($(this).find('input.bold-product__quantity-val').val());
+      if(slot_qty > 0){
+        var variant_qty = { variant_id:slot_variant_id, qty:slot_qty };
+        slot_variants.push(variant_qty);
+      }
+    });
+
+    slot_variants.sort(function(a, b){
+      if(a.qty < b.qty){
+          return -1;
+      }
+      if(a.qty > b.qty){
+          return 1;
+      }
+      return 0;
+    });
+
+    console.log(slot_variants); 
+
+    var security = '';
+    for (var i = 0; i < slot_variants.length; i++) {
+      security += slot_variants[i]['variant_id'] + "" + slot_variants[i]['qty'];
+    }
+    console.log(security);
+
+    $.ajax({
+      type: "POST",
+      url: '/cart/add.js',
+      data: {
+        quantity: 1,
+        id: box_variant_id,
+        properties: {
+            '_build_a_box': slot_variants,
+            '_build_a_box_key': security,
+            '_build_a_box_id' : 'bb_' + new Date().valueOf()
+        }
+      },
+      success: function(){
+        window.location.href = "/cart";
+      },
+      dataType: 'json'
+    });
+  }
+
+  //coped from RO source code for the post subscribtion
+  function buildROElement(name, value, form){
+    var input = jQuery(document.createElement('input'));
+    input.attr('type', 'hidden');
+    input.attr('name', name);
+    input.attr('value', value);
+    form.append(input);
+  }
+
+  //function mirrors current function from RO to post to cashier checkout
+  function postSubscribtion(modal){
+    var $form = jQuery(document.createElement('form'));
+    $form.attr("action", "/apps/checkout/begin-checkout?shop=hackedsnacksstaging.myshopify.com" + google_analytics_get_param_string());
+    $form.attr("method", "POST");
+
+    jQuery('.bold-ro__choices-save').attr('disabled', true);
+    jQuery('.cta_button').attr('disabled', true);
+
+    var data = {
+      "id": "" + window.BOLD.recurring_orders.subscription_box.variant_id,
+      "bold-ro__selector_radio_button":"3", //not sure why it is 3 but going to leave it like that 
+      "frequency_num": modal ? $('.modal-subscribe-option .frequency_num').val() : $('.frequency_num').val(),
+      "frequency_type": window.ro_data.frequency_type[0].frequency_type_id,
+      "frequency_type_text": "Month(s)",
+      "group_id": window.ro_data.group_id,
+      /*"discounted_price":"<span class=money>$99.00<\/span>",
+      "_ro_discount_percentage":"0",
+      "_ro_unformatted_price":"9900",*/
+      "csrf_bold_token":window.ro_data.csrf_token,
+      "quantities":["1"],
+      "product_id":["" + window.BOLD.recurring_orders.subscription_box.product_id],
+      "variant_id":["" + window.BOLD.recurring_orders.subscription_box.variant_id],
+      "note":"",
+      "quantity":"1",
+      "shopify_customer_id":"",
+      "email":"",
+      "address1":"",
+      "address2":"",
+      "city":"",
+      "company":"",
+      "country":"",
+      "first_name":"",
+      "last_name":"",
+      "phone":"",
+      "province":"",
+      "zip":""
+    };
+    data['properties'] = (!data['properties']) ? {} : data['properties'];
+    data['attributes'] = (!data['attributes']) ? {} : data['attributes'];
+    data['properties']['_ro_subscription_box_choices'] = [];
+    jQuery('.bold-product__quantity-val').each(function (index) {
+      var slot = jQuery(this).data('slot-id');
+      var quantity = parseInt(jQuery(this).val());
+      data['properties']['_ro_subscription_box_choices'].push({
+        "slot": slot,
+        "quantity": quantity,
+      });
+      buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][_ro_subscription_box_choices]['+index+'][slot]', slot, $form);
+      buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][_ro_subscription_box_choices]['+index+'][quantity]', quantity, $form);
+    });
+
+    
+    data['properties']['_ro_timestamp'] = (new Date()).getTime();
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][_ro_billing_plan]', "0", $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][_ro_timestamp]', data['properties']['_ro_timestamp'], $form);
+    buildROElement('variants', window.BOLD.recurring_orders.subscription_box.variant_id + ':1', $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][group_id]', window.ro_data.group_id, $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][frequency_num]', modal ? $('.modal-subscribe-option .frequency_num').val() : $('.frequency_num').val(), $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][frequency_type]', window.ro_data.frequency_type[0].frequency_type_id, $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][frequency_type_text]', 'Month(s)', $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][total_recurrences]', '0', $form);
+    buildROElement('bold_cart_params[b065901c-bf09-11e7-b98f-42010afe0607][addon_info][advocate_id]', '{{ cart.attributes.advocate_id }}', $form);
+    function add_inputs_to_form(data, prefix) {
+      jQuery.each(data, function (k, v) {
+        if (prefix) {
+          k = prefix + '[' + k + ']';
+        }
+        if (typeof v !== 'object') {
+          var $input = jQuery(document.createElement('input'));
+          $input.attr('type', 'hidden');
+          $input.attr('name', k);
+          $input.attr('value', v);
+          $form.append($input);
+        }
+        else {
+          add_inputs_to_form(v, k);
+        }
+      });
+    }
+
+    add_inputs_to_form(data, '');
+    $form.appendTo('body');
+    $form.submit();
+  }
+
+  function createModal(data){
+    $("body").css("overflow", "hidden");
+    $('body').prepend('<div class="custom-modal-overlay"></div>');
+    $('body').prepend('<div class="custom-modal">' + data + '</div>');
+  }
+  $(document).click(function(event){
+    if($(event.target).attr('class') == 'custom-modal-overlay' || $(event.target).attr('class') == 'custom-modal-close'){
+      killModal();
+    }
+  });
+  function killModal(){
+    $("body").css("overflow", "");
+    $('.custom-modal-overlay').remove();
+    $('.custom-modal').remove();
+  }
+
+  function showVarietyBoxes(){
+    $('.variety-box-type-selection').addClass('selected');
+    $('.single-box-type-selection').removeClass('selected');
+    $('.subscription-box').each(function(){
+      if($(this).hasClass('variety')){
+        $(this).parent().show();
+      }
+      else{
+        $(this).parent().hide();
+      }
+    });
+  }
+
+  function showSingleBoxes(){
+    $('.single-box-type-selection').addClass('selected');
+    $('.variety-box-type-selection').removeClass('selected');
+    $('.subscription-box').each(function(){
+      if($(this).hasClass('variety')){
+        $(this).parent().hide();
+      }
+      else{
+        $(this).parent().show();
+      }
+    });
+  }
+
+  function modalContent(mobileSubscribe){
+    if(typeof(mobileSubscribe) === "undefined"){
+      mobileSubscribe = false;
+    }
+
+    var message = mobileSubscribe ?
+    "Choose the frequency of your subscription": 
+    "Did you know you can get free shipping by subscribing?"
+
+    var one_time_checkout = mobileSubscribe? '': '<div class="modal_add_to_cart">No Thanks, Continue to check out</div>'
+    var modalData = '\
+    <div class="custom-modal-inner">\
+      <div class="custom-modal-close">X</div>\
+      <div class="custom-modal-header">\
+        <h3>SUBSCRIBE & SAVE</h3>\
+      </div>\
+      <hr>\
+      <div class="custom-modal-content">\
+        <p class="custom-modal-message">'+message+'</p>\
+        <div class="modal-subscribe-option">\
+          <label for="subscribe">SUBSCRIBE EVERY </label>\
+        </div>\
+        <div class="custom-modal-cta">\
+          <button class="cta_button subscribe_modal">Subscribe &amp; save</button>\
+          <div class="subscribe-message">\
+            <img src="{{ "fast-delivery.svg" | asset_url }}"/>\
+            <p>Subscribe today & get free shipping</p>\
+            <p>Get PFC Balanced Snacks to your door no hassel cancel anytime</p>\
+          </div>\
+          '+ one_time_checkout + '\
+        </div>\
+      </div>\
+    </div>';
+
+    return modalData;
+  }
+
+  //Custom listeners
+
+  //Listener to update quantity selectors
+  $('.bold__product__quantity-increase').on('click', function(event){
+    event.preventDefault();
+    adjust_slot_quantity_custom($(this).data('slotId'), +1)
+  });
+
+  $('.bold__product__quantity-decrease').on('click', function(event){
+    event.preventDefault();
+    adjust_slot_quantity_custom($(this).data('slotId'), -1)
+  });
+
+  $('input[name="ro_choice"]').on('change', function(){
+    updateProgessTracker();
+  });
+
+  function addToCartHandler() {
+    //show modal
+    createModal(modalContent());
+    createFrequencySelector('.modal-subscribe-option')
+  }
+
+  $('.cta_button.add_to_cart').on('click', addToCartHandler);
+  $('.cta_button.add_to_cart_fixed').on('click', addToCartHandler);
+
+  $('.cta_button.subscribe').on('click', function(){
+    postSubscribtion(false);
+  });
+
+  $('.cta_button.subscribe_fixed').on('click', function(){
+    //show modal
+    createModal(modalContent(true));
+    createFrequencySelector('.modal-subscribe-option')
+  });
+
+  $(document).click(function(event){
+    if($(event.target).attr('class') == 'modal_add_to_cart'){
+      addToCart();
+    }
+    else if($(event.target).attr('class') == 'cta_button subscribe_modal'){
+      postSubscribtion(true);
+    }
+  });
+
+  $('.subscription-box').on('click', function(){
+    $(this).find('form').submit();
+  });
+
+  $('.variety-box-type-selection').on('click', function(){
+    showVarietyBoxes();
+  });
+  $('.single-box-type-selection').on('click', function(){
+    showSingleBoxes();
+  });
+
+  $('.manage-box-header').on('click', function(){
+    if($(window).width() <= 991){
+      $('.box-selections').slideToggle();
+    }
+  })
+
+  $('.save_selections').on('click', function(){
+    $('.bold-ro__choices-save').click();
+  })
+
+  // Initialize sticky components
+  // removing relative on parent (col-md-*) to ensure correct beahviour of sticky element
+  $(".side-panel").parent().css({ position: 'static'})
+  $(".side-panel").stick_in_parent({
+    parent: ".box-body",
+    offset_top: 10
+  });
+  $(".side-panel").stick_in_parent({
+    parent: ".box-body",
+    offset_top: 10
+  });
+
+} //END - loadCustomRoInterface
+
+</script>
+
+<style>
+  .custom-manage-box{
+    background: #e8e9e8;;
+  }
+
+  .custom-manage-box .container {
+    background: #fff;
+  }
+
+  .custom-manage-box-body.container {
+    padding-top: 10em;
+    margin-top: -10em;
+  }
+
+  .progress-wrapper {
+    padding: 4px 0px;
+  }
+
+  .box-progress, .box-total-progress {
+    border: 1px solid rgba(0,0,0,0.2);
+    position: relative;
+    height: 40px;
+  }
+
+  .box-total-progress {
+    background: #3e3e3e;
+    color: white;
+  }
+
+  .box-total-progress label{
+     color: white;
+  }
+
+  .box-total-progress .box-progress-indicator {
+      background: #c7c7c7;
+  }
+
+  .box-progress-indicator {
+    position: absolute;
+    background: #ccc;
+    top: 0;
+    left: 0;
+    width: 0%;
+    content: '';
+    height: 100%;
+  }
+
+  .cta_button {
+    width: 100%;
+    height: 40px;
+    background-color: #e43c30;
+    color: white;
+    text-transform: uppercase;
+    border: 2px solid #e43c30;
+  }
+
+  .cta_button:hover{
+    opacity: 0.5
+  }
+
+  .select.frequency_num{
+    border: 0px;
+    border-bottom: 1px solid;
+  }
+
+  .box-title {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .box-quantity-progress {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 12px;
+  }
+
+  .box-category-title {
+    text-transform: uppercase;
+  }
+
+  .bold__product {
+    padding: 8px 0;
+    margin: auto 8px;
+  }
+
+  .bold__product_item {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  .bold__product_quantity{
+    position: absolute;
+    background-color: #292929;
+    border-radius: 50%;
+    top: -10px;
+    right: -10px;
+    text-align: center;
+    width: 26px;
+    color: #fff;
+    font-weight: 100;
+  }
+
+  .bold__product_info{
+    text-align: center;
+  }
+
+  .bold__product_title {
+    padding: 8px 0px;
+    min-height: 52px;
+    line-height: 18px;
+  }
+
+  .bold__product_image-container img {
+    margin: auto;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    font-size: 10px;
+  }
+
+  .bold__product__quantity-decrease {
+    border-right: 1px solid rgba(0,0,0,0.2);
+  }
+
+  .custom-quantity_selectors {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+    padding: 5px;
+    
+    /* removing user select on element */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  .custom-quantity_selectors:active {
+    background-color: grey;
+  }
+
+  .custom-modal-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100002;
+  }
+  .custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100003;
+  }
+  .custom-modal-inner {
+    padding: 40px 40px 15px;
+    text-align: center;
+    color: #000;
+    position: relative;
+  }
+  .custom-modal-header {
+    position: relative;
+  }
+  .custom-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 5;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #000;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .custom-modal-close:hover {
+    opacity: 0.5;
+  }
+  .custom-modal-content {
+    padding: 0px 25px;
+  }
+  .custom-modal-message{
+    font-size: 20px;
+    margin-bottom: 35px;
+    line-height: 25px;
+  }
+  .modal-subscribe-option{
+    padding-bottom: 10px;
+  }
+  .subscribe-message {
+    text-align: center;
+  }
+  .subscribe-message p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 15px;
+    margin: 2px;
+    display: inline-block;
+  }
+  .subscribe-message img {
+    width: 25px;
+    display: inline-block;
+  }
+  .modal_add_to_cart {
+    padding-top: 20px;
+    cursor: pointer;
+  }
+  select.frequency_num {
+    border: 0;
+    border-bottom: 1px solid;
+    font-size: 12px;
+  }
+  .choice-options {
+    padding-left: 20px;
+    padding-bottom: 15px;
+  }
+  .subscription-box-title{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  hr.hr-small {
+    margin: 8px 0;
+  }
+  hr.hr-medium {
+    margin: 15px 0;
+  }
+  .float-right {
+    float: right;
+  }
+  .float-right:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+  .subscription-box-quantity-progress {
+    font-size: 14px;
+  }
+  .cat-quantity-progress {
+    padding-right: 4px;
+  }
+  .subscription-box{
+    display: inline-block;
+  }
+  .manage-box-header{
+    text-align: center;
+    margin-top: 40px;
+  }
+  .box-selections{
+    margin: 40px 30% 0;
+    display: block;
+  }
+  .variety-box-type-selection, .single-box-type-selection {
+    color: #777;
+    border-bottom: 2px solid #777;
+    font-weight: 500;
+    display: inline-block;
+    width: 49%;
+    cursor: pointer;
+  }
+  .variety-box-type-selection.selected, .single-box-type-selection.selected{
+    color: #e43c30;
+    border-bottom: 2px solid #e43c30;
+  }
+  .subscription-box {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  .subscription-box:hover {
+    opacity: 1;
+  }
+  .subscription-box.selected {
+    opacity: 1;
+  }
+  .subscription-box img{
+    border-radius: 50%;
+  }
+  .subscription-box img{
+    border: 2px solid #e43c30;
+  }
+  .subscription-box .h-title{
+    margin-bottom: 0;
+    margin-top: 12px;
+  }
+  .box-type-selection{
+    margin-bottom: 20px;
+  }
+  .choice-options label {
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-left: 8px;
+  }
+  /* HTML5 Boilerplate accessible hidden styles */
+  [type="radio"] {
+    border: 0; 
+    clip: rect(0 0 0 0); 
+    height: 1px; margin: -1px; 
+    overflow: hidden; 
+    padding: 0; 
+    position: absolute; 
+    width: 1px;
+  }
+
+  /* the basic, unchecked style */
+  [type="radio"] + label:before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    border-radius: 1em;
+    border: 0.125em solid #fff;
+    box-shadow: 0 0 0 0.15em #000;
+    margin-right: 0.75em;
+    transition: 0.3s ease all;
+  }
+
+  /* the checked style using the :checked pseudo class */
+  [type="radio"]:checked + label:before {
+    background: #000;
+    box-shadow: 0 0 0 0.25em #000;
+  }
+
+  .mobile-panel {
+    display: none;
+  }
+
+  .q_hide {
+    display: none;
+  }
+
+  .box-total-progress.fixed {
+    color: #000;
+    background: #fff;
+    height: 50px;
+    margin: 14px auto;
+    width: 95%;
+  }
+
+  .box-total-progress.fixed label {
+    color: #000;
+  }
+
+  .box-total-progress.fixed .box-progress-indicator {
+    background: #c7c7c7;
+  }
+
+  .cta_button.fixed {
+    width: 95%;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .cta_button.subscribe_fixed {
+    color: #000;
+    background: #fff;
+    border-color: #000;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    left: 0;
+    height: auto;
+    color: #000;
+    background: #ececec;
+  }
+
+  .selected-subscription-box{
+    display: none;
+  }
+
+  .dropdown-arrow {
+    border: solid;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: translateY(-25%) rotate(45deg);
+    -webkit-transform: translateY(-25%) rotate(45deg);
+    margin-left: 5px;
+  }
+
+  .sub-box-price {
+    display: none;
+  }
+
+  .bold__product_item.out-of-stock:before {
+    content: 'OUT OF STOCK';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    text-align: center;
+    color: #e43c30;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .h-subtitle {
+    margin-top: 5px;
+  }
+  .h-subtitle-line {
+    margin-bottom: 0;
+    color: #a9a9a9;
+    font-weight: 400;
+  }
+
+  .sub-box-snack-total {
+    display: none;
+  }
+  
+  .side-panel {
+    margin-bottom: 40px;
+  }
+
+  .prods-row-wrapper {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+
+  @media (max-width: 991px) {
+    .custom-manage-box-body.container {
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .container-fluid {
+      /* padding-right: 0; */
+    }
+
+    .side-panel {
+      display: none;
+    }
+
+    .mobile-panel {
+      display: block;
+    }
+
+    .selected-subscription-box {
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .head-title {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .manage-box-header {
+      text-align: left;
+      margin: 0;
+      margin-bottom: 20px;
+      padding: 8px 15px;
+      padding-bottom: 0;
+      background: #ececec;
+      border: 1px solid #ececec;
+      position: sticky;
+      position: -webkit-sticky;
+      top: -1px;
+      z-index: 9;
+    }
+    
+    .box-type-selection {
+      display: none;
+    }
+
+    .box-selections {
+      margin: 0;
+      display: none;
+    }
+
+    .box-selections .col-md-4 {
+      display: block !important;
+    }
+
+    .box-selections .col-md-4:nth-child(odd){
+      background: #f1f1f1;
+    }
+    .box-selections .col-md-4.selected ~ .col-md-4:nth-child(odd){
+      background: none;
+    }
+    .box-selections .col-md-4.selected ~ .col-md-4:nth-child(even){
+      background: #f1f1f1;
+    }
+
+    .subscription-box.selected{
+      display: none;
+    }
+
+    .subscription-box img {
+      display: none;
+    }
+
+    .first-divide{
+      display: none;
+    }
+
+    .subscription-box {
+      width: 100%;
+      line-height: 23px;
+      padding: 10px 0;
+    }
+
+    .subscription-box .h-title {
+      font-size: 14px;
+      display: inline-block;
+      margin-top: 0;
+      line-height: 23px;
+    }
+
+    .subscription-box .sub-box-price {
+      color: #000;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .sub-box-snack-total {
+      font-size: 14px;
+      text-transform: lowercase;
+      font-weight: 200;
+    }
+
+    .selected-product-box-limit{
+      text-transform: lowercase;
+      font-weight: 200;
+    }
+    
+    .h-subtitle{
+      display: none;
+    }
+
+    .sub-box-snack-total {
+      display: inline-block;
+    }
+  }
+
+  /* Not sure why they have overflow hidden but I am unsetting it to make sticky elements work*/
+  @media screen and (max-width: 1199px){
+    div#pageContent {
+      overflow: unset;
+    }
+  }
+
+</style>

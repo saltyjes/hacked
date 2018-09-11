@@ -1,0 +1,12 @@
+{% if product.tags.size > 0 %}{% assign pr_array = '' %}{% for t in product.tags %}{% assign pr_array = pr_array | append: t %}{% unless forloop.last %}{% assign pr_array = pr_array | append: ',' %}{% endunless %}{% endfor %}{% assign pr_array = pr_array | downcase %}
+{% assign tags = settings.shopby_tags_filter | split: ',' %}{% assign array = '' %}{% assign tag_lang = '' %}{% for tag in tags %}{% if tag contains '__' %}{% assign value = tag | split: '__' | first %}{% assign array = array | append: ',' | append: value %}{% assign value = tag | split: '__' | last | strip %}{% assign tag_lang = tag_lang | append: ',' | append: value %}{% else %}{% assign array = array | append: ',' | append: tag %}{% assign tag_lang = tag_lang | append: ',' | append: '_empty_' %}{% endif %}{% endfor %}{% assign tags = array | split: ',' %}{% assign tag_lang = tag_lang | split: ',' %}
+<ul class="tags-list">
+  {% for t in tags %}
+  {% assign tag = t | strip | downcase %}
+  {% if pr_array contains tag and tag != '' %}
+  {% capture string %}{% if tag_lang[forloop.index0] != '_empty_' %}{{ tag_lang[forloop.index0] }}{% else %}{{ t | strip }}{% endif %}{% endcapture %}
+  <li><a href="{{ custom_url }}{{ tag | handle }}">{{ string }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

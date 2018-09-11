@@ -1,0 +1,135 @@
+{%- assign name_collection = section.settings.collection -%}
+{%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+{%- assign collection = collections[name_collection] -%}
+{%- assign length = section.settings.limit | plus: 0 -%}
+
+<section class="content" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+  <div class="container">
+    {% if collection.products.size == 0 %}
+    <span style="display: flex; justify-content: center;">{{ section.settings.title }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+    {% else %}
+    <div class="tp-banner-container">
+      <div class="tp-banner-{{ section.id }}" data-speed="{{ section.settings.delay_time }}" data-fullscreen="on" data-startheight="600"  data-transparent_header="false">
+        <ul>
+          {% for product in collection.products limit: length %}
+          {%- comment %}<locksmith:f63d>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:f63d>{% endcomment -%}
+          {% assign variant = product.selected_or_first_available_variant %}
+          {% assign sale_on = false %}{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}{% assign sale_on = true %}{% endif %}
+          {% if product.available %}{% if product.variants.size > 1 %}{% assign func = "" %}{% else %}{% assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" %}{% endif %}{% endif %}
+          <!-- SLIDE -1 -->
+          <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide" class="{{ variant.id }}">
+            <!-- MAIN IMAGE --> 
+            <img src="{{ 'slide17.png' | asset_url }}"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" > 
+            <!-- LAYERS -->
+
+            <!-- IMAGE -->
+            <!-- IMAGE NR. 01 -->
+            <div class="tp-caption  lft ltb" 
+                 data-x="199" 
+                 data-y="34" 
+                 data-speed="900"
+                 data-start="1000"
+                 data-easing="Power4.easeOut"
+                 style="z-index: 5;">
+              <img src="{{ product.images[0] | product_img_url: 'grande' }}" alt="Image01">
+            </div>
+            <!-- IMAGE NR. 02 -->
+            <div class="tp-caption  lfb ltt" 
+                 data-x="639" 
+                 data-y="170"  
+                 data-speed="900"
+                 data-start="1000"
+                 data-easing="Power4.easeOut"
+                 style="z-index: 5;">
+              <img src="{{ product.images[1] | product_img_url: 'grande' }}" alt="Image02">
+            </div>
+            <!-- TEXT -->
+            <div class="tp-caption lfr str" 
+                 data-x="1300"         
+                 data-y="center"    
+                 data-voffset="60" 
+                 data-speed="600" 
+                 data-start="900" 
+                 data-easing="Power4.easeOut" 
+                 data-endeasing="Power4.easeIn" 
+                 style="z-index: 7;">
+              <div class="tp-caption--product-1">
+                <h6 class="title text-uppercase"><a href="{{ product.url | within: collection }}" class="product_title">{{ product.title }}</a></h6>
+                {% if sale_on %}
+                <div class="price">{{ product.selected_or_first_available_variant.price | money }}<span class="price-box__old">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span></div>
+                {% else %}
+                <div class="price">{{ product.selected_or_first_available_variant.price | money }}</div>
+                {% endif %}
+                <div class="text">
+                  {% if product.content contains "[smallDescription]" %}{% include "get-content-with-key" content: product.content key: "[smallDescription]" %}{% endif %}
+                </div>
+                {% if settings.product_item_show_cart %}<a {% if func == "" %}href="javascript:void(0);" onclick="quiqview('{{ product.handle | handleize }}')"{% else %}href="javascript:void(0);" onclick="{{ func }}; return false;"{% endif %} class="btn btn--ys btn--lg btn-top">{{ 'products.product.add_to_cart_html' | t }}</a>{% endif %}
+              </div>								
+            </div>
+          </li>
+          <!-- /SLIDE -1 -->
+
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Products Presentation",
+  "class": "index-section",
+  "settings": [
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "10000", "label": "10 seconds" },
+        { "value": "12000", "label": "12 seconds" },
+        { "value": "14000", "label": "14 seconds" },
+        { "value": "16000", "label": "16 seconds" },
+        { "value": "18000", "label": "18 seconds" },
+        { "value": "20000", "label": "20 seconds" },
+        { "value": "22000", "label": "22 seconds" },
+        { "value": "24000", "label": "24 seconds" },
+        { "value": "26000", "label": "26 seconds" },
+        { "value": "28000", "label": "28 seconds" },
+        { "value": "30000", "label": "30 seconds" }
+      ],
+      "default": "16000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Presentation",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

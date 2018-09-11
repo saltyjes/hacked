@@ -1,0 +1,249 @@
+{%- assign name_collection = section.settings.collection -%}
+{%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+{%- assign collection = collections[name_collection] -%}
+
+<section class="content" data-section-id="{{ section.id }}" data-section-type="collectionproducts-section">
+  <div class="container">
+    <h2 class="text-uppercase title-under {% if section.settings.center_title %}text-center{% endif %}">{{ section.settings.title }}</h2>
+    <div class="row">
+      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-xs-12">
+        <a href="{{ section.settings.banner_link }}" class="banner zoom-in">
+          <span class="figure">
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '700x700' }}" alt="{{ section.settings.image.alt }}">
+            {% else %}
+            <span class="editor-image" data-width="570" data-height="468" data-position="top"></span>
+            {% endif %}
+            <span class="figcaption">
+              <span class="block-table">
+                <span class="block-table-cell">
+                  {% if section.settings.bannertitle != '' %}<span class="banner__title size3">{{ section.settings.bannertitle }}</span>{% endif %}
+                  {% if section.settings.text1 != '' %}<span class="text text-uppercase">{{ section.settings.text1 }}</span>{% endif %}
+                  {% if section.settings.text2 != '' %}<span class="text text-uppercase size3">{{ section.settings.text2 }}</span>{% endif %}
+                  {% if section.settings.show_button %}<span class="btn btn--ys btn--xl">{{ section.settings.button_name }}</span>{% endif %}
+                </span>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="divider divider--lg visible-xs"></div>
+      <div class="col-xl-8 col-lg-6 col-md-6 col-sm-4 col-xs-12">
+        {% if collection.products.size == 0 %}
+        <span style="display: flex; justify-content: center;">{{ section.settings.title }}.&#160;Add products. Select collection in this section using the sidebar.</span>
+        {% else %}
+        {% assign _lenght = section.settings.limit | plus: 0 %}
+        <div class="carousel-products row slick-arrow-top carousel-small-2 carousel-small-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+          {% for product in collection.products limit: _lenght %}
+          {%- comment %}<locksmith:9350>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:9350>{% endcomment -%}
+          <div class="col-lg-3">
+            {% include "product-grid-item" %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  [data-section-id~="{{ section.id }}"] .banner .figcaption .banner__title,
+  [data-section-id~="{{ section.id }}"] .banner .figcaption .text{
+  	color: {{ section.settings.color_texts }};
+  }
+  [data-section-id~="{{ section.id }}"] .btn--ys {
+  	color: {{ section.settings.color_textbase }};
+  	background: {{ section.settings.color_bgbase }};
+  }
+  [data-section-id~="{{ section.id }}"] .btn--ys:hover {
+  	color: {{ section.settings.color_textactive }};
+  	background: {{ section.settings.color_bgactive }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Products With Banner",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "BY DEFAULT. SHOW ALL PRODUCTS. SELECT YOUR COLLECTION."
+    },
+    {
+      "type": "checkbox",
+      "id": "center_title",
+      "label": "Center Title",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Link",
+      "info": "Optional"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_name",
+      "label": "Button Name",
+      "default": "Shop Now!"
+    },
+    {
+      "type": "text",
+      "id": "bannertitle",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "label": "Text 1",
+      "default": "Text 1"
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "label": "Text 2",
+      "default": "Text 2"
+    },
+
+
+    {
+      "type": "color",
+      "id": "color_texts",
+      "label": "Texts Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_textbase",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_bgbase",
+      "label": "Button Background Color",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "color_textactive",
+      "label": "Button Text Active Color",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "color_bgactive",
+      "label": "Button Background Active Color",
+      "default": "#ffffff"
+    },
+
+
+
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Items Length. Integer",
+      "default": "8"
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+	  "info": "Max = Products In Row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products With Banner",
+      "category": "Products",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

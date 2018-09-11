@@ -1,0 +1,46 @@
+  <div class="row">
+    <div class="clearfix"></div>
+	{% if section.blocks.size > 0 %}
+    {% for block in section.blocks limit: limit %}{%- assign collection = collections[block.settings.collection] -%}
+    <div class="{{ array[forloop.index0] }}">
+      <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="banner zoom-in">
+        <span class="figure{% if section.settings.hide_button and block.settings.show_item_button == 'yes' and section.settings.show_button %} buttononhover{% endif %}">
+          {% unless block.settings.usecollectionimage %}
+            {% if block.settings.image == blank %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<div class="editor-image" data-width="870" data-height="870" data-position="top"></div>
+              {% else %}<div class="editor-image" data-width="1760" data-height="870" data-position="top"></div>
+              {% endif %}
+            {% else %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<img src="{{ block.settings.image | img_url: '1024x1024' }}" alt="{{ block.settings.image.alt }}">
+              {% else %}<img src="{{ block.settings.image | img_url: '2048x2048' }}" alt="{{ block.settings.image.alt }}">
+              {% endif %}
+            {% endif %}
+          {% else %}
+            {% if collection.empty? or collection.image == blank %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<div class="editor-image" data-width="870" data-height="870" data-position="top"></div>
+              {% else %}<div class="editor-image" data-width="1760" data-height="870" data-position="top"></div>
+              {% endif %}
+            {% else %}
+              {% if array[forloop.index0] contains 'col-sm-6' %}<img src="{{ collection.image | img_url: '1024x1024' }}" alt="{{ collection.image.alt }}">
+              {% else %}<img src="{{ collection.image | img_url: '2048x2048' }}" alt="{{ collection.image.alt }}">
+              {% endif %}
+            {% endif %}
+          {% endunless %}
+          <span class="figcaption">
+            <span class="block-table">
+              <span class="block-table-cell">
+                {% if collection.empty? %}<span class="banner__title" style="font-size:16px; {% if block.settings.use_custom_color == 'custom_color' %}color:{{ block.settings.color_title }}{% endif %};">{{ 'homepage.onboarding.collection_title' | t }}</span>{% else %}<span class="banner__title size40{% if block.settings.show_item_button == 'no' or section.settings.show_button == false %} nomargin{% endif %}"{% if block.settings.use_custom_color == 'custom_color' %} style="color:{{ block.settings.color_title }}"{% endif %}>{% if block.settings.custom_name != ''%}{{ block.settings.custom_name }}{% else %}{{ collection.title }}{% endif %}</span>{% endif %}
+                {% if block.settings.show_item_button == 'yes' and section.settings.show_button %}<span class="btn btn--ys btn--xl">{{ section.settings.button_title }}</span>{% endif %}
+              </span>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+    {% if array[forloop.index0] contains 'col-sm-6' %}{% cycle '','<div class="clearfix visible-sm"></div>' %}{% endif %}
+    {{ clearfix[forloop.index0] }}
+    {% endfor %}
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>

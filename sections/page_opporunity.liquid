@@ -1,0 +1,193 @@
+{% if section.settings.show_line %}<section class="content separator-section"><div class="container"><hr class="marginbottom66"></div></section>{% endif %}
+<section class="main-text-block-section {% if section.settings.showbigindent %}content-big-indent{% else %}content{% endif %}">
+  <div class="container">
+   
+<!--     <div class="row"> -->
+       <div class="text-block-with-bg">
+        <h2 class="text-center text-uppercase title-under">{{section.settings.maintext_title}}</h2>
+    </div>
+   	<div class="texts-block-top">
+      {% if section.blocks.size > 0 %}
+      {% assign step = 12 | divided_by: section.blocks.size %}
+      {% assign count = 0 %}
+      {% for block in section.blocks %}
+      {% assign count = count | plus: 1 %}
+      <div class="cu-main-section">
+        {% if section.settings.title_design == "design1" %}
+        <h4 class="title-icon text-uppercase"><span class="icon color icon-{{ block.settings.item_icon }} icon--flippedX"></span>{{ block.settings.item_title }}</h4>
+        {% elsif section.settings.title_design == "design2" %}
+        <div class="section-cu-block clearfix">
+          <div class="col-md-6 {{ block.settings.title_block }} ">
+              <img class="img-responsive" src="{{ block.settings.secimg | img_url: "" }}" alt="">
+          </div>
+          <div class="col-md-6">
+            <span class="icon icon-{{ block.settings.item_icon }} font54 color"></span>
+            <h3 class="text-uppercase font22 title-bottom-sm"> <span class="count-icon">{{ count }}</span> {{ block.settings.item_title }}</h3>
+            {{ block.settings.item_text }}
+            <a class="btn-red box-trigger" href="{{ block.settings.shop_links }}">{{ block.settings.shop_titles }}</a>
+          </div>
+        </div>
+        {% endif %}
+		
+      </div>
+<!--       <div class="divider divider--md visible-sm visible-xs"></div> -->
+      {% endfor %}
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+<!--     </div> -->
+      <div class="bottom-btn-section">
+        {% assign feat_product = all_products[settings.bab-default-product] %}
+        <script>
+          window.BOLD.common.Shopify.saveProduct({{ feat_product.handle | json }}, {{ feat_product.id | json }});
+          {%- for variant in feat_product.variants -%} window.BOLD.common.Shopify.saveVariant({{ variant.id | json }}, {product_id: {{ feat_product.id | json }}, price: {{ variant.price | json }}, group_id: '{{variant.metafields.bold_rp.rp_group_id}}'}); {%- endfor -%}
+        </script>
+        <form action="/tools/checkout/manage_subscription_box/select_products_checkout/{{feat_product.id}}/{{feat_product.first_available_variant.id}}" method="post" enctype="multipart/form-data">
+          <div class="ro_widget" style="display: none;"></div>
+          <input type="hidden" name="id" value="{{feat_product.first_available_variant.id}}" />
+          <button name="add" id="AddtoCart" class="btn-red box-submit-trigger">{{section.settings.buttontext_text}}</button>
+        </form>
+        {% comment %} <a class="btn-red" href="{{section.settings.buttontext_link}}">{{section.settings.buttontext_text}}</a> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+$('.box-trigger').on('click', function(event){
+  event.preventDefault();
+  $('.box-submit-trigger').click();
+})
+</script>
+
+{% schema %}
+{
+  "name": "Text Block 1",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Top Line",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "showbigindent",
+      "label": "Big Container",
+      "default": false
+    },
+    {
+      "type": "radio",
+      "id": "title_design",
+      "label": "Title Type",
+      "options": [
+        { "value": "design1", "label": "Design 1" },
+        { "value": "design2", "label": "Design 2" }
+      ],
+      "default": "design1"
+    },
+    {
+          "type": "text",
+          "id": "maintext_title",
+          "label": "Title",
+          "default": "Title"
+     },
+    {
+          "type": "text",
+          "id": "buttontext_text",
+          "label": "Bottom Button Text",
+          "default": "Title"
+     },
+    {
+          "type": "text",
+          "id": "buttontext_link",
+          "label": "Bottom Button Link",
+          "default": "Title"
+     }
+ 	
+  ],
+  "blocks": [
+		{
+          "type": "item-block",
+          "name": "Item",
+          "settings": [
+             {
+              "type": "image_picker",
+              "id": "secimg",
+              "label": "Image"
+            },
+
+           {
+          "type": "radio",
+          "id": "title_block",
+          "label": "Image Position",
+          "options": [
+            { "value": "pull-right", "label": "Right" },
+            { "value": "pull-left", "label": "Left" }
+          ],
+          "default": "pull-left"
+        }, 
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Title",
+          "default": "Title"
+        },{
+          "type": "text",
+          "id": "shop_titles",
+          "label": "Button Title",
+          "default": "Title"
+        },{
+          "type": "text",
+          "id": "shop_links",
+          "label": "Button Link",
+          "default": "link"
+        },
+        {
+          "type": "text",
+          "id": "item_icon",
+          "label": "Material Icon",
+          "default": "local_shipping",
+		  "info": "[Material Icons](https:\/\/material.io\/icons\/#ic_desktop_mac)"
+        },
+        {
+          "type": "richtext",
+          "id": "item_text",
+          "label": "Content",
+		  "default": "<p>Content</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Block 1",
+      "category": "Text Section",
+      "blocks": [
+        {
+          "type": "item-block"
+        },
+        {
+          "type": "item-block",
+		  "settings": {
+			"item_icon": "payment"
+		  }
+        },
+        {
+          "type": "item-block",
+		  "settings": {
+			"item_icon": "email"
+		  }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

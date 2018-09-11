@@ -1,0 +1,271 @@
+<!-- banners -->
+{% if section.settings.show_examples %}{% include "color-banner-examples" %}{% endif %}
+<section{% unless section.settings.hide_top_indent %} class="content"{% endunless %}>
+  <div class="container-fluid box-baners">
+    <div class="row">
+      {% if section.blocks.size > 0 %}{% assign grid = 12 | divided_by: section.blocks.size %}
+      <div class="banner-carousel-1">
+        {% for block in section.blocks %}<div class="col-md-{{ grid }} col-sm-6 col-xs-12 class{{ section.id }}{{ forloop.index }}">{% include "color-banner" %}</div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- /banners -->
+{% if section.blocks.size > 0 %}
+<style>
+  {% for block in section.blocks %}
+  .class{{ section.id }}{{ forloop.index }} .banner {
+    background-color: {{ block.settings.background_color }};
+  }
+  .class{{ section.id }}{{ forloop.index }} .banner .block-table-cell > span,
+  .class{{ section.id }}{{ forloop.index }} .banner .block-table-cell > em {
+    color: {{ block.settings.text_color }};
+    -webkit-transition:  all 200ms linear 0s;
+    -moz-transition:  all 200ms linear 0s;
+    -ms-transition:  all 200ms linear 0s;
+    -o-transition:  all 200ms linear 0s;
+    transition:  all 200ms linear 0s;
+  }
+  .class{{ section.id }}{{ forloop.index }} .banner .block-table-cell > span.btn {
+    border-color: {{ block.settings.text_color }};
+  }
+  
+  .class{{ section.id }}{{ forloop.index }} .banner:hover .block-table-cell > span,
+  .class{{ section.id }}{{ forloop.index }} .banner:hover .block-table-cell > em {
+    color: {{ section.settings.text_active }} !important;
+  }
+  .class{{ section.id }}{{ forloop.index }} .banner:hover .block-table-cell > span.btn {
+    border-color: {{ section.settings.text_active }} !important;
+  }
+  .class{{ section.id }}{{ forloop.index }} .banner:hover {
+    background-color: {{ section.settings.background_active_color }};
+  }
+  {% endfor %}
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Banners Colors",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_top_indent",
+      "label": "Hide Top Indent",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_examples",
+      "label": "Show Examples",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_active",
+      "label": "Content Active Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "background_active_color",
+      "label": "Background Active Color",
+      "default": "#f5f5f5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item-block-1",
+      "name": "Item Design 1",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "75% off"
+        },
+        {
+          "type": "select",
+          "id": "showbutton",
+          "label": "Show Button?",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes" }
+          ],
+          "default": "yes"
+        },
+        {
+          "type": "text",
+          "id": "button_title",
+          "label": "Button Name",
+          "default": "Shop now!"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#fa6b6b"
+        }
+      ]
+	},
+	{
+      "type": "item-block-2",
+      "name": "Item Design 2",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text 1",
+          "default": "Order Return"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Text 2",
+          "default": "Returns within"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Text 3",
+          "default": "7 days"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#21caa9"
+        }
+      ]
+	},
+	{
+      "type": "item-block-3",
+      "name": "Item Design 3",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text 1",
+          "default": "Free<br>shipping"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Text 2",
+          "default": "on orders over $99."
+        },
+        {
+          "type": "textarea",
+          "id": "title3",
+          "label": "Text 3",
+          "default": "This offer is valid on all our store items."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#1fc0a0"
+        }
+      ]
+	},
+	{
+      "type": "item-block-4",
+      "name": "Item Design 4",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text 1",
+          "default": "COD"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Text 2",
+          "default": "Cash<br>on delivery"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#21caa9"
+        }
+      ]
+	}
+  ],
+  "presets": [
+    {
+	  "name": "Banners Colors",
+      "category": "Banner",
+      "blocks": [
+        {
+          "type": "item-block-1"
+        },
+        {
+          "type": "item-block-2"
+        },
+        {
+          "type": "item-block-3"
+        },
+        {
+          "type": "item-block-4"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

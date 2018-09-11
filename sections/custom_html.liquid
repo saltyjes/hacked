@@ -1,0 +1,35 @@
+{{ section.settings.custom_html }}
+
+{% schema %}
+  {
+    "name": "Custom Html",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[Online Editor](http:\/\/ocean.tonytemplates.com\/shopify\/yourstore-help-v2), [Video](https:\/\/goo.gl\/gUO8lx)."
+      },
+      {
+        "type": "textarea",
+        "id": "custom_html",
+        "label": "Custom Html"
+      },
+      {
+        "type": "paragraph",
+        "content": "Or create content with [Bootstrap](http:\/\/getbootstrap.com\/getting-started)."
+      },
+      {
+        "type": "textarea",
+        "id": "custom_html_example",
+        "label": "Only Example",
+		"info": "Edit in text editor and paste in \"Custom Html\"",
+		"default": "<section class=\"content\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"row\">\r\n\t\t\tYour Content\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/section>"
+      }
+	],
+    "presets": [
+      {
+        "name": "Custom Html",
+        "category": "Html"
+      }
+    ]
+  }
+{% endschema %}

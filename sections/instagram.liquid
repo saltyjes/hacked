@@ -1,0 +1,83 @@
+{% if section.settings.design == 'design2' %}
+<section class="content-big-indent fullwidth inst-hide-title" data-section-id="{{ section.id }}" data-section-type="instagram-section">
+  <div class="container">
+    <div class="row">
+      <div class="instafeed-wrapper instafeed-center">
+        <h3 class="text-uppercase text-center  font22 title-bottom-sm">{{ section.settings.title }}</h3>
+        <div id="instafeed-{{ section.id }}" class="instafeed" data-userid="{{ section.settings.userid }}" data-clientid="{{ section.settings.clientid }}" data-accesstoken="{{ section.settings.accesstoken }}"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<!-- /brands-carousel -->
+<!-- <section class="content fullwidth hidden-xs" data-section-id="{{ section.id }}" data-section-type="instagram-section"> -->
+<section class="content fullwidth" data-section-id="{{ section.id }}" data-section-type="instagram-section">
+  <div class="container">
+    <div class="row">
+      <h3 class="insta-title"><span>{{ section.settings.title }}</span></h3>
+      <div class="instafeed-wrapper">
+<!--         <h3 class="title-vertical"><span>{{ section.settings.title }}</span></h3> -->
+        <div id="instafeed-{{ section.id }}" class="instafeed" data-userid="{{ section.settings.userid }}" data-clientid="{{ section.settings.clientid }}" data-accesstoken="{{ section.settings.accesstoken }}"></div>
+        <div id="insta-feed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Instagram",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "userid",
+      "label": "User Id",
+      "default": "2324131028",
+	  "info": "[Get a Instagram Client_ID key](http:\/\/darkwhispering.com\/how-to\/get-a-instagram-client_id-key)"
+    },
+    {
+      "type": "text",
+      "id": "clientid",
+      "label": "Client Id",
+      "default": "422b4d6cf31747f7990a723ca097f64e",
+	  "info": "[Get Instagram User Id](http:\/\/www.ershad7.com\/InstagramUserID)"
+    },
+    {
+      "type": "text",
+      "id": "accesstoken",
+      "label": "Access Token",
+      "default": "2324131028.422b4d6.d6d71d31431a4e8fbf6cb1efa1a2dfdc",
+	  "info": "[Instagram access token generator](https:\/\/elfsight.com\/service\/generate-instagram-access-token)"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Instagram access token](https:\/\/elfsight.com\/blog\/2016\/05\/how-to-get-instagram-access-token/)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "INSTAGRAM FEED"
+    },
+    {
+      "type": "select",
+      "id": "design",
+      "label": "Design",
+      "options": [
+        { "value": "design1", "label": "Design 1" },
+        { "value": "design2", "label": "Design 2" }
+	  ],
+      "default": "design1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram",
+      "category": "Instagram"
+    }
+  ]
+}
+{% endschema %}

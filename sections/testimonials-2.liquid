@@ -1,0 +1,160 @@
+<section class="content" data-section-id="{{ section.id }}" data-section-type="testimonials2-section">
+  <div class="container">
+    <h2 class="text-center text-uppercase title-under">{{ section.settings.title }}</h2>
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="slider-blog-layout1 slider-blog-layout-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+        {% for block in section.blocks %}
+        {% if block.settings.image != blank %}{% assign img_url = block.settings.image | img_url: 'large' %}
+        {% else %}{% assign img_url = 'template_testim.png' | asset_url %}
+        {% endif %}
+        <!-- slide-->
+        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="link-hover-block">
+        {% else %}<div class="link-hover-block">{% endif %}
+          <div class="slider-blog__item">
+            <div class="col-md-12">
+              <div class="box-foto">
+                <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}">
+              </div>
+              <div class="box-data{% if section.settings.show_quotes %} testimonials-quotes{% endif %}">
+                <p>{{ block.settings.text }}</p>
+                <h6>{{ block.settings.item_title }}{% if block.settings.item_hobby != '' %} <em>{{ block.settings.item_hobby }}</em>{% endif %}</h6>
+              </div>
+            </div>
+          </div>
+        {% if block.settings.link == blank %}</div>
+        {% else %}</a>{% endif %}
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials Slider",
+  "class": "index-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quotes",
+      "label": "Show Quotes",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "3",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comment_item",
+      "name": "Comment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Author",
+          "default": "Author"
+        },
+		{
+          "type": "text",
+          "id": "item_hobby",
+          "label": "Hobby",
+          "default": "- Hobby"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Slider",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "comment_item"
+        },
+        {
+          "type": "comment_item"
+        },
+        {
+          "type": "comment_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

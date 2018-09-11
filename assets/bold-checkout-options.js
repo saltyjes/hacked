@@ -1,0 +1,2 @@
+window.BOLD = window.BOLD || {};
+window.BOLD.checkout_features_defaults=[{"name":"checkout-always-on","require":false},{"name":"Shopify Discount Connector","require":true,"id":"5d8d5c43-dc24-11e7-8128-42010afe0504"},{"name":"PS Cashier Repository","require":true,"id":"4f26e56e-2d2f-11e8-9030-42010afe0502"},{"name":"Recurring Orders","require":true,"id":"b065901c-bf09-11e7-b98f-42010afe0607"}]

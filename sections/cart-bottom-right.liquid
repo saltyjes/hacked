@@ -1,0 +1,36 @@
+
+          <div class="inner-right-subscribe">
+            <h3>{{ section.settings.subtextcart }}</h3>
+            <div class="subscribe-box subscribe-box-row offset-top-20">
+          <div class="mobile-collapse">
+            {% if settings.mailchimp_form_action != "" %}
+              <form action="{{ settings.mailchimp_form_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank" class="form-inline">
+                <input type="text" name="EMAIL" class="form-control subscribe-form__input" placeholder="Your email address">
+                <button type="submit" class="btn btn--ys btn--xl">Go</button>
+              </form>
+            {% else %}
+            <strong><u>Add newsletter redirect link in Newsletter / MailChimp form action URL</u></strong>
+            {% endif %}
+          </div>
+        </div>
+          </div>
+{% schema %}
+{
+  "name": "Cart Right Section",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtextcart",
+      "label": "Subscribe Text"
+    }
+    
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

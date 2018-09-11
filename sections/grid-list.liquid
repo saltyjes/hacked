@@ -1,0 +1,131 @@
+<div class="content" data-section-id="{{ section.id }}" data-section-type="resize-section">
+  <div class="container">
+    {% if section.blocks.size > 0 %}
+    <div class="row">
+      <div class="brands-link-listing">
+        {% for block in section.blocks %}
+        <div class="col-xs-6 col-sm-3 col-md-{{ section.settings.grid }}">
+          <a href="{{ block.settings.link }}" class="brands-link{% if section.settings.show_border %} brands-link-border{% endif %}">
+            {% if block.settings.image != blank %}<img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}">
+            {% else %}
+            {% if section.settings.grid  ==  '2' %}<span class="editor-image" data-width="260" data-height="260" data-position="top"></span>
+            {% else %}<span class="editor-image" data-width="400" data-height="300" data-position="top"></span>
+            {% endif %}
+          	{% endif %}
+            {% if block.settings.text1 != '' %}<div class="block-title">{{ block.settings.text1 }}</div>{% endif %}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</div>
+<style>
+  [data-section-id~="{{ section.id }}"] .brands-link .block-title{
+  color: {{ section.settings.base_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .brands-link:hover .block-title{
+  color: {{ section.settings.active_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Grid List",
+  "class": "index-section",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "radio",
+      "id": "grid",
+      "label": "Grid",
+      "default": "2",
+      "options": [
+        {
+          "value": "3",
+          "label": "4"
+        },
+        {
+          "value": "2",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show Border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "base_color",
+      "label": "Text Color",
+	  "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "active_color",
+      "label": "Text Active Color",
+      "default": "#333333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid List",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

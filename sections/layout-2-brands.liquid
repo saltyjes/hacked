@@ -1,0 +1,136 @@
+{% if section.settings.show_block %}{% if section.settings.show_line %}<hr>{% endif %}
+<div class="{% if section.settings.show_line %}content {% endif %}section-indent-bottom" data-section-id="{{ section.id }}" data-section-type="brands-section">
+  <div class="row">
+    {% if section.blocks.size > 0 %}
+    <div class="brands-carousel brands-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+      {% for block in section.blocks %}
+      <div>
+        <a href="{{ block.settings.link }}">
+          {% if block.settings.image != blank %}{% assign img_url = block.settings.image | img_url: 'large' %}
+          {% else %}{% assign img_url = 'template_brand.png' | asset_url %}
+          {% endif %}
+          <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Brands list",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_block",
+      "label": "Show Widget",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Top Line",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "9",
+          "label": "9"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

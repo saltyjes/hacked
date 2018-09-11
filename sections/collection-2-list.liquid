@@ -1,0 +1,278 @@
+{% capture fontsize %}{% case section.settings.title_size %}{% when '30' %}promotitlesize30{% when '40' %}promotitlesize40{% else %}{% endcase %}{% endcapture %}
+<section class="content" data-section-id="{{ section.id }}" data-section-type="collectionslider-section">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="category-carousel category-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}" data-items="{{ section.settings.items }}">
+        {% for block in section.blocks limit: section.blocks.size %}
+        <div class="col-sm-4 col-md-4 col-lg-4 items{{ section.settings.items }}">
+          {%- assign collection = collections[block.settings.collection] -%}
+          <a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="promo-design2 zoom-in {{ fontsize }}">
+            {% unless block.settings.usecollectionimage %}
+            {% if block.settings.image == blank %}<span class="editor-image" data-width="820" data-height="722"></span>
+            {% else %}<div class="img"><img src="{{ block.settings.image | img_url: 'grande' }}" alt="{{ block.settings.image.alt }}"></div>
+            {% endif %}
+            {% else %}
+            {% if collection.image == blank %}<span class="editor-image" data-width="820" data-height="722"></span>
+            {% else %}<div class="img"><img src="{{ collection.image | img_url: 'grande' }}" alt="{{ collection.image.alt }}"></div>
+            {% endif %}
+            {% endunless %}
+            
+            {% if collection.empty? %}<div class="block-title">{{ 'homepage.onboarding.collection_title' | t }}</div>{% else %}<div class="block-title">{% if block.settings.custom_name != ''%}{{ block.settings.custom_name }}{% else %}{{ collection.title }}{% endif %}</div>{% endif %}
+            {% if block.settings.text_content != '' %}{{ block.settings.text_content }}{% endif %}
+            {% if block.settings.show_item_button == 'yes' and section.settings.show_button %}<span class="btn btn-underline">{{ section.settings.button_title }}</span>{% endif %}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% if section.settings.custom_colors %}
+<style>
+  [data-section-id~="{{ section.id }}"] .promo-design2 .block-title {
+    color: {{ section.settings.base_color_title }};
+  }
+  [data-section-id~="{{ section.id }}"] .promo-design2 .btn.btn-underline {
+    color: {{ section.settings.base_color_btn }};
+  }
+  [data-section-id~="{{ section.id }}"] .promo-design2 .btn.btn-underline:after {
+    background: {{ section.settings.base_color_btn }};
+  }
+  [data-section-id~="{{ section.id }}"] .promo-design2 .btn.btn-underline:hover {
+    color: {{ section.settings.hover_color_btn }};
+  }
+  [data-section-id~="{{ section.id }}"] .promo-design2:not(a) .block-title:hover,
+  [data-section-id~="{{ section.id }}"] a.promo-design2:hover .block-title {
+    color: {{ section.settings.hover_color_title }};
+  }
+  [data-section-id~="{{ section.id }}"] .promo-design2 p {
+    color: {{ section.settings.base_color_text }};
+  }
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection list Texts",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title Size",
+      "default": "54",
+	  "info": "Start screen > 1770px",
+      "options": [
+        {
+          "value": "30",
+          "label": "30px"
+        },
+        {
+          "value": "40",
+          "label": "40px"
+        },
+        {
+          "value": "54",
+          "label": "54px"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "items",
+      "label": "Items In Line",
+      "default": "3",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Buttons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "label": "Button Name",
+      "default": "Shop now!"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_colors",
+      "label": "Use Custom Colors",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "base_color_title",
+      "label": "Base Title Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "base_color_text",
+      "label": "Text Color",
+      "default": "#777777"
+    },
+    {
+      "type": "color",
+      "id": "hover_color_title",
+      "label": "Hover Color",
+      "default": "#ef5f96"
+    },
+    {
+      "type": "color",
+      "id": "base_color_btn",
+      "label": "Base Button Color",
+      "default": "#ef5f96"
+    },
+    {
+      "type": "color",
+      "id": "hover_color_btn",
+      "label": "Active Button Color",
+      "default": "#333333"
+    },
+
+	{
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "usecollectionimage",
+          "label": "Set Collection Image",
+          "default": false,
+		  "info": "Set image in collection settings. Default \"Custom Image\""
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        },
+        {
+          "type": "richtext",
+          "id": "text_content",
+          "label": "Text",
+		  "default": "<p>Pretty styles for layering &amp; lounging<\p/>"
+        },
+        {
+          "type": "select",
+          "id": "show_item_button",
+          "label": "Show Button?",
+          "default": "yes",
+          "options": [
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
+          ]
+        }
+	  ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection list Texts",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

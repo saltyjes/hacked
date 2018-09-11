@@ -1,0 +1,294 @@
+<section class="content section-indent-bottom{% if section.settings.custombgcolor %} container-fluid fill-bg{% endif %}" data-section-id="{{ section.id }}" data-section-type="brands-section">
+  <div class="container">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      <div class="brands-carousel brands-carousel-js-{{ section.id }}" data-autoplay="{{ section.settings.module_autoplay }}" data-speed="{{ section.settings.delay_time }}" data-step="{{ section.settings.step }}">
+        {% for block in section.blocks %}
+        <div>
+          <a href="{{ block.settings.link }}">
+            {% if block.settings.image != blank %}{% assign img_url = block.settings.image | img_url: 'large' %}
+            {% else %}{% assign img_url = 'template_brand.png' | asset_url %}
+            {% endif %}
+            <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% if section.settings.custombgcolor or section.settings.custombuttonscolor or section.settings.customopacity %}
+<style>
+  {% if section.settings.customopacity %}
+  [data-section-id~="{{ section.id }}"] .brands-carousel a:hover img {
+    -moz-opacity: {{ section.settings.active_opacity }};
+    -khtml-opacity: {{ section.settings.active_opacity }};
+    -webkit-opacity: {{ section.settings.active_opacity }};
+    opacity: {{ section.settings.active_opacity }};
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity={{ section.settings.active_opacity | times: 100 }});
+    filter: alpha(opacity={{ section.settings.active_opacity | times: 100 }});
+  }
+  [data-section-id~="{{ section.id }}"] .brands-carousel div img, .brands-carousel a img {
+    -moz-opacity: {{ section.settings.base_opacity }};
+    -khtml-opacity: {{ section.settings.base_opacity }};
+    -webkit-opacity: {{ section.settings.base_opacity }};
+    opacity: {{ section.settings.base_opacity }};
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity={{ section.settings.base_opacity | times: 100 }});
+    filter: alpha(opacity={{ section.settings.base_opacity | times: 100 }});
+  }
+  {% endif %}
+  {% if section.settings.custombgcolor %}
+  [data-section-id~="{{ section.id }}"] {
+  background: {{ section.settings.background_color }};
+  }
+  {% endif %}
+  {% if section.settings.custombuttonscolor %}
+  [data-section-id~="{{ section.id }}"] .slick-prev,
+  [data-section-id~="{{ section.id }}"] .slick-next {
+  background-color: {{ section.settings.bg_base_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .slick-prev:before,
+  [data-section-id~="{{ section.id }}"] .slick-next:before {
+  color: {{ section.settings.arrow_base_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .slick-prev:hover,
+  [data-section-id~="{{ section.id }}"] .slick-next:hover {
+  background-color: {{ section.settings.bg_active_color }};
+  }
+  [data-section-id~="{{ section.id }}"] .slick-prev:hover:before,
+  [data-section-id~="{{ section.id }}"] .slick-next:hover:before {
+  color: {{ section.settings.arrow_active_color }};
+  }
+  {% endif %}
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Brands list",
+  "class": "index-section",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "select",
+      "id": "step",
+      "label": "Slides To Scroll",
+      "default": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "9",
+          "label": "9"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "module_autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "delay_time",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "header",
+      "content": "Background Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "custombgcolor",
+      "label": "Change Background Color?",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "header",
+      "content": "Banners Property"
+    },
+    {
+      "type": "checkbox",
+      "id": "customopacity",
+      "label": "Use custom opacity?",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "base_opacity",
+      "label": "Base Opacity. Percent",
+      "options": [
+        { "value": "0.3", "label": "30" },
+        { "value": "0.4", "label": "40" },
+        { "value": "0.5", "label": "50" },
+        { "value": "0.6", "label": "60" },
+        { "value": "0.7", "label": "70" },
+        { "value": "0.8", "label": "80" },
+		{ "value": "0.9", "label": "90" },
+		{ "value": "1", "label": "100" }
+      ],
+      "default": "0.3"
+    },
+    {
+      "type": "select",
+      "id": "active_opacity",
+      "label": "Active Opacity. Percent",
+      "options": [
+        { "value": "0.3", "label": "30" },
+        { "value": "0.4", "label": "40" },
+        { "value": "0.5", "label": "50" },
+        { "value": "0.6", "label": "60" },
+        { "value": "0.7", "label": "70" },
+        { "value": "0.8", "label": "80" },
+		{ "value": "0.9", "label": "90" },
+		{ "value": "1", "label": "100" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Slider Bottons Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "custombuttonscolor",
+      "label": "Use Custom Colors?",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "arrow_base_color",
+      "label": "Arrow Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "arrow_active_color",
+      "label": "Arrow Active Color",
+      "default": "#1fc0a0"
+    },
+    {
+      "type": "color",
+      "id": "bg_base_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "bg_active_color",
+      "label": "Background Active Color",
+      "default": "#f5f5f5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands list",
+      "category": "Sliders",
+      "blocks": [
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

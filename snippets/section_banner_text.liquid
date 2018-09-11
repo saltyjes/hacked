@@ -1,0 +1,10 @@
+{% if text_1 != '' %}<span class="block text-uppercase font-medium {{ title_size }} text1">
+{% if wrapper == 'yes' %}<span class="wrapper-green">{% endif %}{{ text_1 }}{% if wrapper == 'yes' %}</span>{% endif %}
+</span>{% endif %}
+{% if text_2 != '' %}<span class="block text-uppercase font-size26 text2 {{ bold }}">{{ text_2 }}</span>{% endif %}
+{% if show_button %}{% case desingtype %}{% when 'design_2' %}
+<span class="btn btn--ys btn--xl top-indent-sm1 main-font text-inherit" {% if text_1 == '' and text_2 == '' %}style="margin-top: 0 !important;"{% endif %}><em>{{ button_name }}</em> <span class="icon icon-navigate_next"></span></span>
+{% when 'design_3' %}
+<span class="btn btn--ys btn--lg"{% if text_1 == '' and text_2 == '' %} style="margin-top: 0 !important;"{% endif %}>{{ button_name }}</span>
+{% else %}<em class="link-btn-20 main-font" {% if text_1 == '' and text_2 == '' %}style="margin-top: 0 !important;"{% endif %}>{{ button_name }} <span class="icon icon-navigate_next" {% if text_1 == '' and text_2 == '' %}style="line-height: 0 !important;"{% endif %}></span></em>
+{% endcase %}{% endif %}

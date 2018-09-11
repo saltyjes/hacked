@@ -1,0 +1,120 @@
+<section class="content content-bg-1 fixed-bg about-hack" data-section-id="152934594825755" data-section-type="testimonials-section">
+  <div class="container">
+    <div class="row">
+      <div class="top-sec-outer">
+        <div class="top-sec">
+          {{ section.settings.top_first_title }}
+        </div>
+        <div class="bottom-sec">
+          <a href="{{ section.settings.bottom_btn_link }}">{{ section.settings.bottom_btn_text }}</a>
+        </div>
+      </div>
+            
+    </div>
+  </div>
+</section>
+<style>
+  .top-sec-outer  {
+  background: url({{ section.settings.aboutbottom_bg_image | img_url: '' }}) center center no-repeat;
+  
+  }
+  
+</style>
+{% schema %}
+  {
+    "name": "About Bottom Section",
+      "settings": [
+    {
+      "type": "image_picker",
+      "id": "aboutbottom_bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "textarea",
+      "id": "top_first_title",
+      "label": "Top Text",
+      "default": "test title"
+    },
+    {
+      "type": "text",
+      "id": "bottom_btn_text",
+      "label": "Button Text",
+      "default": "test title"
+    },
+    {
+      "type": "text",
+      "id": "bottom_btn_link",
+      "label": "Button Link",
+      "default": "test title"
+    }
+  ]
+  }
+{% endschema %}
+
+
+<style>
+  .about-hack {
+  	text-align: center;
+    margin-top: 0 !important;
+    padding: 0 0 36px !important;
+  }
+  .about-hack .top-sec-outer {
+     padding: 60px 104px;
+     background-position: center center;
+     background-size: cover;
+  }
+  .about-hack .top-sec {
+      background: #333;
+      font-size: 50px;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.5;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  }
+  .about-hack a {
+      background-color: #e43d2f;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 27px;
+      padding: 4px 0;
+      margin-top: 40px;
+      display: inline-block;
+      width: 215px;
+      height: 48px;
+      line-height: 42px;
+  }
+  .about-hack a:hover {
+  	text-decoration: none;
+    background-color: #333;
+    color: #fff;
+  }
+  @media(max-width: 767px) {
+  	.about-hack .top-sec-outer {
+     padding: 30px 50px;
+    }
+    .about-hack .top-sec {
+      font-size: 30px;
+      padding: 20px;
+    }
+    .about-notice {
+    	text-align: center;
+    }
+    .notice-txt {
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .notice-image-txt {
+        float: none;
+        margin: 20px auto 0;
+    }
+    .about-notice {
+        padding: 50px 0 !important;
+    }
+    .about-hack a {
+    	margin-top: 30px;
+    }
+  }
+
+</style>
